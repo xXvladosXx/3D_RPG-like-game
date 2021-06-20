@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Interface;
+using Stats;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 
-public class Health : MonoBehaviour, IAction
+public class Health : MonoBehaviour
 {
     [SerializeField] public OnTakeDamageEventArgs OnDamageTaken;
     
@@ -17,6 +19,7 @@ public class Health : MonoBehaviour, IAction
     [SerializeField] private float _healthCurrent;
     [SerializeField] private float _healthMax;
     private Animator _animator;
+    private StatsValueStore _statsValueStore;
 
     [Serializable]
     public class OnTakeDamageEventArgs : UnityEvent<float>
@@ -28,25 +31,25 @@ public class Health : MonoBehaviour, IAction
         _findStat = GetComponent<FindStat>();
         _actionScheduler = GetComponent<ActionScheduler>();
         _animator = GetComponent<Animator>();
+        _statsValueStore = GetComponent<StatsValueStore>();
         
         GetComponent<LevelUp>().OnLevelUp += SetNewLevelHealth;
     }
 
     private void Start()
     {
-        _healthMax = _findStat.GetStat(StatsEnum.Health);
-
-        _healthCurrent = _healthMax;
+        if (_statsValueStore != null)
+        {
+            _statsValueStore.OnStatsChanged += SetNewLevelHealth;
+        }
+        
+        SetNewLevelHealth();
     }
+
     public void SetNewLevelHealth()
     {
         _healthMax = _findStat.GetStat(StatsEnum.Health);
         _healthCurrent = _healthMax;
-    }
-
-    public float GetCurrentHealth()
-    {
-        return _healthCurrent;
     }
 
     public bool IsDead()
@@ -82,16 +85,6 @@ public class Health : MonoBehaviour, IAction
         }
 
         if (OnTakeDamage != null) OnTakeDamage();
-
-        if (gameObject.GetComponent<PlayerController>() != null)
-        {
-            
-        }
-    }
-
-    public void Cancel()
-    {
-        _actionScheduler.Cancel();
     }
 
     public void RegenerateHealth()

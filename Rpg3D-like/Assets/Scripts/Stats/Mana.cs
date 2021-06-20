@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Interface;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,6 +14,7 @@ namespace Stats
         [SerializeField] private float _manaCurrent;
         [SerializeField] float _manaMax;
         [SerializeField] private float _manaSpeedRegeneration = 0.5f;
+        private StatsValueStore _statsValueStore;
 
         private void Awake()
         {
@@ -22,9 +25,12 @@ namespace Stats
 
         private void Start()
         {
-            _manaMax = _findStat.GetStat(StatsEnum.Mana);
+            if (_statsValueStore != null)
+            {
+                _statsValueStore.OnStatsChanged += SetNewLevelMana;
+            }
 
-            _manaCurrent = _manaMax;
+            SetNewLevelMana();
         }
 
         private void Update()
@@ -63,5 +69,7 @@ namespace Stats
                     _manaCurrent = _manaMax;
             }
         }
+
+        
     }
 }

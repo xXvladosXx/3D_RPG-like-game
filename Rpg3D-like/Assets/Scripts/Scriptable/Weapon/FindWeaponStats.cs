@@ -9,14 +9,6 @@ public class FindWeaponStats : MonoBehaviour
 {
     [SerializeField] private WeaponScriptable _weaponScriptable;
     [SerializeField] private WeaponEnum _weaponEnum;
+    [SerializeField] private int _rarity = 1;
 
-    public float GetWeaponStat(WeaponStatsEnum weaponStatsEnum)
-    {
-        return _weaponScriptable.CalculateWeaponStat(weaponStatsEnum, _weaponEnum);
-    }
-
-  
-    
-
-    
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Interface;
 using UnityEngine;
 
 public class FindStat : MonoBehaviour
@@ -16,7 +17,7 @@ public class FindStat : MonoBehaviour
 
     public float GetStat(StatsEnum stat)
     {
-        return _progression.CalculateStat(stat, _charactersEnum, _levelUp.GetLevel());
+        return _progression.CalculateStat(stat, _charactersEnum, _levelUp.GetLevel()) + GetStatModifier(stat);
     }
 
     public int CalculateLevel()
@@ -40,4 +41,18 @@ public class FindStat : MonoBehaviour
             return maxLevel + 1;
         }
 
+    public float GetStatModifier(StatsEnum stat)
+    {
+        float total = 0;
+
+        foreach (IModifierStat modifierStat in GetComponents<IModifierStat>())
+        {
+            foreach (float modifier in modifierStat.GetStatModifier(stat))
+            {
+                total += modifier;
+            }            
+        }
+
+        return total;
+    }
 }

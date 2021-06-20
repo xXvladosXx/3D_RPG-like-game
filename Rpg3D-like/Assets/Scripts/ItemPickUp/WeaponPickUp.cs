@@ -5,7 +5,7 @@ using Controller;
 using Controller;
 using UnityEngine;
 
-public class WeaponPickUp : MonoBehaviour, IClickable
+public class WeaponPickUp : MonoBehaviour
 {
     // Start is called before the first frame update
 
@@ -25,10 +25,10 @@ public class WeaponPickUp : MonoBehaviour, IClickable
     {
         if (other.TryGetComponent(out PlayerController playerController))
         {
-            other.GetComponent<Combat>().EquipWeapon(_weapon, _isRightHanded, this,_findWeaponStats.GetWeaponStat(WeaponStatsEnum.Damage),
-                _findWeaponStats.GetWeaponStat(WeaponStatsEnum.AttackRadius));
+            other.GetComponent<Combat>().EquipWeapon(_weapon, _isRightHanded, this,_weapon.GetDamage,
+                _weapon.GetAttackRange, _weapon.GetAttackSpeed);
             
-            other.GetComponent<PlayerSkills>().SetPlayerSkills(_weapon.GetWeaponSkills());
+            other.GetComponent<PlayerSkills>().SetPlayerSkills(_weapon.GetWeaponSkills);
             if (OnWeaponPicked != null) OnWeaponPicked();
 
             foreach (Transform child in transform) {
@@ -38,14 +38,4 @@ public class WeaponPickUp : MonoBehaviour, IClickable
         }
     }
 
-
-    public void OnHoverEnter()
-    {
-        GetComponentInChildren<Renderer>().material.SetFloat("_Outline", 0.1f);
-    }
-
-    public void OnHoverExit()
-    {
-        GetComponentInChildren<Renderer>().material.SetFloat("_Outline", 0);
-    }
 }

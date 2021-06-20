@@ -1,9 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Interface;
 using UnityEngine;
 
-public class Combat : MonoBehaviour, IAction
+public class Combat : MonoBehaviour, IAction, IModifierStat
 {
     [SerializeField] private float _attackRange = 3f;
     [SerializeField] private float _attackSpeed = 2f;
@@ -14,22 +15,34 @@ public class Combat : MonoBehaviour, IAction
     private float _attackCooldown = 0;
     private Transform _target;
     private ActionScheduler _actionScheduler;
-    public Transform GetTarget => _target;
+    private FindStat _findStat;
+    [SerializeField] private WeaponScriptable _weapon;
+
+    [SerializeField] private float _defaultDamage = 1f;
+    [SerializeField] private float _currentDamage = 1f;
     
-    private WeaponScriptable _weapon;
-    private float _damage = 1f;
     private Health _health;
-    private bool isWeaponEquipped = false;
+    private bool _isWeaponEquipped = false;
+
+    
+    public Transform GetTarget => _target;
+
     
     private void Awake()
     {
         _health = GetComponent<Health>();
         _animator = GetComponent<Animator>();
         _actionScheduler = GetComponent<ActionScheduler>();
+        _findStat = GetComponent<FindStat>();
+    }
+
+    private void Start()
+    {
     }
 
     void Update()
     {
+        
         if(_target == null) return;
         if(_health.IsDead()) return;
 
@@ -88,8 +101,6 @@ public class Combat : MonoBehaviour, IAction
         _attackCooldown = 1;
 
         _animator.ResetTrigger("stopAttack");
-        
-        
         _animator.SetTrigger("attack");
     }
 
@@ -98,13 +109,15 @@ public class Combat : MonoBehaviour, IAction
         _animator.ResetTrigger("attack");
         _animator.SetTrigger("stopAttack");
     }
-    public void EquipWeapon(WeaponScriptable weapon,bool isRightHanded, WeaponPickUp weaponPickUp, float damage, float range)
+    public void EquipWeapon(WeaponScriptable weapon,bool isRightHanded, WeaponPickUp weaponPickUp, float damage, float range, float attackSpeed)
     {
         if(weapon == null) return;
         
+        print(damage);
+        
         GameObject oldWeapon = GameObject.Find("Weapon");
 
-        if (isWeaponEquipped)
+        if (_isWeaponEquipped)
         {
             Destroy(oldWeapon);
         }
@@ -112,9 +125,9 @@ public class Combat : MonoBehaviour, IAction
         weaponPickUp.OnWeaponPicked += CheckingForTwoHandedWeapon;
         
         _weapon = weapon;
-        _damage = damage;
         _attackRange = range;
-
+        _attackSpeed = attackSpeed;
+        
         if (gameObject.TryGetComponent(out PlayerController playerController))
         {
             GetComponent<PlayerController>().SetWeapon(weapon);
@@ -124,7 +137,7 @@ public class Combat : MonoBehaviour, IAction
 
         weapon.Spawn(isRightHanded ? _rightHandTransform : _leftHandTransform, animator);
 
-        isWeaponEquipped = true;
+        _isWeaponEquipped = true;
     }
 
     private void CheckingForTwoHandedWeapon()
@@ -142,13 +155,23 @@ public class Combat : MonoBehaviour, IAction
         _target = null;
     }
     
+    public IEnumerable<float> GetStatModifier(StatsEnum stat)
+    {
+        if (stat == StatsEnum.Damage)
+        {
+            yield return _weapon.GetDamage;
+        }
+    }
+    
     void Hit()
     {
         if(_target == null) return;
 
         if(_target.GetComponent<Health>() == null) return;  
-        
-        _target.GetComponent<Health>().TakeDamage(_damage, gameObject);
+     
+        _currentDamage = _findStat.GetStat(StatsEnum.Damage);
+
+        _target.GetComponent<Health>().TakeDamage(_currentDamage, gameObject);
     }
 
     void Shoot()
@@ -158,8 +181,11 @@ public class Combat : MonoBehaviour, IAction
         
         if(_weapon.GetProjectile() == null) return;
         
+        _currentDamage = _findStat.GetStat(StatsEnum.Damage);
+
+        print(_currentDamage);
         transform.LookAt(_target);
-        GetComponent<ProjectileSpawn>().LoadProjectile(_weapon.GetProjectile(), _target, gameObject.transform, 2f, _damage);
+        GetComponent<ProjectileSpawn>().LoadProjectile(_weapon.GetProjectile(), _target, gameObject.transform, 2f, _currentDamage);
     }
     
     void FootR()
@@ -171,4 +197,6 @@ public class Combat : MonoBehaviour, IAction
     {
         
     }
+
+    
 }

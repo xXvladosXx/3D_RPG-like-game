@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
                 if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
                 {
                     ParticleSystem clickedEffect = Instantiate(_clickedEffect, raycastHit.point, Quaternion.identity);
-                    Destroy(clickedEffect, 0.1f);
+                    Destroy(clickedEffect.gameObject, 0.1f);
                 }
                 if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject())
                 {

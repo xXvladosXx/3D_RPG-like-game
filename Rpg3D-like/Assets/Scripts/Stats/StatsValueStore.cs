@@ -1,20 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
+using Interface;
 using UnityEngine;
 using UnityEngine.Rendering;
 
 namespace Stats
 {
-    public class StatsValueStore : MonoBehaviour
+    public class StatsValueStore : MonoBehaviour, IModifierStat
     {
+        [SerializeField] private StatsBonus[] _statsBonus;
+        [Serializable]
+        class StatsBonus
+        {
+            public StatsEnum StatsEnum;
+            public float modifiedBonus = 0;
+        }
+
+        public event Action OnStatsChanged;
+        
         private Dictionary<StatsEnum, int> _assignedPoints = new Dictionary<StatsEnum, int>();
         private Dictionary<StatsEnum, int> _confirmedPoints = new Dictionary<StatsEnum, int>();
+
+        private Dictionary<StatsEnum, Dictionary<StatsEnum, float>> _modifierBonusCondition;
+        
         [SerializeField] private int _defaultNumberOfPoints = 2;
 
         private LevelUp _levelUp;
         
         private int _unassignedPoints = 10;
         public int GetUnassignedPoints => _unassignedPoints;
+
+        private void Awake()
+        {
+            _modifierBonusCondition = new Dictionary<StatsEnum, Dictionary<StatsEnum, float>>();
+            
+            foreach (var statBonus in _statsBonus)
+            {
+                if (!_modifierBonusCondition.ContainsKey(statBonus.StatsEnum))
+                {
+                    _modifierBonusCondition[statBonus.StatsEnum] = new Dictionary<StatsEnum, float>();
+                }
+
+                _modifierBonusCondition[statBonus.StatsEnum][statBonus.StatsEnum] = statBonus.modifiedBonus;
+            }
+        }
 
         private void Start()
         {
@@ -67,7 +96,20 @@ namespace Stats
                 _assignedPoints[stat] = GetProposedPoints(stat);
             }
             
+            if (OnStatsChanged != null) OnStatsChanged();
+
             _confirmedPoints.Clear();
+        }
+
+        public IEnumerable<float> GetStatModifier(StatsEnum stat)
+        {
+            if(!_modifierBonusCondition.ContainsKey(stat)) yield break;
+
+            foreach (StatsEnum statsEnum in _modifierBonusCondition[stat].Keys)
+            {
+                float bonus = _modifierBonusCondition[stat][statsEnum];
+                yield return bonus + GetPoints(statsEnum);
+            }
         }
     }
 }

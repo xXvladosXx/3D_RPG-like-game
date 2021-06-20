@@ -6,7 +6,7 @@ using Stats;
 using UI.SkillBar;
 using UnityEngine;
 
-public class PlayerSkills : MonoBehaviour
+public class PlayerSkills : MonoBehaviour, IAction
 {
     [SerializeField] private Skill[] _playerSkills;
 
@@ -14,6 +14,7 @@ public class PlayerSkills : MonoBehaviour
     private Animator _animator;
     private SkillBarPlayer _skillBarPlayer;
     private Mana _mana;
+    private ActionScheduler _actionScheduler;
 
     private void Awake()
     {
@@ -21,6 +22,7 @@ public class PlayerSkills : MonoBehaviour
         _caster = gameObject;
         _skillBarPlayer = GetComponent<SkillBarPlayer>();
         _mana = GetComponent<Mana>();
+        _actionScheduler = GetComponent<ActionScheduler>();
     }
 
     private void Update()
@@ -50,6 +52,8 @@ public class PlayerSkills : MonoBehaviour
 
     public void CastingSkillOnIndex(Skill skill, int index)
     {
+        _actionScheduler.StartAction(this);
+        
         skill.CasteSkill(gameObject);
         
         _skillBarPlayer.TriggerToSetFillAmountImage(index,_playerSkills);
@@ -88,5 +92,10 @@ public class PlayerSkills : MonoBehaviour
                 _skillBarPlayer.TriggerToSetFillAmountImage(index, _playerSkills);
                 break;
         }
+    }
+
+    public void Cancel()
+    {
+        
     }
 }

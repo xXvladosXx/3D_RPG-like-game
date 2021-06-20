@@ -15,14 +15,22 @@ public class WeaponScriptable : ScriptableObject
     
     [SerializeField] private GameObject _prefabWeapon;
     [SerializeField] private AnimatorOverrideController _weaponOverrideController;
-    [SerializeField] private int _minStatValue;
-    [SerializeField] private int _maxStatValue;
+    
+    
+
     [SerializeField] private GameObject _projectile;
     [SerializeField] private Sprite _weaponSprite;
     [SerializeField] private Item.ItemType _itemType;
-    [SerializeField] private Skill[] _weaponSkills;
     [SerializeField] private ParticleSystem[] _raritiesEffects;
-    [SerializeField] private int _rarity;
+    
+    [SerializeField] private Skill[] _weaponSkills;
+    public Skill[] GetWeaponSkills => _weaponSkills;
+    [SerializeField] private float _damage = 1f;
+    public float GetDamage => _damage;
+    [SerializeField] private float _attackRange = 1f;
+    public float GetAttackRange => _attackRange;
+    [SerializeField] private float _attackSpeed = 1f;
+    public float GetAttackSpeed => _attackSpeed;
 
     private const string _weaponName = "Weapon";
 
@@ -47,15 +55,6 @@ public class WeaponScriptable : ScriptableObject
             animator.runtimeAnimatorController = overrideController.runtimeAnimatorController;
         }
     }
-
-    public float CalculateWeaponStat(WeaponStatsEnum weaponStatsEnum, WeaponEnum weaponEnum)
-    {
-        GenerateWeaponStats();
-        
-        int[] rarities = _lookThroughWeapon[weaponEnum][weaponStatsEnum];
-
-        return rarities[GenerateRarity() - 1];
-    }
     
     private void GenerateWeaponStats()
     {
@@ -76,28 +75,7 @@ public class WeaponScriptable : ScriptableObject
         }
     }
 
-    public void GetRarirty()
-    {
-        _rarity = GenerateRarity();
-
-        foreach (var _raritiesEffect in _raritiesEffects)
-        {
-            if (_rarity == int.Parse(_raritiesEffect.gameObject.name))
-            {
-                Instantiate(_raritiesEffect, _prefabWeapon.transform.position,  Quaternion.identity);
-            }
-        }
-    }
-    
-    public int GenerateRarity()
-    {
-        int choosenValue = 0;
-        
-        choosenValue = Random.Range(_minStatValue, _maxStatValue);
-
-        return choosenValue;
-    }
-    
+   
     public GameObject GetProjectile()
     {
         return _projectile;
@@ -108,11 +86,6 @@ public class WeaponScriptable : ScriptableObject
         return _itemType;
     }
 
-    public Skill[] GetWeaponSkills()
-    {
-        return _weaponSkills;
-    }
-        
     [Serializable]
     class ProgressionWeaponClass
     {
@@ -126,4 +99,6 @@ public class WeaponScriptable : ScriptableObject
         public WeaponStatsEnum weaponStats;
         public int[] rarities;
     }
+
+    
 }
