@@ -661,7 +661,7 @@ MonoBehaviour:
   _attackSpeed: 2
   _rightHandTransform: {fileID: 0}
   _leftHandTransform: {fileID: 0}
-  _weapon: {fileID: 0}
+  _weapon: {fileID: 11400000, guid: 2681e94824ed50c46b7f19c09568732b, type: 2}
   _defaultDamage: 1
   _currentDamage: 1
 --- !u!114 &798369512
@@ -1590,6 +1590,24 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1805120693, guid: fb5a9652227c545d98a413cd73b80b69, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fb5a9652227c545d98a413cd73b80b69, type: 3}
+--- !u!1 &1634462469 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1969187558, guid: aaadaacd5e54b7b4997ff4ead24ba9b8, type: 3}
+  m_PrefabInstance: {fileID: 9074827891403163730}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1634462474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634462469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6916320cd703974459ca051f57204a45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 1430621096}
 --- !u!1 &1644242732
 GameObject:
   m_ObjectHideFlags: 0
@@ -2133,6 +2151,10 @@ PrefabInstance:
     - target: {fileID: 2098507532450231808, guid: ad93dc983f5811c4ca4b831eac828eba, type: 3}
       propertyPath: m_Name
       value: StatsBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098507532450231808, guid: ad93dc983f5811c4ca4b831eac828eba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2444745114909610635, guid: ad93dc983f5811c4ca4b831eac828eba, type: 3}
       propertyPath: _stat

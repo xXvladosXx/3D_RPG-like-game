@@ -44,16 +44,20 @@ namespace Controller
             TriggerSkill("isCasting", true);
 
             SkillData skillData = new SkillData(user);
-            skillData.GetUser.GetComponent<ActionScheduler>().StartAction(this);
+            ActionScheduler actionScheduler = user.GetComponent<ActionScheduler>();
             
-                _targetingStrategy.StartTargeting(skillData,() =>
-                {
-                    AquireTarget(skillData, mana);
-                }, CancelTargeting);
+            actionScheduler.StartAction(skillData);
+            
+            _targetingStrategy.StartTargeting(skillData,() =>
+            {
+                AquireTarget(skillData, mana);
+            }, CancelTargeting);
        }
 
         private void AquireTarget(SkillData skillData, Mana mana)
         {
+            if(skillData.IsCancelled) return;
+            
             WaitUntilSkillCasted();
             
             mana.GetComponent<Mana>().CasteSkill(_manaCost);

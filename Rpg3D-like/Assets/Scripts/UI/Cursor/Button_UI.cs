@@ -1,18 +1,4 @@
-﻿/* 
-    ------------------- Code Monkey -------------------
-
-    Thank you for downloading the Code Monkey Utilities
-    I hope you find them useful in your projects
-    If you have any questions use the contact form
-    Cheers!
-
-               unitycodemonkey.com
-    --------------------------------------------------
- */
- 
-//#define SOUND_MANAGER // Has Sound_Manager in project
-//#define CURSOR_MANAGER // Has Cursor_Manager in project
-
+﻿
 using System;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,21 +9,11 @@ namespace CodeMonkey.Utils {
     /*
      * Button in the UI
      * */
-    public class Button_UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler {
+    public class Button_UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler {
 
         public Action ClickFunc = null;
         public Action MouseRightClickFunc = null;
         public Action MouseMiddleClickFunc = null;
-        public Action MouseDownOnceFunc = null;
-        public Action MouseUpFunc = null;
-        public Action MouseOverOnceTooltipFunc = null;
-        public Action MouseOutOnceTooltipFunc = null;
-        public Action MouseOverOnceFunc = null;
-        public Action MouseOutOnceFunc = null;
-        public Action MouseOverFunc = null;
-        public Action MouseOverPerSecFunc = null; //Triggers every sec if mouseOver
-        public Action MouseUpdate = null;
-        public Action<PointerEventData> OnPointerClickFunc;
 
         public enum HoverBehaviour {
             Custom,
@@ -72,8 +48,7 @@ namespace CodeMonkey.Utils {
             if (internalOnPointerEnterFunc != null) internalOnPointerEnterFunc();
             if (hoverBehaviour_Move) transform.localPosition = posEnter;
             if (hoverBehaviourFunc_Enter != null) hoverBehaviourFunc_Enter();
-            if (MouseOverOnceFunc != null) MouseOverOnceFunc();
-            if (MouseOverOnceTooltipFunc != null) MouseOverOnceTooltipFunc();
+
             mouseOver = true;
             mouseOverPerSecFuncTimer = 0f;
         }
@@ -81,13 +56,11 @@ namespace CodeMonkey.Utils {
             if (internalOnPointerExitFunc != null) internalOnPointerExitFunc();
             if (hoverBehaviour_Move) transform.localPosition = posExit;
             if (hoverBehaviourFunc_Exit != null) hoverBehaviourFunc_Exit();
-            if (MouseOutOnceFunc != null) MouseOutOnceFunc();
-            if (MouseOutOnceTooltipFunc != null) MouseOutOnceTooltipFunc();
+
             mouseOver = false;
         }
         public virtual void OnPointerClick(PointerEventData eventData) {
             if (internalOnPointerClickFunc != null) internalOnPointerClickFunc();
-            if (OnPointerClickFunc != null) OnPointerClickFunc(eventData);
             if (eventData.button == PointerEventData.InputButton.Left) {
                 if (triggerMouseOutFuncOnClick) {
                     OnPointerExit(eventData);
@@ -105,72 +78,13 @@ namespace CodeMonkey.Utils {
         public bool IsMouseOver() {
             return mouseOver;
         }
-        public void OnPointerDown(PointerEventData eventData) {
-            if (MouseDownOnceFunc != null) MouseDownOnceFunc();
-        }
-        public void OnPointerUp(PointerEventData eventData) {
-            if (MouseUpFunc != null) MouseUpFunc();
-        }
-
-        void Update() {
-            if (mouseOver) {
-                if (MouseOverFunc != null) MouseOverFunc();
-                mouseOverPerSecFuncTimer -= Time.unscaledDeltaTime;
-                if (mouseOverPerSecFuncTimer <= 0) {
-                    mouseOverPerSecFuncTimer += 1f;
-                    if (MouseOverPerSecFunc != null) MouseOverPerSecFunc();
-                }
-            }
-            if (MouseUpdate != null) MouseUpdate();
-
-        }
+   
+     
         void Awake() {
             posExit = transform.localPosition;
             posEnter = (Vector2)transform.localPosition + hoverBehaviour_Move_Amount;
-            SetHoverBehaviourType(hoverBehaviourType);
-
-#if SOUND_MANAGER
-            // Sound Manager
-            internalOnPointerEnterFunc += () => { if (mouseOverSound != Sound_Manager.Sound.None) Sound_Manager.PlaySound(mouseOverSound); };
-            internalOnPointerClickFunc += () => { if (mouseClickSound != Sound_Manager.Sound.None) Sound_Manager.PlaySound(mouseClickSound); };
-#endif
-
-#if CURSOR_MANAGER
-            // Cursor Manager
-            internalOnPointerEnterFunc += () => { if (cursorMouseOver != CursorManager.CursorType.None) CursorManager.SetCursor(cursorMouseOver); };
-            internalOnPointerExitFunc += () => { if (cursorMouseOut != CursorManager.CursorType.None) CursorManager.SetCursor(cursorMouseOut); };
-#endif
-        }
-        public void SetHoverBehaviourType(HoverBehaviour hoverBehaviourType) {
-            this.hoverBehaviourType = hoverBehaviourType;
-            switch (hoverBehaviourType) {
-            case HoverBehaviour.Change_Color:
-                hoverBehaviourFunc_Enter = delegate () { hoverBehaviour_Image.color = hoverBehaviour_Color_Enter; };
-                hoverBehaviourFunc_Exit = delegate () { hoverBehaviour_Image.color = hoverBehaviour_Color_Exit; };
-                break;
-            case HoverBehaviour.Change_Image:
-                hoverBehaviourFunc_Enter = delegate () { hoverBehaviour_Image.sprite = hoverBehaviour_Sprite_Enter; };
-                hoverBehaviourFunc_Exit = delegate () { hoverBehaviour_Image.sprite = hoverBehaviour_Sprite_Exit; };
-                break;
-            case HoverBehaviour.Change_SetActive:
-                hoverBehaviourFunc_Enter = delegate () { hoverBehaviour_Image.gameObject.SetActive(true); };
-                hoverBehaviourFunc_Exit = delegate () { hoverBehaviour_Image.gameObject.SetActive(false); };
-                break;
-            }
         }
 
-
-
-
-
-
-
-
-
-        /*
-         * Class for temporarily intercepting a button action
-         * Useful for Tutorial disabling specific buttons
-         * */
         public class InterceptActionHandler {
 
             private Action removeInterceptFunc;
@@ -193,7 +107,6 @@ namespace CodeMonkey.Utils {
             InterceptActionHandler interceptActionHandler = new InterceptActionHandler(() => fieldInfo.SetValue(this, backFunc));
             fieldInfo.SetValue(this, (Action)delegate () {
                 if (testPassthroughFunc()) {
-                    // Passthrough
                     interceptActionHandler.RemoveIntercept();
                     backFunc();
                 }

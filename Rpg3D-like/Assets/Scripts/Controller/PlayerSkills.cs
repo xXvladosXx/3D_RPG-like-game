@@ -6,7 +6,7 @@ using Stats;
 using UI.SkillBar;
 using UnityEngine;
 
-public class PlayerSkills : MonoBehaviour, IAction
+public class PlayerSkills : MonoBehaviour
 {
     [SerializeField] private Skill[] _playerSkills;
 
@@ -32,6 +32,7 @@ public class PlayerSkills : MonoBehaviour, IAction
         if (Input.GetKeyDown(KeyCode.Alpha1) && this._playerSkills.Length >= 1)
         {
             CastingSkillOnIndex(_playerSkills[0], 0);
+            _skillBarPlayer.FillAmountImage(0);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2) && this._playerSkills.Length >= 2)
@@ -52,8 +53,6 @@ public class PlayerSkills : MonoBehaviour, IAction
 
     public void CastingSkillOnIndex(Skill skill, int index)
     {
-        _actionScheduler.StartAction(this);
-        
         skill.CasteSkill(gameObject);
         
         _skillBarPlayer.TriggerToSetFillAmountImage(index,_playerSkills);
@@ -94,8 +93,5 @@ public class PlayerSkills : MonoBehaviour, IAction
         }
     }
 
-    public void Cancel()
-    {
-        
-    }
+   
 }

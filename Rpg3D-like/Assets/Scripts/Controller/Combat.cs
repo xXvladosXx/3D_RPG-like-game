@@ -36,10 +36,6 @@ public class Combat : MonoBehaviour, IAction, IModifierStat
         _findStat = GetComponent<FindStat>();
     }
 
-    private void Start()
-    {
-    }
-
     void Update()
     {
         

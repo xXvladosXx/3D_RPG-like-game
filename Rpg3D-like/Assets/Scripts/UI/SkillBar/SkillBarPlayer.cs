@@ -32,21 +32,28 @@ namespace UI.SkillBar
         {
             if(_playerSkills.GetPlayerSkills().Length == 0)
                 return;
-            
-            foreach (var cooldownImage in _cooldownImages)
-            {
-                cooldownImage.Value.GetComponent<Image>().fillAmount =
-                    _cooldownSkillManager.GetFractionOfCooldown(_playerSkills.GetPlayerSkills()[0]);
-            }
         }
 
         public void TriggerToSetFillAmountImage(int index, Skill[] userSkills)
         {
+            foreach (var cooldownImage in _cooldownImages)
+            {
+                if(cooldownImage.Key == index)
+                    cooldownImage.Value.GetComponent<Image>().fillAmount =
+                        _cooldownSkillManager.GetFractionOfCooldown(_playerSkills.GetPlayerSkills()[index]);
+            }
         }
 
         public void FillAmountImage(int index)
         {
             _cooldownImages[index].GetComponent<Image>().fillAmount = 0;
+            
+            foreach (var cooldownImage in _cooldownImages)
+            {
+                if(cooldownImage.Key == index)
+                    cooldownImage.Value.GetComponent<Image>().fillAmount =
+                        _cooldownSkillManager.GetFractionOfCooldown(_playerSkills.GetPlayerSkills()[index]);
+            }
         }
     }
 }

@@ -17661,6 +17661,9 @@ MonoBehaviour:
   _attackSpeed: 2
   _rightHandTransform: {fileID: 0}
   _leftHandTransform: {fileID: 0}
+  _weapon: {fileID: 11400000, guid: 2681e94824ed50c46b7f19c09568732b, type: 2}
+  _defaultDamage: 1
+  _currentDamage: 1
 --- !u!114 &8998122176963389190
 MonoBehaviour:
   m_ObjectHideFlags: 0

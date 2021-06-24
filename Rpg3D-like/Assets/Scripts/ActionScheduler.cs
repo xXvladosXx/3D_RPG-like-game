@@ -14,7 +14,7 @@ public class ActionScheduler : MonoBehaviour, IAction
         {
             _currentAction.Cancel();
         }
-
+        
         _currentAction = action;
     }
 

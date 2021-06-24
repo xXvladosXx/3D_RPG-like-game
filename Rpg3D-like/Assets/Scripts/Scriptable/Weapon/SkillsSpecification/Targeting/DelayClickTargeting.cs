@@ -6,22 +6,25 @@ using System.Collections.Generic;
  using UnityEngine.XR;
 
  [CreateAssetMenu(fileName = "DelayClickTargeting", menuName = "Abilities/DelayClick", order = 0)]
- public class DelayClickTargeting : TargetingStrategy
+ public class DelayClickTargeting : TargetingStrategy, IAction
  {
      [SerializeField] private Texture2D _cursorTexturem;
      [SerializeField] private Vector2 _cursorHotspot;
      [SerializeField] private float _skillRadius;
      [SerializeField] private LayerMask _layerMask;
      [SerializeField] private Transform _skillRendererRadius;
+     [SerializeField] private Transform _skillCastDistance;
      [SerializeField] private float _distanceToCastSkill;
-     
 
+     private PlayerController _playerController;
      private Transform _skillRendererRadiusInstance;
+     private Transform _skillCastDistanceInstance;
+
      public override void StartTargeting(SkillData skillData, Action finishedAttack, Action cancelAttack)
      {
-         PlayerController playerController = skillData.GetUser.GetComponent<PlayerController>();
+         _playerController = skillData.GetUser.GetComponent<PlayerController>();
 
-         playerController.StartCoroutine(Targeting(skillData, playerController, finishedAttack, cancelAttack));
+         _playerController.StartCoroutine(Targeting(skillData, _playerController, finishedAttack, cancelAttack));
      }
 
      private IEnumerator Targeting(SkillData skillData, PlayerController playerController, Action finishedAttack, Action canceledAttack)
@@ -36,8 +39,18 @@ using System.Collections.Generic;
          {
              _skillRendererRadiusInstance.gameObject.SetActive(true);
          }
+         
+         if (_skillCastDistanceInstance == null)
+         {
+             _skillCastDistanceInstance = Instantiate(_skillCastDistance);
+         }
+         else
+         {
+             _skillCastDistanceInstance.gameObject.SetActive(true);
+         }
 
          _skillRendererRadiusInstance.localScale = new Vector3(_skillRadius*2, 1, _skillRadius*2);
+         _skillCastDistanceInstance.localScale = new Vector3(_distanceToCastSkill, 1,  _distanceToCastSkill);
          while (true)
          {
             
@@ -48,6 +61,7 @@ using System.Collections.Generic;
              if (Physics.Raycast(PlayerController.GetRay(), out raycastHit, 1000, _layerMask))
              {
                  _skillRendererRadiusInstance.position = raycastHit.point;
+                 _skillCastDistanceInstance.position = _playerController.gameObject.transform.position;
                  
                  var newDistance = Vector3.Distance(skillData.GetUser.transform.position, raycastHit.point);
              
@@ -67,34 +81,26 @@ using System.Collections.Generic;
 
                          skillData.SetMousePosition(raycastHit.point);
 
-                         playerController.enabled = true;
-                         Cursor.SetCursor(default, default, CursorMode.Auto);
+                         Cancel();
 
                          skillData.SetTargets(GetGameObjectsInRadius(raycastHit.point));
-                         finishedAttack();
-                         _skillRendererRadiusInstance.gameObject.SetActive(false);
 
-                         yield break;
+                         break;
                      }
                  }else if (Input.GetMouseButton(1))
                  {
-                     Canceling(playerController);
-
+                     Cancel();
                      canceledAttack();
                      yield break;
                  }
              }
-
              yield return null;
          }
+         
+         Cancel();
+         finishedAttack();
      }
 
-     private void Canceling(PlayerController playerController)
-     {
-         playerController.enabled = true;
-         Cursor.SetCursor(default, default, CursorMode.Auto);
-         _skillRendererRadiusInstance.gameObject.SetActive(false);
-     }
      private IEnumerable<GameObject> GetGameObjectsInRadius(Vector3 point)
      {
          RaycastHit[] hits = Physics.SphereCastAll(point, _skillRadius, Vector3.up, 0);
@@ -102,5 +108,13 @@ using System.Collections.Generic;
          {
              yield return hit.collider.gameObject;
          }
+     }
+
+     public void Cancel()
+     {
+         _playerController.enabled = true;
+         Cursor.SetCursor(default, default, CursorMode.Auto);
+         _skillRendererRadiusInstance.gameObject.SetActive(false);
+         _skillCastDistanceInstance.gameObject.SetActive(false);
      }
  }

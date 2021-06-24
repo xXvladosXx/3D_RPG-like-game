@@ -1,14 +1,18 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Scriptable.Weapon
 {
-    public class SkillData
+    public class SkillData : IAction
     {
         private GameObject _user;
         public GameObject GetUser => _user;
+        private bool _cancelled = false;
+        public bool IsCancelled => _cancelled;
 
+        public event Action OnCastAnotherSkill;  
         public void SetUser(GameObject user)
         {
             _user = user;
@@ -38,5 +42,12 @@ namespace Scriptable.Weapon
         {
             GetUser.GetComponent<MonoBehaviour>().StartCoroutine(coroutine);
         }
+
+        public void Cancel()
+        { 
+            _cancelled = true;
+        }
+        
+        
     }
 }
