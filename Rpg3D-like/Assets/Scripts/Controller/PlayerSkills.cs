@@ -9,10 +9,11 @@ using UnityEngine;
 public class PlayerSkills : MonoBehaviour
 {
     [SerializeField] private Skill[] _playerSkills;
-
+    [SerializeField] private SkillBox _firstSkill;
+    [SerializeField] private SkillBarPlayer _skillBarPlayer;
+    
     private GameObject _caster;
     private Animator _animator;
-    private SkillBarPlayer _skillBarPlayer;
     private Mana _mana;
     private ActionScheduler _actionScheduler;
 
@@ -20,7 +21,6 @@ public class PlayerSkills : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _caster = gameObject;
-        _skillBarPlayer = GetComponent<SkillBarPlayer>();
         _mana = GetComponent<Mana>();
         _actionScheduler = GetComponent<ActionScheduler>();
     }
@@ -32,30 +32,34 @@ public class PlayerSkills : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1) && this._playerSkills.Length >= 1)
         {
             CastingSkillOnIndex(_playerSkills[0], 0);
-            _skillBarPlayer.FillAmountImage(0);
+            _skillBarPlayer.TriggerCastingSkill(0);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2) && this._playerSkills.Length >= 2)
         {
             CastingSkillOnIndex(_playerSkills[1], 1);
+            _skillBarPlayer.TriggerCastingSkill(1);
+
         }
         
         if (Input.GetKeyDown(KeyCode.Alpha3) && this._playerSkills.Length >= 3)
         {
             CastingSkillOnIndex(_playerSkills[2], 2);
+            _skillBarPlayer.TriggerCastingSkill(2);
+
         }
         
         if (Input.GetKeyDown(KeyCode.Alpha4) && this._playerSkills.Length >= 4)
         {
             CastingSkillOnIndex(_playerSkills[3], 3);
+            _skillBarPlayer.TriggerCastingSkill(3);
+
         }
     }
 
     public void CastingSkillOnIndex(Skill skill, int index)
     {
         skill.CasteSkill(gameObject);
-        
-        _skillBarPlayer.TriggerToSetFillAmountImage(index,_playerSkills);
     }
 
     public Skill[] GetPlayerSkills()
@@ -76,19 +80,15 @@ public class PlayerSkills : MonoBehaviour
         {
             case 0:
                 CastingSkillOnIndex(_playerSkills[index], index);
-                _skillBarPlayer.TriggerToSetFillAmountImage(index, _playerSkills);
                 break;
             case 1:
                 CastingSkillOnIndex(_playerSkills[index], index);
-                _skillBarPlayer.TriggerToSetFillAmountImage(index, _playerSkills);
                 break;
             case 2 :
                 CastingSkillOnIndex(_playerSkills[index], index);
-                _skillBarPlayer.TriggerToSetFillAmountImage(index, _playerSkills);
                 break;
             case 3:
                 CastingSkillOnIndex(_playerSkills[index], index);
-                _skillBarPlayer.TriggerToSetFillAmountImage(index, _playerSkills);
                 break;
         }
     }

@@ -8,51 +8,28 @@ namespace UI.SkillBar
 {
     public class SkillBarPlayer : MonoBehaviour
     {
-        private Dictionary<int, GameObject> _cooldownImages = new Dictionary<int, GameObject>();
+        [SerializeField] private Dictionary<int, GameObject> _childSkillsList;
 
-        private List<int> _usedSkills = new List<int>();
-        
-        private CooldownSkillManager _cooldownSkillManager;
-        private PlayerSkills _playerSkills;
+        private int _skillIndex = 0;
         private void Awake()
         {
-            int keyToSkill = 0;
+            _childSkillsList = new Dictionary<int, GameObject>();
 
-            _cooldownSkillManager = GetComponent<CooldownSkillManager>();
-            _playerSkills = GetComponent<PlayerSkills>();
-            
-            foreach (GameObject cooldownImage in GameObject.FindGameObjectsWithTag("Cooldown"))
+            foreach (Transform child in transform)
             {
-                _cooldownImages.Add(keyToSkill, cooldownImage);
-                keyToSkill++;
+                _childSkillsList.Add(_skillIndex, child.gameObject);
+                _skillIndex++;
             }
         }
 
-        private void Update()
+        public void TriggerCastingSkill(int index)
         {
-            if(_playerSkills.GetPlayerSkills().Length == 0)
-                return;
-        }
-
-        public void TriggerToSetFillAmountImage(int index, Skill[] userSkills)
-        {
-            foreach (var cooldownImage in _cooldownImages)
+            foreach (var skillBox in _childSkillsList)
             {
-                if(cooldownImage.Key == index)
-                    cooldownImage.Value.GetComponent<Image>().fillAmount =
-                        _cooldownSkillManager.GetFractionOfCooldown(_playerSkills.GetPlayerSkills()[index]);
-            }
-        }
-
-        public void FillAmountImage(int index)
-        {
-            _cooldownImages[index].GetComponent<Image>().fillAmount = 0;
-            
-            foreach (var cooldownImage in _cooldownImages)
-            {
-                if(cooldownImage.Key == index)
-                    cooldownImage.Value.GetComponent<Image>().fillAmount =
-                        _cooldownSkillManager.GetFractionOfCooldown(_playerSkills.GetPlayerSkills()[index]);
+                if (skillBox.Key == index)
+                {
+                    skillBox.Value.GetComponent<SkillBox>().SetCasted(true);
+                }
             }
         }
     }
