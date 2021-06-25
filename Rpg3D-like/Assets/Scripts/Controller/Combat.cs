@@ -109,8 +109,6 @@ public class Combat : MonoBehaviour, IAction, IModifierStat
     {
         if(weapon == null) return;
         
-        print(damage);
-        
         GameObject oldWeapon = GameObject.Find("Weapon");
 
         if (_isWeaponEquipped)
@@ -172,16 +170,14 @@ public class Combat : MonoBehaviour, IAction, IModifierStat
 
     void Shoot()
     {
-        
         if(_target == null) return;
-        
         if(_weapon.GetProjectile() == null) return;
         
         _currentDamage = _findStat.GetStat(StatsEnum.Damage);
 
         print(_currentDamage);
         transform.LookAt(_target);
-        GetComponent<ProjectileSpawn>().LoadProjectile(_weapon.GetProjectile(), _target, gameObject.transform, 2f, _currentDamage);
+        _weapon.SpawnProjectile(_target, gameObject.transform, _currentDamage);
     }
     
     void FootR()

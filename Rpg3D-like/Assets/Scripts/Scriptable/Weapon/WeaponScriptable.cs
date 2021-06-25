@@ -15,14 +15,11 @@ public class WeaponScriptable : ScriptableObject
     
     [SerializeField] private GameObject _prefabWeapon;
     [SerializeField] private AnimatorOverrideController _weaponOverrideController;
-    
-    
-
-    [SerializeField] private GameObject _projectile;
     [SerializeField] private Sprite _weaponSprite;
     [SerializeField] private Item.ItemType _itemType;
     [SerializeField] private ParticleSystem[] _raritiesEffects;
-    
+    [SerializeField] private ArrowScriptable _arrow;
+    [SerializeField] private GameObject _spawnPosition;
     [SerializeField] private Skill[] _weaponSkills;
     public Skill[] GetWeaponSkills => _weaponSkills;
     [SerializeField] private float _damage = 1f;
@@ -76,11 +73,16 @@ public class WeaponScriptable : ScriptableObject
     }
 
    
-    public GameObject GetProjectile()
+    public void SpawnProjectile(Transform target, Transform damager, float currentDamage)
     {
-        return _projectile;
+        _arrow.LoadProjectile(target, damager, currentDamage);
     }
 
+    public ArrowScriptable GetProjectile()
+    {
+        return _arrow;
+    }
+    
     public Item.ItemType GetItemType()
     {
         return _itemType;

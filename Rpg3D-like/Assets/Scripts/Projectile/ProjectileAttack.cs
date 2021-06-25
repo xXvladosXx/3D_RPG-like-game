@@ -58,6 +58,9 @@ public class ProjectileAttack : MonoBehaviour
     
     public void SetProjectileTarget(GameObject damager, float damage, float speed, GameObject target = null, Vector3 targetPoint=default)
     {   
+        if(target !=null)
+            Debug.Log("Target aquired" + target + _speed);
+        
         _damager = damager;
         _target = target;
         _damage = damage;

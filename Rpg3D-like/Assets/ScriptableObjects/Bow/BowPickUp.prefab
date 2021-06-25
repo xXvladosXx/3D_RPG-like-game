@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1274810382456440943
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8277719625354347348}
+  m_Layer: 0
+  m_Name: ProjectileSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8277719625354347348
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274810382456440943}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.1, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4450941199624973011}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4450941199624973008
 GameObject:
   m_ObjectHideFlags: 0
@@ -31,6 +61,7 @@ Transform:
   m_LocalScale: {x: 0.54, y: 0.63, z: 0.27}
   m_Children:
   - {fileID: 2827567013019281704}
+  - {fileID: 8277719625354347348}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -45,8 +76,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.2955481, z: 1}
-  m_Center: {x: 0, y: 0.32672626, z: 0}
+  m_Size: {x: 1, y: 0.9208018, z: 3.7898464}
+  m_Center: {x: 0, y: 0.13935296, z: 0.21251109}
 --- !u!114 &1498676120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,12 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weaponScriptable: {fileID: 11400000, guid: 2681e94824ed50c46b7f19c09568732b, type: 2}
   _weaponEnum: 2
-  _particleSystems:
-  - {fileID: 4808187902796980102, guid: 1c1a3a9427421764c8b40f0d6da05792, type: 3}
-  - {fileID: 8146393714857850875, guid: ccc1816baa2d76046a1ec297dc5f902e, type: 3}
-  - {fileID: 100004, guid: a92a42a2125977345a54e9b8306b5880, type: 3}
-  - {fileID: 3794153550046219476, guid: 64ef6139ea4ef3b45b595c0da0aff918, type: 3}
-  - {fileID: 1259978567218692536, guid: 04bad53c9316cd244b159e90909e9061, type: 3}
+  _rarity: 0
 --- !u!1001 &2827567013019717154
 PrefabInstance:
   m_ObjectHideFlags: 0

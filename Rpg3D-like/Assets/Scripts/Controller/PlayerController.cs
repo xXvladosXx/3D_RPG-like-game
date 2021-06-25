@@ -18,9 +18,6 @@ public class PlayerController : MonoBehaviour
     
     private WeaponScriptable _weapon;
     private Health _health;
-
-    private HealthBarEnemy _healthBarEnemy;
-
     private Inventory _playerInventory;
     private bool _isOpened = false;
     private GameObject _gameManager;
@@ -82,7 +79,6 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
-                print("attacked");
                 GetComponent<Combat>().Attack(combatTarget.transform);
                 if (OnEnemyAttacked != null) OnEnemyAttacked();
             }
