@@ -27,10 +27,14 @@ namespace Scriptable.Weapon
 
         private void SingleProjectileAttack(SkillData skillData)
         {   
+            Debug.Log(skillData.GetUser.GetComponent<CapsuleCollider>().height/2);
+            
             ProjectileAttack projectileSpawn = Instantiate(projectileSpawnToSpawn, new Vector3(skillData.GetUser.transform.position.x, 
-                    skillData.GetUser.GetComponent<CapsuleCollider>().height/2, skillData.GetUser.transform.position.z),
+                    skillData.GetUser.transform.position.y+0.5f, skillData.GetUser.transform.position.z),
                 Quaternion.identity);
+            
             projectileSpawn.SetProjectileTarget(skillData.GetMousePosition, skillData.GetUser, _damage, _speed);
+            Debug.Log(skillData.GetMousePosition + "Spawning");
         }
 
         private void RadiusProjectileAttack(SkillData skillData)

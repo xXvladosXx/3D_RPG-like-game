@@ -13,10 +13,12 @@ public class DirectionTargeting : TargetingStrategy
     {
         RaycastHit raycastHit;
         Ray ray = PlayerController.GetRay();
-
+        
         if (Physics.Raycast(ray, out raycastHit, 1000, _layerMask))
         {
-            skillData.SetMousePosition(raycastHit.point + ray.direction * _groundOffset/ ray.direction.y);
+            Debug.DrawRay(ray.origin, ray.direction*38, Color.green, 10f);
+            Debug.Log(raycastHit.point);
+            skillData.SetMousePosition(raycastHit.point + ray.direction * _groundOffset /ray.direction.y);
         }
         
         finishedAttack();

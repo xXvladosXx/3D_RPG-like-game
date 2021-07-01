@@ -43,10 +43,9 @@ public class Portal : MonoBehaviour
     private void UpdatePlayer(Portal otherPortal)
     {
         GameObject player = GameObject.FindWithTag("Player");
-
         
-            player.GetComponent<NavMeshAgent>().Warp(otherPortal._spawnPoint.position);
-            player.transform.rotation = otherPortal._spawnPoint.rotation;
+        player.GetComponent<NavMeshAgent>().Warp(otherPortal._spawnPoint.position);
+        player.transform.rotation = otherPortal._spawnPoint.rotation;
     }
 
     private Portal GetOtherPortal()

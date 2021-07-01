@@ -80,15 +80,26 @@ public class PlayerSkills : MonoBehaviour
         {
             case 0:
                 CastingSkillOnIndex(_playerSkills[index], index);
+                _skillBarPlayer.TriggerCastingSkill(index);
+
                 break;
             case 1:
                 CastingSkillOnIndex(_playerSkills[index], index);
+                _skillBarPlayer.TriggerCastingSkill(index);
+
                 break;
             case 2 :
                 CastingSkillOnIndex(_playerSkills[index], index);
+                _skillBarPlayer.TriggerCastingSkill(index);
+
                 break;
             case 3:
                 CastingSkillOnIndex(_playerSkills[index], index);
+                _skillBarPlayer.TriggerCastingSkill(index);
+
+                break;
+            
+            default:
                 break;
         }
     }

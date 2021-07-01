@@ -79,5 +79,6 @@ public class ProjectileAttack : MonoBehaviour
             Destroy(gameObject);
             other.GetComponent<Health>().TakeDamage(_damage, _damager);
         }
+        
     }
 }

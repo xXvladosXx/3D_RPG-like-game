@@ -8,12 +8,14 @@ public class EnemyAIController : MonoBehaviour
 {
     [SerializeField] private float _chaseDistance = 10f;
     [SerializeField] private Vector3 _startPosition;
-    [SerializeField] private Transform[] _pointsToPatrol;
+    [SerializeField] private Transform _pathToPatrol;
+
     [SerializeField] private float _waitingTime = 2f;
     [SerializeField] private float _tolerants = 1f;
     
     private FindStat _statFinder;
     private GameObject _player;
+    private List<Transform> _listPathToPatrol;
     private NavMeshAgent _navMeshAgent;
     private Combat _combat;
     private Movement _movement;
@@ -23,6 +25,8 @@ public class EnemyAIController : MonoBehaviour
     private bool _wasTriggered = false;
     private void Awake()
     {
+        _listPathToPatrol = new List<Transform>();
+        
         _statFinder = GetComponent<FindStat>();
         _combat = GetComponent<Combat>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
@@ -31,6 +35,11 @@ public class EnemyAIController : MonoBehaviour
         _player = GameObject.FindWithTag("Player");
 
         _health.OnTakeDamage += TriggerAttackDamager;
+
+        foreach (Transform child in _pathToPatrol)
+        {
+            _listPathToPatrol.Add(child);
+        }
     }
 
     private void TriggerAttackDamager()
@@ -59,14 +68,11 @@ public class EnemyAIController : MonoBehaviour
 
     private void GoToNextWaypoint()
     {
-        if(_pointsToPatrol.Length == 0)
-            return;
+        _movement.StartMoveToAction(_listPathToPatrol[_currentWaypointIndex].position, 0.6f);
 
-        _movement.StartMoveToAction(_pointsToPatrol[_currentWaypointIndex].position, 0.6f);
-
-        if (Vector3Int.RoundToInt((_pointsToPatrol[_currentWaypointIndex].position)) == Vector3Int.RoundToInt((transform.position)))
+        if (Vector3Int.RoundToInt((_listPathToPatrol[_currentWaypointIndex].position)) == Vector3Int.RoundToInt((transform.position)))
         {
-            _currentWaypointIndex = (_currentWaypointIndex + 1) % _pointsToPatrol.Length;
+            _currentWaypointIndex = (_currentWaypointIndex + 1) % _listPathToPatrol.Count;
         }
         
     }

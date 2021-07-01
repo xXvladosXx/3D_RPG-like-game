@@ -51,8 +51,6 @@ public class Movement : MonoBehaviour, IAction
 
     public void Cancel()
     {
-        _navMeshAgent.speed = 0f;
-        _navMeshAgent.isStopped = true;
     }
 
 }
