@@ -31,9 +31,12 @@ public class Portal : MonoBehaviour
     IEnumerator WaitSceneToLoad()
     {
         DontDestroyOnLoad(gameObject);
+        SavingHandler savingHandler = FindObjectOfType<SavingHandler>();
+        savingHandler.Save();
         
         yield return SceneManager.LoadSceneAsync(_sceneToLoad);;
 
+        savingHandler.Load();
         Portal otherPortal = GetOtherPortal();
         UpdatePlayer(otherPortal);
         
@@ -43,9 +46,13 @@ public class Portal : MonoBehaviour
     private void UpdatePlayer(Portal otherPortal)
     {
         GameObject player = GameObject.FindWithTag("Player");
-        
-        player.GetComponent<NavMeshAgent>().Warp(otherPortal._spawnPoint.position);
+        player.GetComponent<NavMeshAgent>().enabled = false;
+
+        player.transform.position = otherPortal._spawnPoint.position;
         player.transform.rotation = otherPortal._spawnPoint.rotation;
+        
+        player.GetComponent<NavMeshAgent>().enabled = true;
+
     }
 
     private Portal GetOtherPortal()

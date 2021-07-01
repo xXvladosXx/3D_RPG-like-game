@@ -7,17 +7,33 @@ public class SavingHandler : MonoBehaviour
 {
     private const string _defaultSaveFile = "save";
 
+    private void Start()
+    {
+        DontDestroyOnLoad(gameObject);
+        Load();
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.S))
         {
-            GetComponent<SavingSystem>().Save(_defaultSaveFile);
+            Save();
         }
 
         if (Input.GetKeyDown(KeyCode.L))
         {
-            GetComponent<SavingSystem>().Load(_defaultSaveFile);
+            Load();
         }
+    }
+
+    public void Load()
+    {
+        GetComponent<SavingSystem>().Load(_defaultSaveFile);
+    }
+
+    public void Save()
+    {
+        GetComponent<SavingSystem>().Save(_defaultSaveFile);
     }
 }
     

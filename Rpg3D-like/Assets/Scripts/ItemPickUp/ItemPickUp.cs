@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemPickUp : MonoBehaviour, IClickable
+public class ItemPickUp : MonoBehaviour
 {
     [SerializeField] private Item.ItemType _itemType;
     
@@ -19,15 +19,5 @@ public class ItemPickUp : MonoBehaviour, IClickable
     public Item.ItemType GetItemType()
     {
         return _itemType;
-    }
-
-    public void OnHoverEnter()
-    {
-        
-    }
-
-    public void OnHoverExit()
-    {
-        throw new NotImplementedException();
     }
 }

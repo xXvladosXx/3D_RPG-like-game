@@ -10,19 +10,17 @@ public class SavingSystem : MonoBehaviour
 {
     public void Save(string saveFile)
     {
-        SaveFile(saveFile, CaptureState());
+        Dictionary<string, object> capturedStates = LoadFile(saveFile);
+        CaptureState(capturedStates);
+        SaveFile(saveFile, capturedStates);
     }
 
-    private Dictionary<string, object> CaptureState()
+    private void CaptureState(Dictionary<string, object> capturedStates)
     {
-        Dictionary<string, object> capturedStates = new Dictionary<string, object>();
         foreach (SaveableEntity saveableEntity in FindObjectsOfType<SaveableEntity>())
         {
-            Debug.Log(saveableEntity.gameObject);
             capturedStates[saveableEntity.GetUniqueIdentifier()] = saveableEntity.CaptureState();
         }
-        
-        return capturedStates;
     }
     private void SaveFile(string saveFile, object captureState)
     {
@@ -44,18 +42,27 @@ public class SavingSystem : MonoBehaviour
     private Dictionary<string, object> LoadFile(string saveFile)
     {
         string path = GetPathFromSaveFile(saveFile);
+        if (!File.Exists(path))
+        {
+            return new Dictionary<string, object>();
+        }
+        
         using (FileStream fileStream = File.Open(path, FileMode.Open))
         {
             BinaryFormatter formatter = new BinaryFormatter();
             return (Dictionary<string, object>)formatter.Deserialize(fileStream);
         }     
     }
-    private void RestoreState(object state)
+    private void RestoreState(Dictionary<string, object> state)
     {
-        Dictionary<string, object> stateToRestore = (Dictionary<string, object>)state;
         foreach (SaveableEntity saveableEntity in FindObjectsOfType<SaveableEntity>())
         {
-            saveableEntity.RestoreState(stateToRestore[saveableEntity.GetUniqueIdentifier()]);
+            string uniqueID = saveableEntity.GetUniqueIdentifier();
+
+            if (state.ContainsKey(uniqueID))
+            {
+                saveableEntity.RestoreState(state[uniqueID]);
+            }
         }
     }
     

@@ -25,9 +25,7 @@ public class SaveableEntity : MonoBehaviour
    {
       SerializableVector position =(SerializableVector)state;
       
-      GetComponent<NavMeshAgent>().enabled = false;
       GetComponent<ActionScheduler>().Cancel();
-      GetComponent<NavMeshAgent>().enabled = true;
 
       transform.position = position.ToVector();
    }
