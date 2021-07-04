@@ -8,23 +8,59 @@ public class FindStat : MonoBehaviour
 {
     [SerializeField] private ProgressionScriptable _progression;
     [SerializeField] private CharactersEnum _charactersEnum;
+    public event Action OnLevelUp;
 
     private LevelUp _levelUp;
+    private int _startingLevel = 1;
+    [SerializeField] private int _currentLevel = 1;
     private void Awake()
     {
         _levelUp = GetComponent<LevelUp>();
+
+        if (_levelUp != null)
+        {
+            _levelUp.OnExperienceGained += UpdateLevel;
+        }
+    }
+
+    private void Start()
+    {
+        _currentLevel = GetLevel();
     }
 
     public float GetStat(StatsEnum stat)
     {
-        return _progression.CalculateStat(stat, _charactersEnum, _levelUp.GetLevel()) + GetStatModifier(stat);
+        return _progression.CalculateStat(stat, _charactersEnum, GetLevel()) + GetStatModifier(stat);
     }
 
+    public int GetLevel()
+    {
+        if (_currentLevel < 1)
+            _currentLevel = CalculateLevel();
+
+        return _currentLevel;
+    }
+
+    private void UpdateLevel()
+    {
+        int newLevel = CalculateLevel();
+
+        if (newLevel > _currentLevel)
+        {
+            LevelUp levelUp = GetComponent<LevelUp>();
+
+            _currentLevel = newLevel;
+            levelUp.SpawnLevelUpEffect();
+
+            if (OnLevelUp != null) OnLevelUp();
+        }
+    }
+    
     public int CalculateLevel()
         {
             LevelUp levelUp = GetComponent<LevelUp>();
     
-            if (levelUp == null) return _levelUp.GetLevel();
+            if (levelUp == null) return _startingLevel;
     
             int maxLevel = _progression.GetLevels(StatsEnum.ExperienceToLevelUp, _charactersEnum);
     

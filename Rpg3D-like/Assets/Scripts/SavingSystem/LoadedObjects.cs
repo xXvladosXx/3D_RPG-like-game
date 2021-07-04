@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class LoadedObjects : MonoBehaviour
 {
-    [SerializeField] private GameObject persistentObjectPrefab;
+    [SerializeField] private GameObject _loadedObjectPrefab;
  
     private static bool _hasSpawned = false;
     private void Awake()
@@ -18,7 +18,7 @@ public class LoadedObjects : MonoBehaviour
  
     private void SpawnPersistentObjects()
     {
-        var persistentObject = Instantiate(persistentObjectPrefab);
+        var persistentObject = Instantiate(_loadedObjectPrefab);
         DontDestroyOnLoad(persistentObject);
     }
 }

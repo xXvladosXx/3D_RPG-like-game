@@ -33,7 +33,6 @@ public class EnemyAIController : MonoBehaviour
         _movement = GetComponent<Movement>();
         _health = GetComponent<Health>();
         _player = GameObject.FindWithTag("Player");
-
         _health.OnTakeDamage += TriggerAttackDamager;
 
         foreach (Transform child in _pathToPatrol)
@@ -49,7 +48,8 @@ public class EnemyAIController : MonoBehaviour
 
     void Update()
     {
-        if(_health.IsDead()) return;
+        if (_health.IsDead())
+            return;
         
         if ((IsInRangeTo(_chaseDistance) && _combat.CanAttack(_player)) || _wasTriggered )
         {

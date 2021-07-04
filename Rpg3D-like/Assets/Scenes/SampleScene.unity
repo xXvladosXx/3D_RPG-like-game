@@ -513,6 +513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _progression: {fileID: 11400000, guid: 6ab816026256d1d4882cbcb5dea818d3, type: 2}
   _charactersEnum: 1
+  _currentLevel: 1
 --- !u!114 &798369509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -708,7 +709,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3bfbd94321dd5a44a4596c98d86fb3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _level: 1
   _levelUpEffect: {fileID: 0}
 --- !u!114 &798369520
 MonoBehaviour:
@@ -745,6 +745,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 106621755, guid: aaadaacd5e54b7b4997ff4ead24ba9b8, type: 3}
+      propertyPath: _levelUpEffect
+      value: 
+      objectReference: {fileID: 4036577417444534462, guid: a223c6807e02bb143b067771a548bdb4, type: 3}
     - target: {fileID: 9074827891517779408, guid: aaadaacd5e54b7b4997ff4ead24ba9b8, type: 3}
       propertyPath: m_Name
       value: Player
@@ -755,15 +759,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9074827891517779409, guid: aaadaacd5e54b7b4997ff4ead24ba9b8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.5728304
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9074827891517779409, guid: aaadaacd5e54b7b4997ff4ead24ba9b8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.00000011920929
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9074827891517779409, guid: aaadaacd5e54b7b4997ff4ead24ba9b8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.3190536
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9074827891517779409, guid: aaadaacd5e54b7b4997ff4ead24ba9b8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -791,6 +795,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9074827891517779409, guid: aaadaacd5e54b7b4997ff4ead24ba9b8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9074827891517779420, guid: aaadaacd5e54b7b4997ff4ead24ba9b8, type: 3}
+      propertyPath: _healthMax
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9074827891517779420, guid: aaadaacd5e54b7b4997ff4ead24ba9b8, type: 3}
+      propertyPath: _healthCurrent
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9074827891517779423, guid: aaadaacd5e54b7b4997ff4ead24ba9b8, type: 3}
+      propertyPath: _currentLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9079021261111946132, guid: aaadaacd5e54b7b4997ff4ead24ba9b8, type: 3}
+      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1376,9 +1396,13 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 963194227}
-    - target: {fileID: 1809967582, guid: 1c17b105e2cd7bc47ab16a334f788cc4, type: 3}
-      propertyPath: _uniqueIdentifier
-      value: ac11068d-1d55-4886-8df5-ca988de39a91
+    - target: {fileID: 1499018374352607799, guid: 1c17b105e2cd7bc47ab16a334f788cc4, type: 3}
+      propertyPath: _healthMax
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1499018374352607799, guid: 1c17b105e2cd7bc47ab16a334f788cc4, type: 3}
+      propertyPath: _healthCurrent
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7080530490110224169, guid: 1c17b105e2cd7bc47ab16a334f788cc4, type: 3}
       propertyPath: m_RootOrder
@@ -1428,18 +1452,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 7080530490110224174, guid: 1c17b105e2cd7bc47ab16a334f788cc4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7080530490110224182, guid: 1c17b105e2cd7bc47ab16a334f788cc4, type: 3}
       propertyPath: _pathToPatrol
       value: 
       objectReference: {fileID: 1731396519}
-    - target: {fileID: 7080530490110224182, guid: 1c17b105e2cd7bc47ab16a334f788cc4, type: 3}
-      propertyPath: _chaseDistance
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c17b105e2cd7bc47ab16a334f788cc4, type: 3}
 --- !u!1001 &8856903811994523003

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Saving;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -18,16 +19,28 @@ public class SaveableEntity : MonoBehaviour
 
    public object CaptureState()
    {
-      return new SerializableVector(transform.position);
+      Dictionary<string, object> state = new Dictionary<string, object>();
+      
+      foreach (var saveable in GetComponents<ISaveable>())
+      {
+         state[saveable.GetType().ToString()] = saveable.CaptureState();
+      }
+
+      return state;
    }
    
    public void RestoreState(object state)
    {
-      SerializableVector position =(SerializableVector)state;
-      
-      GetComponent<ActionScheduler>().Cancel();
+      Dictionary<string, object> restoredState = state as Dictionary<string, object>;
 
-      transform.position = position.ToVector();
+      foreach (var saveable in GetComponents<ISaveable>())
+      {
+         string saveableSerialize = saveable.GetType().ToString();
+         if (state is Dictionary<string,object> records)
+         {
+            saveable.RestoreState(restoredState[saveableSerialize]);
+         }
+      }
    }
 
 #if UNITY_EDITOR

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using Interface;
 using UnityEngine;
 using UnityEngine.AI;
@@ -20,7 +21,7 @@ namespace Stats
         {
             _findStat = GetComponent<FindStat>();
             
-            GetComponent<LevelUp>().OnLevelUp += SetNewLevelMana;
+            GetComponent<FindStat>().OnLevelUp += SetNewLevelMana;
         }
 
         private void Start()
@@ -69,7 +70,5 @@ namespace Stats
                     _manaCurrent = _manaMax;
             }
         }
-
-        
     }
 }

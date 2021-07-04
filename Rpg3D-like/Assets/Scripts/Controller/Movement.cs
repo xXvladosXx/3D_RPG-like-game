@@ -1,10 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Saving;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Movement : MonoBehaviour, IAction
+public class Movement : MonoBehaviour, IAction, ISaveable
 {
     [SerializeField] private float _maxSpeed = 6f;
 
@@ -53,4 +54,20 @@ public class Movement : MonoBehaviour, IAction
     {
     }
 
+    public object CaptureState()
+    {
+        return new SerializableVector(transform.position);
+    }
+
+    public void RestoreState(object state)
+    {
+         SerializableVector position =(SerializableVector)state;
+
+         _navMeshAgent.enabled = false;
+         transform.position = position.ToVector();
+         _navMeshAgent.enabled = true;
+        
+         GetComponent<ActionScheduler>().Cancel();
+
+    }
 }

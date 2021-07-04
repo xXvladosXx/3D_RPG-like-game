@@ -2,24 +2,26 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Interface;
+using Saving;
 using Stats;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 
-public class Health : MonoBehaviour
+public class Health : MonoBehaviour, ISaveable
 {
     [SerializeField] public OnTakeDamageEventArgs OnDamageTaken;
     
     public event Action OnTakeDamage;
     public event Action OnTakeHealing;
     
-    private ActionScheduler _actionScheduler;
-    private FindStat _findStat;
     [SerializeField] private float _healthCurrent;
     [SerializeField] private float _healthMax;
+    
+    private FindStat _findStat;
     private Animator _animator;
     private StatsValueStore _statsValueStore;
+    private ActionScheduler _actionScheduler;
 
     [Serializable]
     public class OnTakeDamageEventArgs : UnityEvent<float>
@@ -28,12 +30,12 @@ public class Health : MonoBehaviour
 
     private void Awake()
     {
-        _findStat = GetComponent<FindStat>();
         _actionScheduler = GetComponent<ActionScheduler>();
+        _findStat = GetComponent<FindStat>();
         _animator = GetComponent<Animator>();
         _statsValueStore = GetComponent<StatsValueStore>();
-        
-        GetComponent<LevelUp>().OnLevelUp += SetNewLevelHealth;
+        _findStat.OnLevelUp += SetNewLevelHealth;
+        _healthCurrent = _findStat.GetStat(StatsEnum.Health);
     }
 
     private void Start()
@@ -42,8 +44,6 @@ public class Health : MonoBehaviour
         {
             _statsValueStore.OnStatsChanged += SetNewLevelHealth;
         }
-        
-        SetNewLevelHealth();
     }
 
     public void SetNewLevelHealth()
@@ -59,11 +59,9 @@ public class Health : MonoBehaviour
 
     public void Death()
     {
-        Destroy(this);
         GetComponent<CombatTarget>().enabled = false;
         GetComponent<CapsuleCollider>().enabled = false;
-        GetComponent<NavMeshAgent>().enabled = false;
-        Destroy(GetComponent<Rigidbody>());
+        _actionScheduler.Cancel();
         _animator.SetTrigger("isDead");
     }
     
@@ -108,5 +106,18 @@ public class Health : MonoBehaviour
             _healthCurrent = _healthMax;
         
         if (OnTakeHealing != null) OnTakeHealing();
+    }
+
+    public object CaptureState()
+    {
+        return _healthCurrent;
+    }
+
+    public void RestoreState(object state)
+    {
+        _healthCurrent = (float)state;
+        
+        if(_healthCurrent <= 0)
+            Death();
     }
 }

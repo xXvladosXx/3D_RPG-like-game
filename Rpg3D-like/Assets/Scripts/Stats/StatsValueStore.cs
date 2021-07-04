@@ -25,7 +25,7 @@ namespace Stats
         
         [SerializeField] private int _defaultNumberOfPoints = 2;
 
-        private LevelUp _levelUp;
+        private FindStat _findStat;
         
         private int _unassignedPoints = 10;
         public int GetUnassignedPoints => _unassignedPoints;
@@ -47,9 +47,9 @@ namespace Stats
 
         private void Start()
         {
-            _levelUp = gameObject.GetComponent<LevelUp>();
+            _findStat = gameObject.GetComponent<FindStat>();
 
-            _levelUp.OnLevelUp += AddNewUnassignedPoints;
+            _findStat.OnLevelUp += AddNewUnassignedPoints;
         }
         private void AddNewUnassignedPoints()
         {

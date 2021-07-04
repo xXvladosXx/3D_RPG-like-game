@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 445fd59c01f09dc4db07cc0a1b4c50f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chaseDistance: 4
+  _chaseDistance: 10
   _startPosition: {x: 0, y: 0, z: 0}
   _pathToPatrol: {fileID: 0}
   _waitingTime: 2
@@ -417,7 +417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7519b89026250424089e289f69bf2baf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _uniqueIdentifier: 
+  _uniqueIdentifier: ac11068d-1d55-4886-8df5-ca988de39a91
 --- !u!1001 &7080530488362826614
 PrefabInstance:
   m_ObjectHideFlags: 0

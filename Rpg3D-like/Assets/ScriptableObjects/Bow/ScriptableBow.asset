@@ -32,5 +32,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0bb393f7dd868c844ba0707135922259, type: 2}
   - {fileID: 11400000, guid: 438d65439fd948f488ff1be20b024366, type: 2}
   _damage: 1
-  _attackRange: 10
+  _attackRange: 20
   _attackSpeed: 1
