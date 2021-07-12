@@ -14,7 +14,6 @@ namespace Scriptable.Weapon
             _userAnimator = skillData.GetUser.GetComponent<Animator>();
             _userAnimator.SetTrigger(_animationSkill);
 
-            Debug.Log("spawned");
             finished();
         }
     }

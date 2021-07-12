@@ -35,7 +35,7 @@ public class Health : MonoBehaviour, ISaveable
         _animator = GetComponent<Animator>();
         _statsValueStore = GetComponent<StatsValueStore>();
         _findStat.OnLevelUp += SetNewLevelHealth;
-        _healthCurrent = _findStat.GetStat(StatsEnum.Health);
+        _healthMax = _findStat.GetStat(StatsEnum.Health);
     }
 
     private void Start()
@@ -44,6 +44,10 @@ public class Health : MonoBehaviour, ISaveable
         {
             _statsValueStore.OnStatsChanged += SetNewLevelHealth;
         }
+    }
+
+    private void Update()
+    {
     }
 
     public void SetNewLevelHealth()
@@ -61,6 +65,8 @@ public class Health : MonoBehaviour, ISaveable
     {
         GetComponent<CombatTarget>().enabled = false;
         GetComponent<CapsuleCollider>().enabled = false;
+        Destroy(GetComponent<Rigidbody>());
+        GetComponent<NavMeshAgent>().obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
         _actionScheduler.Cancel();
         _animator.SetTrigger("isDead");
     }

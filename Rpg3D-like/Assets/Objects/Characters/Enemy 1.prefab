@@ -238,6 +238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _progression: {fileID: 11400000, guid: 6ab816026256d1d4882cbcb5dea818d3, type: 2}
   _charactersEnum: 1
+  _currentLevel: 1
 --- !u!114 &7080530490110224182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,9 +270,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackRange: 2
   _attackSpeed: 2
-  _rightHandTransform: {fileID: 0}
-  _leftHandTransform: {fileID: 0}
-  _weapon: {fileID: 11400000, guid: 2681e94824ed50c46b7f19c09568732b, type: 2}
+  _rightHandTransform: {fileID: 7083142404836281063}
+  _leftHandTransform: {fileID: 7085167090003369047}
+  _defaultWeapon: {fileID: 11400000, guid: 2681e94824ed50c46b7f19c09568732b, type: 2}
+  _currentWeapon: {fileID: 0}
   _defaultDamage: 1
   _currentDamage: 1
 --- !u!114 &7080530490110224179
@@ -362,7 +364,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3bfbd94321dd5a44a4596c98d86fb3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _level: 1
   _levelUpEffect: {fileID: 0}
 --- !u!23 &1499018372775201905
 MeshRenderer:
@@ -1819,6 +1820,16 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 95948184454102094, guid: 904af8c9d76935743964668f843a1f0c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 904af8c9d76935743964668f843a1f0c, type: 3}
+--- !u!4 &7083142404836281063 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4354660812796746, guid: 904af8c9d76935743964668f843a1f0c, type: 3}
+  m_PrefabInstance: {fileID: 7080530489619577261}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7085167090003369047 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4654347525334522, guid: 904af8c9d76935743964668f843a1f0c, type: 3}
+  m_PrefabInstance: {fileID: 7080530489619577261}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7083049610802194345 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4245079729217028, guid: 904af8c9d76935743964668f843a1f0c, type: 3}

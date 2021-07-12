@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using Interface;
+using Saving;
 using UnityEngine;
 using UnityEngine.Rendering;
 
 namespace Stats
 {
-    public class StatsValueStore : MonoBehaviour, IModifierStat
+    public class StatsValueStore : MonoBehaviour, IModifierStat, ISaveable
     {
         [SerializeField] private StatsBonus[] _statsBonus;
         [Serializable]
@@ -110,6 +111,16 @@ namespace Stats
                 float bonus = _modifierBonusCondition[stat][statsEnum];
                 yield return bonus + GetPoints(statsEnum);
             }
+        }
+
+        public object CaptureState()
+        {
+            return _assignedPoints;
+        }
+
+        public void RestoreState(object state)
+        {
+            _assignedPoints = (Dictionary<StatsEnum, int>) state;
         }
     }
 }

@@ -9,7 +9,6 @@ using UnityEngine;
 public class PlayerSkills : MonoBehaviour
 {
     [SerializeField] private Skill[] _playerSkills;
-    [SerializeField] private SkillBox _firstSkill;
     [SerializeField] private SkillBarPlayer _skillBarPlayer;
     
     private GameObject _caster;

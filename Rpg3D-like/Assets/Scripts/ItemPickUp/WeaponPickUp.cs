@@ -25,10 +25,8 @@ public class WeaponPickUp : MonoBehaviour
     {
         if (other.TryGetComponent(out PlayerController playerController))
         {
-            other.GetComponent<Combat>().EquipWeapon(_weapon, _isRightHanded, this,_weapon.GetDamage,
-                _weapon.GetAttackRange, _weapon.GetAttackSpeed);
+            other.GetComponent<Combat>().EquipWeapon(_weapon);
             
-            other.GetComponent<PlayerSkills>().SetPlayerSkills(_weapon.GetWeaponSkills);
             if (OnWeaponPicked != null) OnWeaponPicked();
 
             foreach (Transform child in transform) {

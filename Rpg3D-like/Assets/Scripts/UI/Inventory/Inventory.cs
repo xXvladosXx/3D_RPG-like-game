@@ -1,10 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Enums;
 using UnityEngine;
 
-public class Inventory
+public class Inventory 
 {
     private List<Item> _inventory;
     private Action<Item> _useItemAction;
@@ -44,14 +45,6 @@ public class Inventory
         }
 
         OnInventoryChanged?.Invoke(this, EventArgs.Empty);
-    }
-
-    public void ShowInventory()
-    {
-        foreach (var item in _inventory)
-        {
-            Debug.Log(item.itemType + item.amount);
-        }
     }
 
     public void RemoveItem(Item item)

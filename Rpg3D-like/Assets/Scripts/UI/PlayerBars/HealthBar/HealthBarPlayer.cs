@@ -31,13 +31,13 @@ public class HealthBarPlayer : MonoBehaviour
         _health = GetComponent<Health>();
         _level = GetComponent<LevelUp>();
         _imageHealthModifier = _healthBackground.GetComponent<Image>();
-    }
-
-    private void Start()
-    {
+        
+        SetHealthBar();
+        
         _health.OnTakeDamage += SetHealthBar;
         _health.OnTakeHealing += SetHealthBar;
     }
+
 
     private void Update()
     {

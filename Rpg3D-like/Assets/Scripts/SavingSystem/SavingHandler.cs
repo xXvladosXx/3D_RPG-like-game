@@ -1,39 +1,72 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SavingHandler : MonoBehaviour
 {
-    private const string _defaultSaveFile = "save";
+    private const string _defaultSaveFile = "QuickSave";
 
-    private void Start()
+    public void StartNewGame(string saveFile)
+    {
+        StartCoroutine(LoadStartScene(saveFile));
+    }
+    
+    public void ContinueGame(string saveFile = _defaultSaveFile)
+    {
+        saveFile = Path.GetFileNameWithoutExtension(saveFile);
+        
+        StartCoroutine(LoadScene(saveFile));
+    }
+
+    public void LoadGame(string saveFile = _defaultSaveFile)
+    {
+        StartCoroutine(LoadScene(saveFile));
+    }
+    
+    private IEnumerator LoadScene(string saveFile)
     {
         DontDestroyOnLoad(gameObject);
-        Load();
+        yield return GetComponent<SavingSystem>().LoadScene(saveFile);
+    }
+    
+    private IEnumerator LoadStartScene(string saveFile)
+    {
+        DontDestroyOnLoad(gameObject);
+        yield return SceneManager.LoadSceneAsync(2);
+        Save(saveFile);
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.S))
         {
-            Save();
+            Save(_defaultSaveFile);
         }
 
         if (Input.GetKeyDown(KeyCode.L))
         {
-            Load();
+            Load(_defaultSaveFile);
         }
     }
 
-    public void Load()
+    public void Load(string saveFile)
     {
-        GetComponent<SavingSystem>().Load(_defaultSaveFile);
+        GetComponent<SavingSystem>().Load(saveFile);
     }
 
-    public void Save()
+    public void Save(string saveFile)
     {
-        GetComponent<SavingSystem>().Save(_defaultSaveFile);
+        GetComponent<SavingSystem>().Save(saveFile);
     }
+
+    public IEnumerable<string> SaveList()
+    {
+        return GetComponent<SavingSystem>().SavesList();
+    }
+
+    
 }
     

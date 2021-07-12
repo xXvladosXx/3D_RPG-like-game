@@ -11,7 +11,7 @@ public class ItemPickUp : MonoBehaviour
     {
         if (other.TryGetComponent(out PlayerController playerController))
         {
-            other.GetComponent<PlayerController>().InventoryPlacer(this);
+            other.GetComponent<PlayerController>().InventoryPlacerItem(this);
             Destroy(gameObject);
         }
     }

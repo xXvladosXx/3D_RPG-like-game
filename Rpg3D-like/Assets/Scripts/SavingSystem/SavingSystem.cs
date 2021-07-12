@@ -5,8 +5,9 @@ using System.Collections.Generic;
  using System.Runtime.Serialization.Formatters.Binary;
  using System.Text;
  using UnityEngine;
+ using UnityEngine.SceneManagement;
 
-public class SavingSystem : MonoBehaviour
+ public class SavingSystem : MonoBehaviour
 {
     public void Save(string saveFile)
     {
@@ -21,12 +22,16 @@ public class SavingSystem : MonoBehaviour
         {
             capturedStates[saveableEntity.GetUniqueIdentifier()] = saveableEntity.CaptureState();
         }
+
+        capturedStates["SceneIndexToLoad"] = SceneManager.GetActiveScene().buildIndex;
     }
     private void SaveFile(string saveFile, object captureState)
     {
         string path = GetPathFromSaveFile(saveFile);
-        print("Saving tp " + path);
 
+        print("Saving tp " + path + " " + saveFile);
+
+        
         using (FileStream fileStream = File.Open(path, FileMode.Create))
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -65,7 +70,31 @@ public class SavingSystem : MonoBehaviour
             }
         }
     }
-    
+
+    public IEnumerator LoadScene(string saveFile)
+    {
+        Dictionary<string, object> state = LoadFile(saveFile);
+        if (state.ContainsKey("SceneIndexToLoad"))
+        {
+            int buildIndex = (int) state["SceneIndexToLoad"];
+
+            if (buildIndex != SceneManager.GetActiveScene().buildIndex)
+            {
+                yield return SceneManager.LoadSceneAsync(buildIndex);
+            }
+           
+        }
+        RestoreState(state);
+    }
+
+    public IEnumerable<string> SavesList()
+    {
+        foreach (var save in Directory.EnumerateFiles(Application.persistentDataPath))
+        {
+            if (Path.GetExtension(save) == ".sav")
+                yield return Path.GetFileNameWithoutExtension(save);
+        }
+    }
     private string GetPathFromSaveFile(string saveFile)
     {
         return Path.Combine(Application.persistentDataPath, saveFile + ".sav");

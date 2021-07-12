@@ -34,7 +34,6 @@ namespace Scriptable.Weapon
                 Quaternion.identity);
             
             projectileSpawn.SetProjectileTarget(skillData.GetMousePosition, skillData.GetUser, _damage, _speed);
-            Debug.Log(skillData.GetMousePosition + "Spawning");
         }
 
         private void RadiusProjectileAttack(SkillData skillData)

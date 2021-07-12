@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
     private WeaponScriptable _weapon;
     private Health _health;
     private Inventory _playerInventory;
-    private bool _isOpened = false;
     private GameObject _gameManager;
     
     private void Awake()
@@ -51,15 +50,6 @@ public class PlayerController : MonoBehaviour
         // ShowHealthOnBar();
        
        if(_health.IsDead()) return;
-       
-       if (Input.GetKeyDown(KeyCode.I))
-       {
-           PausingGame(Convert.ToSingle(_isOpened));
-
-           _isOpened = !_isOpened;
-
-           _uiInventory.InteractWithUI(_uiInventory.transform, _isOpened);
-       }
        
        if(Attack()) return;
        if(Movement()) return ;
@@ -119,22 +109,19 @@ public class PlayerController : MonoBehaviour
         return Camera.main.ScreenPointToRay(Input.mousePosition);
     }
 
-    public void SetWeapon(WeaponScriptable weapon)
+    public void InventoryPlacerWeapon(WeaponScriptable weapon)
     {
-        _weapon = weapon;
-        
-        _playerInventory.AddItem(new Item {itemType = _weapon.GetItemType(),amount = 1});
+        if(weapon == null) return;
+        print("Using");
+
+        _playerInventory.AddItem(new Item {itemType = weapon.GetItemType(),amount = 1});
     }
 
-    public void InventoryPlacer(ItemPickUp item)
+    public void InventoryPlacerItem(ItemPickUp item)
     {
         _playerInventory.AddItem(new Item{itemType = item.GetItemType(), amount = 1});
     }
 
-    void PausingGame(float isPaused)
-    {
-        Time.timeScale = isPaused;
-    }
 
     public void DropItem(Item item, Vector3 playerPositionPosition)
     {

@@ -23,9 +23,12 @@ public class SkillBox : MonoBehaviour
 
     private void Update()
     {
-        if(_playerSkills.GetPlayerSkills().Length == 0)
+        if (_playerSkills.GetPlayerSkills().Length <= _skillIndex)
+        {
+            _image.fillAmount = 0;
             return;
-        
+        }
+
         if (_wasCasted)
         {
             _image.fillAmount = _cooldownSkillManager.GetFractionOfCooldown(_playerSkills.GetPlayerSkills()[_skillIndex]);

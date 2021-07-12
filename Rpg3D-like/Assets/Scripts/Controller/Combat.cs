@@ -2,9 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Interface;
+using Saving;
 using UnityEngine;
 
-public class Combat : MonoBehaviour, IAction, IModifierStat
+public class Combat : MonoBehaviour, IAction, IModifierStat, ISaveable
 {
     [SerializeField] private float _attackRange = 3f;
     [SerializeField] private float _attackSpeed = 2f;
@@ -16,7 +17,10 @@ public class Combat : MonoBehaviour, IAction, IModifierStat
     private Transform _target;
     private ActionScheduler _actionScheduler;
     private FindStat _findStat;
-    [SerializeField] private WeaponScriptable _weapon;
+    [SerializeField] private string _defaultWeaponName = "Sword";
+    
+    [SerializeField] private WeaponScriptable _defaultWeapon = null;
+    [SerializeField] private WeaponScriptable _currentWeapon;
 
     [SerializeField] private float _defaultDamage = 1f;
     [SerializeField] private float _currentDamage = 1f;
@@ -34,6 +38,15 @@ public class Combat : MonoBehaviour, IAction, IModifierStat
         _animator = GetComponent<Animator>();
         _actionScheduler = GetComponent<ActionScheduler>();
         _findStat = GetComponent<FindStat>();
+        
+        WeaponScriptable weaponScriptable = Resources.Load<WeaponScriptable>(_defaultWeaponName);
+        _defaultWeapon = weaponScriptable;
+    }
+
+    private void Start()
+    {
+        if(_currentWeapon == null)
+            EquipWeapon(_defaultWeapon);
     }
 
     void Update()
@@ -105,41 +118,27 @@ public class Combat : MonoBehaviour, IAction, IModifierStat
         _animator.ResetTrigger("attack");
         _animator.SetTrigger("stopAttack");
     }
-    public void EquipWeapon(WeaponScriptable weapon,bool isRightHanded, WeaponPickUp weaponPickUp, float damage, float range, float attackSpeed)
+    public void EquipWeapon(WeaponScriptable weapon)
     {
         if(weapon == null) return;
         
-        GameObject oldWeapon = GameObject.Find("Weapon");
-
-        if (_isWeaponEquipped)
-        {
-            Destroy(oldWeapon);
-        }
-
-        weaponPickUp.OnWeaponPicked += CheckingForTwoHandedWeapon;
-        
-        _weapon = weapon;
-        _attackRange = range;
-        _attackSpeed = attackSpeed;
+        _currentWeapon = weapon;
+        _attackRange = weapon.GetAttackRange;
+        _attackSpeed = weapon.GetAttackSpeed;
         
         if (gameObject.TryGetComponent(out PlayerController playerController))
         {
-            GetComponent<PlayerController>().SetWeapon(weapon);
+            GetComponent<PlayerController>().InventoryPlacerWeapon(weapon);
+            GetComponent<PlayerSkills>().SetPlayerSkills(weapon.GetWeaponSkills);
         }
         
         Animator animator = GetComponent<Animator>();
 
-        weapon.Spawn(isRightHanded ? _rightHandTransform : _leftHandTransform, animator);
+        weapon.DestroyOldWeapon(_rightHandTransform, _leftHandTransform);
+        weapon.Spawn(weapon.GetWeaponHand ? _rightHandTransform : _leftHandTransform, animator);
 
+            
         _isWeaponEquipped = true;
-    }
-
-    private void CheckingForTwoHandedWeapon()
-    {
-        GameObject[] oldWeapons = GameObject.FindGameObjectsWithTag("Weapon");
-        
-        if(oldWeapons.Length > 2)
-            Destroy(oldWeapons[1]);
     }
 
     public void Cancel()
@@ -153,7 +152,7 @@ public class Combat : MonoBehaviour, IAction, IModifierStat
     {
         if (stat == StatsEnum.Damage)
         {
-            yield return _weapon.GetDamage;
+            yield return _currentWeapon.GetDamage;
         }
     }
     
@@ -171,13 +170,13 @@ public class Combat : MonoBehaviour, IAction, IModifierStat
     void Shoot()
     {
         if(_target == null) return;
-        if(_weapon.GetProjectile() == null) return;
+        if(_currentWeapon.GetProjectile() == null) return;
         
         _currentDamage = _findStat.GetStat(StatsEnum.Damage);
 
         print(_currentDamage);
         transform.LookAt(_target);
-        _weapon.SpawnProjectile(_target, gameObject.transform, _currentDamage);
+        _currentWeapon.SpawnProjectile(_target, gameObject.transform, _currentDamage);
     }
     
     void FootR()
@@ -190,5 +189,19 @@ public class Combat : MonoBehaviour, IAction, IModifierStat
         
     }
 
-    
+
+    public object CaptureState()
+    {
+        if(_currentWeapon == null)
+            return _defaultWeapon.name;
+        
+        return _currentWeapon.name;
+    }
+
+    public void RestoreState(object state)
+    {
+        string weaponName = (string) state;
+        WeaponScriptable weapon = Resources.Load<WeaponScriptable>(weaponName);
+        EquipWeapon(weapon);
+    }
 }

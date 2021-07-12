@@ -69,7 +69,6 @@ using System.Collections.Generic;
                  {
                      if (newDistance > _distanceToCastSkill)
                      {
-                         Debug.Log("not");
                          yield return null;
                      }
                      else

@@ -11,6 +11,7 @@ public class Portal : MonoBehaviour
     [SerializeField] private Transform _spawnPoint;
     [SerializeField] private DestionationPortal _destionationPortal = DestionationPortal.A;
 
+    private string _defaultSaveFile = "QuickSave";
     enum DestionationPortal
     {
         A,
@@ -32,11 +33,11 @@ public class Portal : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
         SavingHandler savingHandler = FindObjectOfType<SavingHandler>();
-        savingHandler.Save();
+        savingHandler.Save(_defaultSaveFile);
         
         yield return SceneManager.LoadSceneAsync(_sceneToLoad);;
 
-        savingHandler.Load();
+        savingHandler.Load(_defaultSaveFile);
         Portal otherPortal = GetOtherPortal();
         UpdatePlayer(otherPortal);
         

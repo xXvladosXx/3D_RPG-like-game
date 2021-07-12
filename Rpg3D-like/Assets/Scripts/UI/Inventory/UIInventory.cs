@@ -2,11 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using CodeMonkey.Utils;
+using Saving;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIInventory : MonoBehaviour
+public class UIInventory : MonoBehaviour, ISaveable
 {
    private Inventory _inventory;
    private Transform _itemContainer;
@@ -14,20 +15,18 @@ public class UIInventory : MonoBehaviour
    private TextMeshPro _itemAmount;
    [SerializeField] private Transform _playerPosition;
 
-   private bool _isOpened = false;
    private void Awake()
    {
       _itemContainer = transform.Find("ItemContainer");
       _itemContainerTemplate = _itemContainer.Find("ItemContainerTemplate");
+      RefreshInventory();
    }
 
    public void InteractWithUI(Transform uiInventory, bool isOpened)
    {
-      print("inventory activated");
-      uiInventory.gameObject.SetActive(isOpened);
-      _isOpened = isOpened;
       RefreshInventory();
 
+      uiInventory.gameObject.SetActive(isOpened);
    }
    public void SetInventory(Inventory inventory)
    {
@@ -88,5 +87,17 @@ public class UIInventory : MonoBehaviour
             y--;
          }
       }
+   }
+
+   public object CaptureState()
+   {
+      print("saces");
+      return _inventory;
+   }
+
+   public void RestoreState(object state)
+   {
+      _inventory = (Inventory) state;
+      SetInventory(_inventory);
    }
 }
