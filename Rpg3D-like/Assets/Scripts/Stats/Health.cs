@@ -14,6 +14,7 @@ public class Health : MonoBehaviour, ISaveable
     
     public event Action OnTakeDamage;
     public event Action OnTakeHealing;
+    public event Action OnDied;
     
     [SerializeField] private float _healthCurrent;
     [SerializeField] private float _healthMax;
@@ -22,6 +23,7 @@ public class Health : MonoBehaviour, ISaveable
     private Animator _animator;
     private StatsValueStore _statsValueStore;
     private ActionScheduler _actionScheduler;
+    private bool _isDead = false;
 
     [Serializable]
     public class OnTakeDamageEventArgs : UnityEvent<float>
@@ -45,11 +47,6 @@ public class Health : MonoBehaviour, ISaveable
             _statsValueStore.OnStatsChanged += SetNewLevelHealth;
         }
     }
-
-    private void Update()
-    {
-    }
-
     public void SetNewLevelHealth()
     {
         _healthMax = _findStat.GetStat(StatsEnum.Health);
@@ -63,12 +60,10 @@ public class Health : MonoBehaviour, ISaveable
 
     public void Death()
     {
-        GetComponent<CombatTarget>().enabled = false;
-        GetComponent<CapsuleCollider>().enabled = false;
-        Destroy(GetComponent<Rigidbody>());
-        GetComponent<NavMeshAgent>().obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
+        Destroy(GetComponent<CombatTarget>());
         _actionScheduler.Cancel();
         _animator.SetTrigger("isDead");
+        OnDied?.Invoke();
     }
     
     public float GetFraction()
@@ -84,11 +79,11 @@ public class Health : MonoBehaviour, ISaveable
 
         if (IsDead())
         {
-            damager.GetComponent<LevelUp>().CalculateExperience(GetComponent<FindStat>().GetStat(StatsEnum.ExperienceReward)); 
+            damager.GetComponent<LevelUp>().ExperienceReward(GetComponent<FindStat>().GetStat(StatsEnum.ExperienceReward)); 
             Death();
         }
 
-        if (OnTakeDamage != null) OnTakeDamage();
+        OnTakeDamage?.Invoke();
     }
 
     public void RegenerateHealth()

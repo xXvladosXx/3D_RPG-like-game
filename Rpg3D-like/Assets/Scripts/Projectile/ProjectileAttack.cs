@@ -70,7 +70,7 @@ public class ProjectileAttack : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.gameObject.GetComponent<Health>().IsDead() && other.gameObject != _damager)
+        if (!other.gameObject.GetComponent<Health>().IsDead() && other.gameObject == _target)
         {
             if (_projectileTigger != null)
                 Instantiate(_projectileTigger, gameObject.transform.position, Quaternion.identity);

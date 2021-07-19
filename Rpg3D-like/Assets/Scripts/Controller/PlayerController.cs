@@ -112,7 +112,6 @@ public class PlayerController : MonoBehaviour
     public void InventoryPlacerWeapon(WeaponScriptable weapon)
     {
         if(weapon == null) return;
-        print("Using");
 
         _playerInventory.AddItem(new Item {itemType = weapon.GetItemType(),amount = 1});
     }

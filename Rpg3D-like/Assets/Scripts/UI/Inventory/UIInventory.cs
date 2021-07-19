@@ -22,12 +22,6 @@ public class UIInventory : MonoBehaviour, ISaveable
       RefreshInventory();
    }
 
-   public void InteractWithUI(Transform uiInventory, bool isOpened)
-   {
-      RefreshInventory();
-
-      uiInventory.gameObject.SetActive(isOpened);
-   }
    public void SetInventory(Inventory inventory)
    {
       _inventory = inventory;

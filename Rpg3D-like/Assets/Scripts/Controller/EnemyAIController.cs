@@ -53,7 +53,7 @@ public class EnemyAIController : MonoBehaviour
         
         if ((IsInRangeTo(_chaseDistance) && _combat.CanAttack(_player)) || _wasTriggered )
         {
-            _combat.Attack(_player.transform);
+           _combat.Attack(_player.transform);
         }
         else if(!_wasTriggered)
         {

@@ -9,7 +9,16 @@ public class MainMenuSwitcherUI : MonoBehaviour
 
     private void Start()
     {
-        SwitchTo(_mainMenu);
+        if(_mainMenu != null)
+            SwitchTo(_mainMenu);
+    }
+
+    private void OnDisable()
+    {
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(false);
+        }
     }
 
     public void SwitchTo(GameObject switchTo)

@@ -58,7 +58,7 @@ public class Combat : MonoBehaviour, IAction, IModifierStat, ISaveable
         bool isInRange = GetDistance();
         if (!isInRange)
         {
-            GetComponent<Movement>().MoveTo(_target.position, 1f);
+            GetComponent<Movement>().MoveTo(_target.position , 1f);
         }
         else{
             GetComponent<Movement>().Cancel();
@@ -74,7 +74,7 @@ public class Combat : MonoBehaviour, IAction, IModifierStat, ISaveable
     }
     
 
-    private bool GetDistance()
+    public bool GetDistance()
     {
         return Vector3.Distance(gameObject.transform.position, _target.transform.position) < _attackRange;
     }
@@ -163,7 +163,7 @@ public class Combat : MonoBehaviour, IAction, IModifierStat, ISaveable
         if(_target.GetComponent<Health>() == null) return;  
      
         _currentDamage = _findStat.GetStat(StatsEnum.Damage);
-
+        transform.LookAt(_target);
         _target.GetComponent<Health>().TakeDamage(_currentDamage, gameObject);
     }
 
@@ -173,8 +173,6 @@ public class Combat : MonoBehaviour, IAction, IModifierStat, ISaveable
         if(_currentWeapon.GetProjectile() == null) return;
         
         _currentDamage = _findStat.GetStat(StatsEnum.Damage);
-
-        print(_currentDamage);
         transform.LookAt(_target);
         _currentWeapon.SpawnProjectile(_target, gameObject.transform, _currentDamage);
     }

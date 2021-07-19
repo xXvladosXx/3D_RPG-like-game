@@ -52,6 +52,7 @@ public class Movement : MonoBehaviour, IAction, ISaveable
 
     public void Cancel()
     {
+        _navMeshAgent.isStopped = true;
     }
 
     public object CaptureState()

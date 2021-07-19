@@ -6,15 +6,16 @@ TagManager:
   tags:
   - Enemy
   - UI
-  - Water
-  - Fly
   - HealthUI
-  - Fire
   - Cooldown
-  - Collide
   - UImana
   - Weapon
   - GameManager
+  - DialogBar
+  - QuestName
+  - QuestAmountToKill
+  - QuestAim
+  - AcceptButton
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - Terrarin
   - Water
   - UI
-  - 
+  - QuestLayer
   - 
   - 
   - 

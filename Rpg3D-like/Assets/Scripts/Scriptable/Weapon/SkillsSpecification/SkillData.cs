@@ -12,7 +12,10 @@ namespace Scriptable.Weapon
         private bool _cancelled = false;
         public bool IsCancelled => _cancelled;
 
-        public event Action OnCastAnotherSkill;  
+        public SkillData(GameObject user)
+        {
+            _user = user;
+        }
         public void SetUser(GameObject user)
         {
             _user = user;
@@ -31,11 +34,6 @@ namespace Scriptable.Weapon
         public void SetMousePosition(Vector3 mousePosition)
         {
             _mousePosition = new Vector3(mousePosition.x, mousePosition.y, mousePosition.z);
-        }
-        
-        public SkillData(GameObject user)
-        {
-            _user = user;
         }
 
         public void StartCoroutine(IEnumerator coroutine)

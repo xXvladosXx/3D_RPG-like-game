@@ -31,7 +31,7 @@ public class LevelUp : MonoBehaviour
         return _findStat.GetStat(StatsEnum.ExperienceToLevelUp);
     }
     
-    public void CalculateExperience(float experience)
+    public void ExperienceReward(float experience)
     {
         _currentExp += experience;
         if (OnExperienceGained != null) OnExperienceGained();

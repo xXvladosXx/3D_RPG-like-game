@@ -25,7 +25,7 @@ public class HealthBarEnemy : MonoBehaviour
         _imageHealthForeground.fillAmount =_health.GetFraction();
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         transform.LookAt(Camera.main.transform);
     }

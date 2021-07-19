@@ -21,7 +21,8 @@ public class AttackTargetEffect : EffectStrategy
                 }
                 else
                 {
-                    target.GetComponent<Health>().TakeDamage(-_damage, skillData.GetUser);
+                    if(!target.GetComponent<Health>().IsDead())
+                        target.GetComponent<Health>().TakeDamage(-_damage, skillData.GetUser);
                 }
             }
         }
