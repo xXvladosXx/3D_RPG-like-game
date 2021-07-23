@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Controller;
+using Scriptable.Weapon;
 using Stats;
 using UI.SkillBar;
 using UnityEngine;
@@ -9,51 +10,61 @@ using UnityEngine;
 public class PlayerSkills : MonoBehaviour
 {
     [SerializeField] private Skill[] _playerSkills;
+    public Skill[] GetPlayerSkills => _playerSkills;
     [SerializeField] private SkillBarPlayer _skillBarPlayer;
-    
-    private GameObject _caster;
-    private Animator _animator;
-    private Mana _mana;
-    private ActionScheduler _actionScheduler;
 
+    private Skill _previousSkill;
+    private Mana _mana;
+    private CooldownSkillManager _cooldownSkillManager;
+    private bool _isAbleToUseSkill = true;
+
+    public event Action OnSkillsChanged;
     private void Awake()
     {
-        _animator = GetComponent<Animator>();
-        _caster = gameObject;
         _mana = GetComponent<Mana>();
-        _actionScheduler = GetComponent<ActionScheduler>();
+        _cooldownSkillManager = FindObjectOfType<CooldownSkillManager>();
+    }
+
+    private void InitPreviousSkill()
+    {
+        _previousSkill.OnSkillInteract += () => { _isAbleToUseSkill = true; };
     }
 
     private void Update()
     {
         if(_playerSkills.Length == 0) return;
         
-        if (Input.GetKeyDown(KeyCode.Alpha1) && this._playerSkills.Length >= 1)
+        if (Input.GetKeyDown(KeyCode.Alpha1) && this._playerSkills.Length >= 1 && _isAbleToUseSkill)
         {
-            CastingSkillOnIndex(_playerSkills[0], 0);
-            _skillBarPlayer.TriggerCastingSkill(0);
+            InteractWithSkill(0);
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2) && this._playerSkills.Length >= 2)
+        if (Input.GetKeyDown(KeyCode.Alpha2) && this._playerSkills.Length >=2 && _isAbleToUseSkill)
         {
-            CastingSkillOnIndex(_playerSkills[1], 1);
-            _skillBarPlayer.TriggerCastingSkill(1);
-
+            InteractWithSkill(1);
         }
         
-        if (Input.GetKeyDown(KeyCode.Alpha3) && this._playerSkills.Length >= 3)
+        if (Input.GetKeyDown(KeyCode.Alpha3) && this._playerSkills.Length >= 3 && _isAbleToUseSkill)
         {
-            CastingSkillOnIndex(_playerSkills[2], 2);
-            _skillBarPlayer.TriggerCastingSkill(2);
-
+            InteractWithSkill(2);
         }
         
-        if (Input.GetKeyDown(KeyCode.Alpha4) && this._playerSkills.Length >= 4)
+        if (Input.GetKeyDown(KeyCode.Alpha4) && this._playerSkills.Length >= 4 && _isAbleToUseSkill)
         {
-            CastingSkillOnIndex(_playerSkills[3], 3);
-            _skillBarPlayer.TriggerCastingSkill(3);
-
+            InteractWithSkill(3);
         }
+        
+    }
+
+    private void InteractWithSkill(int index)
+    {
+        if(_cooldownSkillManager.GetCooldownSkill(_playerSkills[index]) > 0) return;
+        
+        _isAbleToUseSkill = false;
+        CastingSkillOnIndex(_playerSkills[index], index);
+        _skillBarPlayer.TriggerCastingSkill(index);
+        _previousSkill = _playerSkills[index];
+        InitPreviousSkill();
     }
 
     public void CastingSkillOnIndex(Skill skill, int index)
@@ -61,47 +72,13 @@ public class PlayerSkills : MonoBehaviour
         skill.CasteSkill(gameObject);
     }
 
-    public Skill[] GetPlayerSkills()
-    {
-        return _playerSkills;
-    }
+    
     public void SetPlayerSkills(Skill[] weaponSkills)
     {
         _playerSkills = weaponSkills;
+        OnSkillsChanged?.Invoke();
     }
 
-    public void ShowButton(int index)
-    {
-        if(_playerSkills.Length == 0) return;
-        if(index > _playerSkills.Length-1) return;
-        
-        switch (index )
-        {
-            case 0:
-                CastingSkillOnIndex(_playerSkills[index], index);
-                _skillBarPlayer.TriggerCastingSkill(index);
-
-                break;
-            case 1:
-                CastingSkillOnIndex(_playerSkills[index], index);
-                _skillBarPlayer.TriggerCastingSkill(index);
-
-                break;
-            case 2 :
-                CastingSkillOnIndex(_playerSkills[index], index);
-                _skillBarPlayer.TriggerCastingSkill(index);
-
-                break;
-            case 3:
-                CastingSkillOnIndex(_playerSkills[index], index);
-                _skillBarPlayer.TriggerCastingSkill(index);
-
-                break;
-            
-            default:
-                break;
-        }
-    }
 
    
 }

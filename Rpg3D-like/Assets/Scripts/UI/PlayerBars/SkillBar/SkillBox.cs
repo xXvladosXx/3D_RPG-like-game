@@ -14,6 +14,7 @@ public class SkillBox : MonoBehaviour
     private CooldownSkillManager _cooldownSkillManager;
     private bool _wasCasted;
     private Image _image;
+    private int _currentSkillLevel;
     private void Awake()
     {
         _playerSkills = _player.GetComponent<PlayerSkills>();
@@ -23,7 +24,7 @@ public class SkillBox : MonoBehaviour
 
     private void Update()
     {
-        if (_playerSkills.GetPlayerSkills().Length <= _skillIndex)
+        if (_playerSkills.GetPlayerSkills.Length <= _skillIndex)
         {
             _image.fillAmount = 0;
             return;
@@ -31,10 +32,10 @@ public class SkillBox : MonoBehaviour
 
         if (_wasCasted)
         {
-            _image.fillAmount = _cooldownSkillManager.GetFractionOfCooldown(_playerSkills.GetPlayerSkills()[_skillIndex]);
+            _image.fillAmount = _cooldownSkillManager.GetFractionOfCooldown(_playerSkills.GetPlayerSkills[_skillIndex]);
         }
     }
-
+    
     public void SetCasted(bool wasCasted)
     {
         _wasCasted = wasCasted;

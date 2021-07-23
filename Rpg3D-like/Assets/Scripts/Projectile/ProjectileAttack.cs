@@ -58,9 +58,6 @@ public class ProjectileAttack : MonoBehaviour
     
     public void SetProjectileTarget(GameObject damager, float damage, float speed, GameObject target = null, Vector3 targetPoint=default)
     {   
-        if(target !=null)
-            Debug.Log("Target aquired" + target + _speed);
-        
         _damager = damager;
         _target = target;
         _damage = damage;
@@ -70,12 +67,13 @@ public class ProjectileAttack : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.gameObject.GetComponent<Health>().IsDead() && other.gameObject == _target)
+        if(other.GetComponent<Health>() == null) return;
+            
+        if (!other.gameObject.GetComponent<Health>().IsDead() && other.gameObject != _damager)
         {
             if (_projectileTigger != null)
                 Instantiate(_projectileTigger, gameObject.transform.position, Quaternion.identity);
                 
-            print("entered");
             Destroy(gameObject);
             other.GetComponent<Health>().TakeDamage(_damage, _damager);
         }

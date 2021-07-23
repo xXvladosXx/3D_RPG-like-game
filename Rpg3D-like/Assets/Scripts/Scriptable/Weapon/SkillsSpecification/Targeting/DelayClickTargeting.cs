@@ -48,6 +48,8 @@ using System.Collections.Generic;
          {
              _skillCastDistanceInstance.gameObject.SetActive(true);
          }
+         
+         
 
          _skillRendererRadiusInstance.localScale = new Vector3(_skillRadius*2, 1, _skillRadius*2);
          _skillCastDistanceInstance.localScale = new Vector3(_distanceToCastSkill, 1,  _distanceToCastSkill);
@@ -89,7 +91,8 @@ using System.Collections.Generic;
                  }else if (Input.GetMouseButton(1))
                  {
                      Cancel();
-                     canceledAttack();
+                     canceledAttack();      
+
                      yield break;
                  }
              }

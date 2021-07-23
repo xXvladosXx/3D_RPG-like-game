@@ -16,7 +16,7 @@ public class FindStat : MonoBehaviour
     private void Awake()
     {
         _levelUp = GetComponent<LevelUp>();
-
+        _currentLevel = GetLevel();
         if (_levelUp != null)
         {
             _levelUp.OnExperienceGained += UpdateLevel;
@@ -25,7 +25,7 @@ public class FindStat : MonoBehaviour
 
     private void Start()
     {
-        _currentLevel = GetLevel();
+        
     }
 
     public float GetStat(StatsEnum stat)

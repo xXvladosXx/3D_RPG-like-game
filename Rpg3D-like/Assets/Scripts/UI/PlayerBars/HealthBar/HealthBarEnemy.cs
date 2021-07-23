@@ -14,10 +14,13 @@ public class HealthBarEnemy : MonoBehaviour
     private void Awake()
     {
         _health = _enemy.GetComponent<Health>();
-        gameObject.SetActive(true);
 
         _health.OnTakeDamage += HealthBarMaintenance;
         _health.OnTakeHealing += HealthBarMaintenance;
+        _health.OnDied += () =>
+        {
+            _healthBar.SetActive(false);
+        };
     }
 
     private void Start()
@@ -30,9 +33,14 @@ public class HealthBarEnemy : MonoBehaviour
         transform.LookAt(Camera.main.transform);
     }
 
+    private void HealthBarMaintenance(GameObject damager)
+    {
+        HealthBarMaintenance();
+    }
+    
     private void HealthBarMaintenance()
     {
-        _healthBar.SetActive(!_health.IsDead());
+        _healthBar.SetActive(true);
         _imageHealthForeground.fillAmount = _health.GetFraction();
     }
     

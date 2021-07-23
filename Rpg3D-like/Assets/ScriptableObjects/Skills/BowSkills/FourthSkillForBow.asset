@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 284e5252b2c84b90be29743a6d843eef, type: 3}
   m_Name: FourthSkillForBow
   m_EditorClassIdentifier: 
-  _cooldown: 20
+  _cooldown: 1
   _manaCost: 1
+  _image: {fileID: 21300000, guid: 4622ae0f8369c7c4ca9025114aa3baed, type: 3}
   _filterStrategies: []
   _effectStrategies:
   - {fileID: 11400000, guid: 2974e955b9fa1cb47b0f6c5091539fe3, type: 2}

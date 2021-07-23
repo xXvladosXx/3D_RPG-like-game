@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1288298647
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1288298648}
+  - component: {fileID: 1288298649}
+  m_Layer: 20
+  m_Name: StateMachine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1288298648
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288298647}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8998122176963389184}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1288298649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288298647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b29bbf8a0a1ee924ba6fd248dc286e71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _friendlyAIController: {fileID: 1724466106}
 --- !u!1 &8998122176370644583
 GameObject:
   m_ObjectHideFlags: 0
@@ -17557,7 +17601,7 @@ GameObject:
   - component: {fileID: 8998122176963389209}
   - component: {fileID: 8998122176963389210}
   - component: {fileID: 8998122176963389211}
-  - component: {fileID: 8998122176963389212}
+  - component: {fileID: 1724466106}
   m_Layer: 20
   m_Name: Companion
   m_TagString: Untagged
@@ -17579,6 +17623,7 @@ Transform:
   - {fileID: 8998122178230223607}
   - {fileID: 8998122177082321481}
   - {fileID: 8998122177506164000}
+  - {fileID: 1288298648}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17615,7 +17660,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &8998122176963389187
 CapsuleCollider:
@@ -17644,7 +17689,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _progression: {fileID: 11400000, guid: 6ab816026256d1d4882cbcb5dea818d3, type: 2}
-  _charactersEnum: 1
+  _charactersEnum: 2
+  _currentLevel: 1
 --- !u!114 &8998122176963389189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17659,9 +17705,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackRange: 2
   _attackSpeed: 2
-  _rightHandTransform: {fileID: 0}
-  _leftHandTransform: {fileID: 0}
-  _weapon: {fileID: 11400000, guid: 2681e94824ed50c46b7f19c09568732b, type: 2}
+  _rightHandTransform: {fileID: 8998122177324135264}
+  _leftHandTransform: {fileID: 8998122178165277908}
+  _defaultWeaponName: Sword
+  _defaultWeapon: {fileID: 0}
+  _currentWeapon: {fileID: 0}
   _defaultDamage: 1
   _currentDamage: 1
 --- !u!114 &8998122176963389190
@@ -17752,7 +17800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3bfbd94321dd5a44a4596c98d86fb3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _level: 2
+  _currentExp: 0
   _levelUpEffect: {fileID: 0}
 --- !u!23 &8998122176963389211
 MeshRenderer:
@@ -17795,7 +17843,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8998122176963389212
+--- !u!114 &1724466106
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -17807,11 +17855,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbe14b66583a55f4dbff7b4a707d3ac0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chaseDistance: 10
-  _startPosition: {x: 0, y: 0, z: 0}
-  _pointsToPatrol: []
-  _waitingTime: 2
-  _tolerants: 1
 --- !u!1 &8998122176965933115
 GameObject:
   m_ObjectHideFlags: 0

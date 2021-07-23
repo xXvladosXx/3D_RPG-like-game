@@ -41,7 +41,7 @@ public class EnemyAIController : MonoBehaviour
         }
     }
 
-    private void TriggerAttackDamager()
+    private void TriggerAttackDamager(GameObject damager)
     {
         _wasTriggered = true;
     }

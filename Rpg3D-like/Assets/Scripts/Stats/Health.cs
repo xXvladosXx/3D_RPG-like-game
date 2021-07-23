@@ -11,19 +11,19 @@ using UnityEngine.Events;
 public class Health : MonoBehaviour, ISaveable
 {
     [SerializeField] public OnTakeDamageEventArgs OnDamageTaken;
-    
-    public event Action OnTakeDamage;
+
+    public event Action<GameObject> OnTakeDamage;
     public event Action OnTakeHealing;
     public event Action OnDied;
-    
+
     [SerializeField] private float _healthCurrent;
     [SerializeField] private float _healthMax;
-    
+
+    private bool _wasDead = false;
     private FindStat _findStat;
     private Animator _animator;
     private StatsValueStore _statsValueStore;
     private ActionScheduler _actionScheduler;
-    private bool _isDead = false;
 
     [Serializable]
     public class OnTakeDamageEventArgs : UnityEvent<float>
@@ -36,36 +36,22 @@ public class Health : MonoBehaviour, ISaveable
         _findStat = GetComponent<FindStat>();
         _animator = GetComponent<Animator>();
         _statsValueStore = GetComponent<StatsValueStore>();
-        _findStat.OnLevelUp += SetNewLevelHealth;
-        _healthMax = _findStat.GetStat(StatsEnum.Health);
-    }
-
-    private void Start()
-    {
+        SetNewLevelHealth();
+        
         if (_statsValueStore != null)
         {
             _statsValueStore.OnStatsChanged += SetNewLevelHealth;
         }
+        _findStat.OnLevelUp += SetNewLevelHealth;
     }
+
+
     public void SetNewLevelHealth()
     {
         _healthMax = _findStat.GetStat(StatsEnum.Health);
         _healthCurrent = _healthMax;
     }
 
-    public bool IsDead()
-    {
-        return _healthCurrent <= 0;
-    }
-
-    public void Death()
-    {
-        Destroy(GetComponent<CombatTarget>());
-        _actionScheduler.Cancel();
-        _animator.SetTrigger("isDead");
-        OnDied?.Invoke();
-    }
-    
     public float GetFraction()
     {
         return _healthCurrent / _healthMax;
@@ -75,38 +61,50 @@ public class Health : MonoBehaviour, ISaveable
     {
         OnDamageTaken.Invoke(damage);
         
-        _healthCurrent -= damage;
+        _healthCurrent = Mathf.Max(_healthCurrent - damage, 0);
 
         if (IsDead())
         {
             damager.GetComponent<LevelUp>().ExperienceReward(GetComponent<FindStat>().GetStat(StatsEnum.ExperienceReward)); 
+            OnDied?.Invoke();
             Death();
         }
-
-        OnTakeDamage?.Invoke();
-    }
-
-    public void RegenerateHealth()
-    {
-        if (_healthCurrent < _healthMax)
+        else
         {
-            _healthCurrent += (_healthMax/100)*10;
-
-            if (_healthCurrent > _healthMax)
-                _healthCurrent = _healthMax;
+            OnTakeDamage?.Invoke(damager);
         }
 
-        if (OnTakeHealing != null) OnTakeHealing();
     }
 
-    public void RegenerateHealthFromSpell(float healing)
+    public bool IsDead()
     {
-        _healthCurrent += healing;
+        return _healthCurrent == 0;
+    }
 
-        if (_healthCurrent > _healthMax)
-            _healthCurrent = _healthMax;
+    public void Death()
+    {
+
+        if (!_wasDead && IsDead())
+        {
+            _actionScheduler.Cancel();
+            _animator.SetTrigger("isDead");
+            GetComponent<NavMeshAgent>().enabled = false;
+        }
         
-        if (OnTakeHealing != null) OnTakeHealing();
+        if(_wasDead && !IsDead())
+        {
+            _animator.Rebind();
+        }
+
+        _wasDead = IsDead();
+    }
+
+    
+    public void RegenerateHealth(float healing)
+    {
+        _healthCurrent = Mathf.Min(_healthCurrent + healing, _healthMax);
+        
+        OnTakeHealing?.Invoke();
     }
 
     public object CaptureState()
@@ -117,8 +115,9 @@ public class Health : MonoBehaviour, ISaveable
     public void RestoreState(object state)
     {
         _healthCurrent = (float)state;
-        
-        if(_healthCurrent <= 0)
-            Death();
+      
+        Death();
     }
+
+    
 }

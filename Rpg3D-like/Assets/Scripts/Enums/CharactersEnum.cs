@@ -5,5 +5,6 @@ using UnityEngine;
 public enum CharactersEnum
 {
     Player,
-    Enemy
+    Enemy, 
+    Companion
 }

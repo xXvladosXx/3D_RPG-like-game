@@ -20,7 +20,7 @@ namespace Quests
             TextMeshProUGUI questAim = GameObject.FindGameObjectWithTag("QuestAim").GetComponent<TextMeshProUGUI>();
             questAim.enabled = true;
             questAim.text = _questAim.name;
-            
+
             SimpleMovingQuest simpleMovingQuest = new SimpleMovingQuest();
             simpleMovingQuest.MoveTo(GameObject.FindWithTag("Player"), _questAim);
             

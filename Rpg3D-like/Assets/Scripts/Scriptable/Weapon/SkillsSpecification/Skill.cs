@@ -5,6 +5,7 @@ using Scriptable.Weapon;
 using Stats;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 namespace Controller
 {
@@ -13,6 +14,9 @@ namespace Controller
     {
         [SerializeField] private float _cooldown;
         [SerializeField] private int _manaCost;
+        [SerializeField] private Sprite _image;
+        public Sprite GetSkillSprite => _image;
+        
         [SerializeField] private FilterStrategy[] _filterStrategies;
         [SerializeField] private EffectStrategy[] _effectStrategies;
         [SerializeField] private TargetingStrategy _targetingStrategy;
@@ -20,12 +24,17 @@ namespace Controller
         private GameObject _caster;
         private Animator _animator;
         private CooldownSkillManager _cooldownSkillManager;
+        public event Action OnSkillInteract;
         
         public void CasteSkill(GameObject user)
        {
            Mana mana = user.GetComponent<Mana>();
-           
-           if(mana.GetCurrentMana() < _manaCost) return;
+
+           if (mana.GetCurrentMana() < _manaCost)
+           {
+               OnSkillInteract?.Invoke();
+               return;
+           }
  
             if (_animator == null)
             {
@@ -40,7 +49,8 @@ namespace Controller
             {
                 return;
             }
-            
+           
+
             TriggerSkill("isCasting", true);
 
             SkillData skillData = new SkillData(user);
@@ -51,15 +61,15 @@ namespace Controller
             _targetingStrategy.StartTargeting(skillData,() =>
             {
                 AquireTarget(skillData, mana);
-            }, CancelTargeting);
+            }, Cancel);
        }
 
         private void AquireTarget(SkillData skillData, Mana mana)
-        {
+        { 
+            OnSkillInteract?.Invoke();
+            
             if(skillData.IsCancelled) return;
-            
-            WaitUntilSkillCasted();
-            
+
             mana.GetComponent<Mana>().CasteSkill(_manaCost);
 
             _cooldownSkillManager.StartCooldown(this, _cooldown);
@@ -84,16 +94,6 @@ namespace Controller
             
         }
 
-        private IEnumerator WaitUntilSkillCasted()
-        {
-            yield return null;
-        }
-
-        private void CancelTargeting()
-        {
-            TriggerSkill("isCasting", false);
-        }
-
         private void TriggerSkill(String animation, bool flag)
         {
             _animator.SetBool(animation, flag);
@@ -101,7 +101,9 @@ namespace Controller
 
         public void Cancel()
         {
-            
+            Debug.Log("interaterd");
+            OnSkillInteract?.Invoke();
+            TriggerSkill("isCasting", false);
         }
     }
 }

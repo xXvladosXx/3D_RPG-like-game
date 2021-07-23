@@ -8,14 +8,13 @@ TagManager:
   - UI
   - HealthUI
   - Cooldown
-  - UImana
-  - Weapon
-  - GameManager
-  - DialogBar
   - QuestName
   - QuestAmountToKill
   - QuestAim
   - AcceptButton
+  - MainCanvas
+  - CompanionBar
+  - DialogBar
   layers:
   - Default
   - TransparentFX

@@ -11,12 +11,13 @@ public class Combat : MonoBehaviour, IAction, IModifierStat, ISaveable
     [SerializeField] private float _attackSpeed = 2f;
     [SerializeField] private Transform _rightHandTransform;
     [SerializeField] private Transform _leftHandTransform;
-
+    
     private Animator _animator;
     private float _attackCooldown = 0;
     private Transform _target;
     private ActionScheduler _actionScheduler;
     private FindStat _findStat;
+    
     [SerializeField] private string _defaultWeaponName = "Sword";
     
     [SerializeField] private WeaponScriptable _defaultWeapon = null;
@@ -51,20 +52,22 @@ public class Combat : MonoBehaviour, IAction, IModifierStat, ISaveable
 
     void Update()
     {
-        
         if(_target == null) return;
-        if(_health.IsDead()) return;
+        if (_target.GetComponent<Health>().IsDead())
+        {
+            _target = FindNewTarget();
+            if(_target == null) return;
+        }
 
         bool isInRange = GetDistance();
         if (!isInRange)
         {
             GetComponent<Movement>().MoveTo(_target.position , 1f);
         }
-        else{
+        else
+        {
             GetComponent<Movement>().Cancel();
-            
-            if(_attackCooldown <= 0)
-                TriggerStartAttack();
+            AttackBehaviour();
         }
 
         if (_attackCooldown > 0)
@@ -72,7 +75,34 @@ public class Combat : MonoBehaviour, IAction, IModifierStat, ISaveable
             _attackCooldown -= Time.deltaTime;
         }
     }
-    
+
+    public Transform FindNewTarget()
+    {
+        CombatTarget[] targets = FindObjectsOfType<CombatTarget>();
+        float minDistance = 3f;
+
+        foreach (CombatTarget target in targets)
+        {
+            if(target.GetComponent<Health>().IsDead()) continue;
+            
+            float distanceToTarget = Vector3.Distance(gameObject.transform.position, target.transform.position);
+
+            if (minDistance > distanceToTarget)
+            {
+                minDistance = distanceToTarget;
+                return target.transform;
+            }
+        }
+
+        return null;
+    }
+
+    private void AttackBehaviour()
+    {
+        if (_attackCooldown <= 0)
+            TriggerStartAttack();
+    }
+
 
     public bool GetDistance()
     {
@@ -96,6 +126,8 @@ public class Combat : MonoBehaviour, IAction, IModifierStat, ISaveable
     
     public void Attack(Transform target)
     {
+        if(target.GetComponent<Health>().IsDead()) return;
+        
         _actionScheduler.StartAction(this);
 
         _target = target.transform;
@@ -190,9 +222,11 @@ public class Combat : MonoBehaviour, IAction, IModifierStat, ISaveable
 
     public object CaptureState()
     {
-        if(_currentWeapon == null)
+        if (_currentWeapon == null)
+        {
             return _defaultWeapon.name;
-        
+        }
+
         return _currentWeapon.name;
     }
 

@@ -13,7 +13,7 @@ public class MainMenuSwitcherUI : MonoBehaviour
             SwitchTo(_mainMenu);
     }
 
-    private void OnDisable()
+    public void OnDisable()
     {
         foreach (Transform child in transform)
         {

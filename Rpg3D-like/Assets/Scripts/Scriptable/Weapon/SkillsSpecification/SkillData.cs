@@ -16,11 +16,7 @@ namespace Scriptable.Weapon
         {
             _user = user;
         }
-        public void SetUser(GameObject user)
-        {
-            _user = user;
-        }
-        
+       
         private IEnumerable<GameObject> _targets;
         public IEnumerable<GameObject> GetTargets => _targets;
         public void SetTargets(IEnumerable<GameObject> targets)

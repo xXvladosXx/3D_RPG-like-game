@@ -44,14 +44,12 @@ namespace Stats
 
                 _modifierBonusCondition[statBonus.StatsEnum][statBonus.StatsEnum] = statBonus.modifiedBonus;
             }
-        }
-
-        private void Start()
-        {
+            
             _findStat = gameObject.GetComponent<FindStat>();
 
             _findStat.OnLevelUp += AddNewUnassignedPoints;
         }
+
         private void AddNewUnassignedPoints()
         {
             SetUnassignedPoints(_defaultNumberOfPoints);
@@ -97,7 +95,7 @@ namespace Stats
                 _assignedPoints[stat] = GetProposedPoints(stat);
             }
             
-            if (OnStatsChanged != null) OnStatsChanged();
+            OnStatsChanged?.Invoke();
 
             _confirmedPoints.Clear();
         }
@@ -120,7 +118,7 @@ namespace Stats
 
         public void RestoreState(object state)
         {
-            _assignedPoints = (Dictionary<StatsEnum, int>) state;
+            _assignedPoints = new Dictionary<StatsEnum, int>((IDictionary<StatsEnum, int>) state);
         }
     }
 }

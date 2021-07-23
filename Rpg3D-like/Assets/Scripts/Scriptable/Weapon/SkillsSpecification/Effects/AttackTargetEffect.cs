@@ -17,7 +17,7 @@ public class AttackTargetEffect : EffectStrategy
             {
                 if (_damage > 0)
                 {
-                    target.GetComponent<Health>().RegenerateHealthFromSpell(_damage);
+                    target.GetComponent<Health>().RegenerateHealth(_damage);
                 }
                 else
                 {

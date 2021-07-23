@@ -1,12 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Saving;
 using UnityEngine;
 
-public class LevelUp : MonoBehaviour
+public class LevelUp : MonoBehaviour, ISaveable
 {
-    private int _currentLevel;
-    private float _currentExp;
+    [SerializeField] private float _currentExp;
     private FindStat _findStat;
     public event Action OnExperienceGained;
     
@@ -14,11 +14,12 @@ public class LevelUp : MonoBehaviour
     private void Awake()
     {
         _findStat = GetComponent<FindStat>();
+        _currentExp = _findStat.GetStat(StatsEnum.Experience);
+
     }
 
     private void Start()
-    { 
-        _currentExp = _findStat.GetStat(StatsEnum.Experience);
+    {
     }
 
     public float GetExperience()
@@ -26,17 +27,11 @@ public class LevelUp : MonoBehaviour
         return _currentExp;
     }
 
-    public float GetExperienceToLevelUp()
-    {
-        return _findStat.GetStat(StatsEnum.ExperienceToLevelUp);
-    }
-    
     public void ExperienceReward(float experience)
     {
         _currentExp += experience;
         if (OnExperienceGained != null) OnExperienceGained();
     }
-    
   
     public void SpawnLevelUpEffect()
     {
@@ -44,5 +39,15 @@ public class LevelUp : MonoBehaviour
 
         ParticleSystem particleSystem = Instantiate(_levelUpEffect, gameObject.transform);
         Destroy(particleSystem, 1f);
+    }
+
+    public object CaptureState()
+    {
+        return _currentExp;
+    }
+
+    public void RestoreState(object state)
+    {
+        _currentExp = (float) state;
     }
 }

@@ -12,6 +12,7 @@ using UnityEngine.AI;
 public class SaveableEntity : MonoBehaviour
 {
    [SerializeField] private string _uniqueIdentifier = System.Guid.NewGuid().ToString();
+   private static Dictionary<string, SaveableEntity> globalLookThrough = new Dictionary<string, SaveableEntity>();
    public string GetUniqueIdentifier()
    {
       return _uniqueIdentifier;
@@ -52,11 +53,42 @@ public class SaveableEntity : MonoBehaviour
       SerializedObject serializedObject = new SerializedObject(this);
       SerializedProperty serializedProperty = serializedObject.FindProperty("_uniqueIdentifier");
 
-      if (string.IsNullOrEmpty(serializedProperty.stringValue))
+      if (string.IsNullOrEmpty(serializedProperty.stringValue) || !IsUnique(serializedProperty.stringValue))
       {
          serializedProperty.stringValue = System.Guid.NewGuid().ToString();
          serializedObject.ApplyModifiedProperties();
       }
+
+      globalLookThrough[serializedProperty.stringValue] = this;
+   }
+
+   private bool IsUnique(string candidate)
+   { 
+      print("Here it is");
+
+      if(!globalLookThrough.ContainsKey(candidate))
+      {
+         return true;
+      }
+
+      if (globalLookThrough[candidate] == this)
+      {
+         return true;
+      }
+
+      if (globalLookThrough[candidate] == null)
+      {
+         globalLookThrough.Remove(candidate);
+         return true;
+      }
+
+      if (globalLookThrough[candidate].GetUniqueIdentifier() != candidate)
+      {
+         globalLookThrough.Remove(candidate);
+         return true;
+      }
+      
+      return false;
    }
 #endif
 }

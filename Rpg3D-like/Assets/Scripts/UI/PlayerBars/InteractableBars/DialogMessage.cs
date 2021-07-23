@@ -25,7 +25,7 @@ public class DialogMessage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
+        
         if (other.TryGetComponent(out PlayerController playerController))
         {
             
@@ -38,8 +38,11 @@ public class DialogMessage : MonoBehaviour
             
             _dialogBar.GetComponent<InteractableBar>().OnUIChanged += dialogUI =>
             {
-                _dialogTextNPC = GameObject.FindGameObjectWithTag("DialogBar");
-                _questSystem.SetQuest(initializationQuest);
+                if (_questSystem.GetQuest == null || _questSystem.GetQuest  != initializationQuest)
+                {
+                    _dialogTextNPC = GameObject.FindGameObjectWithTag("DialogBar");
+                    _questSystem.SetQuest(initializationQuest);
+                }
             };
         }
     }

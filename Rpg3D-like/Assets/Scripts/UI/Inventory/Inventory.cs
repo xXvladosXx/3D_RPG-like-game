@@ -18,6 +18,7 @@ public class Inventory
         _useItemAction = useItemAction;
         
         AddItem(new Item{itemType = Item.ItemType.HealthPotion, amount = 3});
+        AddItem(new Item{itemType = Item.ItemType.Gold, amount = 11});
     }
     
     public void AddItem(Item item, int amount = 1)
@@ -82,7 +83,7 @@ public class Inventory
     public void UsePotion(PotionEnum potion, Health health)
     {
         Debug.Log("UsedPotion");
-        health.RegenerateHealth();
+        health.RegenerateHealth(20);
     }
 
     public void EquipWeapon(WeaponEnum weapon)

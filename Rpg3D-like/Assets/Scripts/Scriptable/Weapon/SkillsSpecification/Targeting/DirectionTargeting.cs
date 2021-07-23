@@ -9,8 +9,12 @@ public class DirectionTargeting : TargetingStrategy
 {
     [SerializeField] private LayerMask _layerMask;
     [SerializeField] private float _groundOffset = 1;
+    private PlayerController _playerController;
+
     public override void StartTargeting(SkillData skillData, Action finishedAttack, Action canceledAttack)
     {
+        _playerController = skillData.GetUser.GetComponent<PlayerController>();
+        
         RaycastHit raycastHit;
         Ray ray = PlayerController.GetRay();
         
@@ -20,6 +24,13 @@ public class DirectionTargeting : TargetingStrategy
             skillData.SetMousePosition(raycastHit.point + ray.direction * _groundOffset /ray.direction.y);
         }
         
+        
+        _playerController.StartCoroutine(Targeting(skillData, _playerController, finishedAttack));
+    }
+
+    private IEnumerator Targeting(SkillData skillData, PlayerController playerController, Action finishedAttack)
+    {
+        yield return new WaitForSeconds(0.1f);
         finishedAttack();
     }
 }

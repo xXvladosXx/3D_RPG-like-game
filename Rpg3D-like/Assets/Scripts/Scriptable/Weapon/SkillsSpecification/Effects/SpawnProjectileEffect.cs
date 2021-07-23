@@ -27,8 +27,6 @@ namespace Scriptable.Weapon
 
         private void SingleProjectileAttack(SkillData skillData)
         {   
-            Debug.Log(skillData.GetUser.GetComponent<CapsuleCollider>().height/2);
-            
             ProjectileAttack projectileSpawn = Instantiate(projectileSpawnToSpawn, new Vector3(skillData.GetUser.transform.position.x, 
                     skillData.GetUser.transform.position.y+0.5f, skillData.GetUser.transform.position.z),
                 Quaternion.identity);

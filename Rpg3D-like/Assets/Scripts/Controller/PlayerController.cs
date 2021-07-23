@@ -13,13 +13,10 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private ParticleSystem _clickedEffect;
     [SerializeField] private UIInventory _uiInventory;
-
-    public event Action OnEnemyAttacked;
+    public event Action<Transform> OnEnemyAttacked;
     
-    private WeaponScriptable _weapon;
     private Health _health;
     private Inventory _playerInventory;
-    private GameObject _gameManager;
     
     private void Awake()
     {
@@ -70,7 +67,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 GetComponent<Combat>().Attack(combatTarget.transform);
-                if (OnEnemyAttacked != null) OnEnemyAttacked();
+                OnEnemyAttacked?.Invoke(combatTarget.transform);
             }
             return true;
 
@@ -116,9 +113,9 @@ public class PlayerController : MonoBehaviour
         _playerInventory.AddItem(new Item {itemType = weapon.GetItemType(),amount = 1});
     }
 
-    public void InventoryPlacerItem(ItemPickUp item)
+    public void InventoryPlacerItem(Item.ItemType item, int amount = 1)
     {
-        _playerInventory.AddItem(new Item{itemType = item.GetItemType(), amount = 1});
+        _playerInventory.AddItem(new Item{itemType = item, amount = amount});
     }
 
 

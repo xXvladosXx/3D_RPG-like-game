@@ -8,10 +8,12 @@ using UnityEngine;
 public class MainBar : MonoBehaviour
 {
     private List<InteractableBar> _interactableBars;
+    private PlayerController _player;
     private void Awake()
     {
         _interactableBars = new List<InteractableBar>();
-
+        _player = FindObjectOfType<PlayerController>();
+        
         foreach (InteractableBar interactableBar in FindObjectsOfType<InteractableBar>())
         {
             _interactableBars.Add(interactableBar);
@@ -26,7 +28,7 @@ public class MainBar : MonoBehaviour
         }
     }
 
-    private void InteractableOnOnUIChanged(GameObject obj)
+    public void InteractableOnOnUIChanged(GameObject obj)
     {
         foreach (InteractableBar interactableBar in _interactableBars)
         {
@@ -49,6 +51,7 @@ public class MainBar : MonoBehaviour
     
     private void PauseGame(float isPaused)
     {
+        _player.enabled = (Convert.ToBoolean(isPaused));
         Time.timeScale = isPaused;
     }
 }

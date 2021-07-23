@@ -17,10 +17,9 @@ public class WeaponScriptable : ScriptableObject
     [SerializeField] private AnimatorOverrideController _weaponOverrideController;
     [SerializeField] private Item.ItemType _itemType;
     [SerializeField] private ArrowScriptable _arrow;
-    
     [SerializeField] private Skill[] _weaponSkills;
     public Skill[] GetWeaponSkills => _weaponSkills;
-  
+
     [SerializeField] private float _damage = 1f;
     public float GetDamage => _damage;
   

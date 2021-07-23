@@ -35,12 +35,14 @@ public class Portal : MonoBehaviour
         SavingHandler savingHandler = FindObjectOfType<SavingHandler>();
         savingHandler.Save(_defaultSaveFile);
         
-        yield return SceneManager.LoadSceneAsync(_sceneToLoad);;
-
+        yield return SceneManager.LoadSceneAsync(_sceneToLoad);
+        
         savingHandler.Load(_defaultSaveFile);
+
         Portal otherPortal = GetOtherPortal();
         UpdatePlayer(otherPortal);
         
+
         Destroy(gameObject);
     }
 

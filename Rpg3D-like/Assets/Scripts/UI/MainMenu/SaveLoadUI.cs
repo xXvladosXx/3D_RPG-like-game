@@ -10,7 +10,8 @@ public class SaveLoadUI : MonoBehaviour
 {
     [SerializeField] private Transform _content;
     [SerializeField] private GameObject _buttonPref;
-
+    [SerializeField] private bool _saving = false;
+    
     private SavingHandler _savingHandler;
     private void OnEnable()
     {
@@ -28,10 +29,14 @@ public class SaveLoadUI : MonoBehaviour
             button.GetComponentInChildren<TextMeshProUGUI>().text = save;
             
             Button button1 = button.GetComponent<Button>();
-            button1.onClick.AddListener((() =>
+            if (!_saving)
             {
-                _savingHandler.LoadGame(save);
-            }));
+                button1.onClick.AddListener((() => { _savingHandler.LoadGame(save); }));
+            }
+            else
+            {
+                button1.onClick.AddListener((() => { _savingHandler.Save(save); }));
+            }
         }
     }
 
