@@ -39,17 +39,21 @@ public class InteractableBar : MonoBehaviour, IInteractable
 
     public void OnClickBar()
     {
+        print(_isBarActive);
         if (_isBarActive)
         {                
             _isBarActive = false;
+            DeactivateBar();
             OnUIChanged?.Invoke(gameObject);
         }
         else
         {
             _isBarActive = true;
+            ActivateBar();
             OnUIChanged?.Invoke(gameObject);
         }
     }
+
     public void ActivateBar()
     {
         foreach (Transform child in _uiToInteract.transform)
@@ -63,6 +67,14 @@ public class InteractableBar : MonoBehaviour, IInteractable
         foreach (Transform child in _uiToInteract.transform)
         {
             child.gameObject.SetActive(_isBarActive);
+        }
+    }
+    
+    public void MaintainBar(bool activation)
+    {
+        foreach (Transform child in _uiToInteract.transform)
+        {
+            child.gameObject.SetActive(activation);
         }
     }
 }

@@ -9,21 +9,25 @@ public class ItemPickUp : MonoBehaviour
     [Serializable]
     public class ItemInfo
     {
-        public Item.ItemType _itemType;
-        public int _amount;
-        public int _minSoul;
-        public int _maxSoul;
+        public Item.ItemType ItemType;
+        public GameObject Item;
+        public int Amount;
     }
 
-    [SerializeField] private ItemInfo[] _myClass;
+    [SerializeField] private ItemInfo[] _itemsInfo;
+    [SerializeField] private int _minSoul;
+    [SerializeField] private int _maxSoul;
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out PlayerController playerController))
         {
-            foreach (var itemInfo in _myClass)
+            foreach (var itemInfo in _itemsInfo)
             {
-                itemInfo._amount = Random.Range(itemInfo._minSoul, itemInfo._maxSoul);
-                other.GetComponent<PlayerController>().InventoryPlacerItem(itemInfo._itemType, itemInfo._amount);
+                if(itemInfo.Amount == 0)
+                    itemInfo.Amount = Random.Range(_minSoul, _maxSoul);
+                
+                if(!other.GetComponent<PlayerInventory>().HasEnoughPlace()) return;
+                    other.GetComponent<PlayerInventory>().InventoryPlacerItem(itemInfo.ItemType, itemInfo.Amount);
             }
             
             Destroy(gameObject);

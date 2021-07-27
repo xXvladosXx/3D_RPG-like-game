@@ -7,18 +7,14 @@ using UnityEngine;
 
 public class WeaponPickUp : MonoBehaviour
 {
-    // Start is called before the first frame update
-
     [SerializeField] private WeaponScriptable _weapon;
     [SerializeField] private bool _isRightHanded = false;
 
     private Collider _collider;
-    private FindWeaponStats _findWeaponStats;
     public event Action OnWeaponPicked;
     private void Awake()
     {
         _collider = GetComponent<Collider>();
-        _findWeaponStats = GetComponent<FindWeaponStats>();
     }
 
     private void OnTriggerEnter(Collider other)

@@ -46,8 +46,8 @@ public class Combat : MonoBehaviour, IAction, IModifierStat, ISaveable
 
     private void Start()
     {
-        if(_currentWeapon == null)
-            EquipWeapon(_defaultWeapon);
+        //f(_currentWeapon == null)
+            //EquipWeapon(_defaultWeapon);
     }
 
     void Update()
@@ -160,7 +160,7 @@ public class Combat : MonoBehaviour, IAction, IModifierStat, ISaveable
         
         if (gameObject.TryGetComponent(out PlayerController playerController))
         {
-            GetComponent<PlayerController>().InventoryPlacerWeapon(weapon);
+            GetComponent<PlayerInventory>().InventoryPlacerWeapon(weapon);
             GetComponent<PlayerSkills>().SetPlayerSkills(weapon.GetWeaponSkills);
         }
         

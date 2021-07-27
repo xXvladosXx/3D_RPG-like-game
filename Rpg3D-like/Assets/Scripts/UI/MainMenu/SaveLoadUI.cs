@@ -25,17 +25,17 @@ public class SaveLoadUI : MonoBehaviour
         }
         foreach (var save in _savingHandler.SaveList())
         {
-            GameObject button = Instantiate(_buttonPref, _content);
-            button.GetComponentInChildren<TextMeshProUGUI>().text = save;
+            GameObject savePrefab = Instantiate(_buttonPref, _content);
+            savePrefab.GetComponentInChildren<TextMeshProUGUI>().text = save;
             
-            Button button1 = button.GetComponent<Button>();
+            Button buttonSave = savePrefab.GetComponent<Button>();
             if (!_saving)
             {
-                button1.onClick.AddListener((() => { _savingHandler.LoadGame(save); }));
+                buttonSave.onClick.AddListener((() => { _savingHandler.LoadGame(save); }));
             }
             else
             {
-                button1.onClick.AddListener((() => { _savingHandler.Save(save); }));
+                buttonSave.onClick.AddListener((() => { _savingHandler.Save(save); }));
             }
         }
     }

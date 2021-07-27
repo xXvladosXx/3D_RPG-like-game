@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Controller;
 using Enums;
+using Saving;
 using TMPro;
 using UI.Inventory;
 using UnityEngine;
@@ -12,34 +13,13 @@ using UnityEngine.EventSystems;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private ParticleSystem _clickedEffect;
-    [SerializeField] private UIInventory _uiInventory;
     public event Action<Transform> OnEnemyAttacked;
     
     private Health _health;
-    private Inventory _playerInventory;
-    
+
     private void Awake()
     {
-        _playerInventory = new Inventory(UseItem);
         _health = GetComponent<Health>();
-    }
-
-    private void UseItem(Item item)
-    {
-        switch (item.itemType)
-        {
-            case Item.ItemType.HealthPotion: _playerInventory.UsePotion(PotionEnum.Health, _health);
-                break;
-            case Item.ItemType.Bow: _playerInventory.EquipWeapon(WeaponEnum.Bow); ItemsSpawnManager.Instance.SpawnItem(item, gameObject.transform.position);
-                break;
-            case Item.ItemType.Sword: _playerInventory.EquipWeapon(WeaponEnum.Sword); ItemsSpawnManager.Instance.SpawnItem(item, gameObject.transform.position);
-                break;
-        }
-    }
-
-    private void Start()
-    {
-        _uiInventory.SetInventory(_playerInventory);
     }
 
     void Update()
@@ -47,10 +27,8 @@ public class PlayerController : MonoBehaviour
         // ShowHealthOnBar();
        
        if(_health.IsDead()) return;
-       
        if(Attack()) return;
        if(Movement()) return ;
-
     }
 
 
@@ -104,23 +82,5 @@ public class PlayerController : MonoBehaviour
     public static Ray GetRay()
     {
         return Camera.main.ScreenPointToRay(Input.mousePosition);
-    }
-
-    public void InventoryPlacerWeapon(WeaponScriptable weapon)
-    {
-        if(weapon == null) return;
-
-        _playerInventory.AddItem(new Item {itemType = weapon.GetItemType(),amount = 1});
-    }
-
-    public void InventoryPlacerItem(Item.ItemType item, int amount = 1)
-    {
-        _playerInventory.AddItem(new Item{itemType = item, amount = amount});
-    }
-
-
-    public void DropItem(Item item, Vector3 playerPositionPosition)
-    {
-        Vector3 randomDirection = new Vector3(playerPositionPosition.x + 10, playerPositionPosition.y, playerPositionPosition.z);
     }
 }

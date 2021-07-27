@@ -9,13 +9,11 @@ using Random = UnityEngine.Random;
 [CreateAssetMenu(fileName = "Weapon", menuName = "ScriptableObjects/Weapon", order = 1)]
 public class WeaponScriptable : ScriptableObject
 {
-    [SerializeField] private ProgressionWeaponClass[] _weaponClasses;
-
-    private Dictionary<WeaponEnum, Dictionary<WeaponStatsEnum, int[]>> _lookThroughWeapon;
     
     [SerializeField] private GameObject _prefabWeapon;
     [SerializeField] private AnimatorOverrideController _weaponOverrideController;
     [SerializeField] private Item.ItemType _itemType;
+    [SerializeField] private Item.ItemLevel _itemLevel; 
     [SerializeField] private ArrowScriptable _arrow;
     [SerializeField] private Skill[] _weaponSkills;
     public Skill[] GetWeaponSkills => _weaponSkills;
@@ -36,8 +34,6 @@ public class WeaponScriptable : ScriptableObject
 
     public void Spawn(Transform position, Animator animator)
     {
-        GenerateWeaponStats();
-        
         if (_prefabWeapon != null)
         {
             GameObject weapon = Instantiate(_prefabWeapon, position);
@@ -69,28 +65,6 @@ public class WeaponScriptable : ScriptableObject
         
         Destroy(oldWeapon.gameObject);
     }
-    
-
-    
-    private void GenerateWeaponStats()
-    {
-        if(_lookThroughWeapon != null) return;
-
-        _lookThroughWeapon = new Dictionary<WeaponEnum, Dictionary<WeaponStatsEnum, int[]>>();
-
-        foreach (var weaponClass in _weaponClasses)
-        {
-            var lookThroughWeaponStats = new Dictionary<WeaponStatsEnum, int[]>();
-
-            foreach (var weaponClassStat in weaponClass.stats)
-            {
-                lookThroughWeaponStats[weaponClassStat.weaponStats] = weaponClassStat.rarities;
-            }
-
-            _lookThroughWeapon[weaponClass.weapon] = lookThroughWeaponStats;
-        }
-    }
-
    
     public void SpawnProjectile(Transform target, Transform damager, float currentDamage)
     {
@@ -106,20 +80,6 @@ public class WeaponScriptable : ScriptableObject
     {
         return _itemType;
     }
-
-    [Serializable]
-    class ProgressionWeaponClass
-    {
-        public WeaponEnum weapon;
-        public ProgressionWeaponStats[] stats;
-    }
     
-    [Serializable]
-    class ProgressionWeaponStats
-    {
-        public WeaponStatsEnum weaponStats;
-        public int[] rarities;
-    }
-
     
 }

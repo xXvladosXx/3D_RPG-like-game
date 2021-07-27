@@ -20,7 +20,7 @@ public class EnemyAIController : MonoBehaviour
     private Combat _combat;
     private Movement _movement;
     private Health _health;
-    private float _timeSinceVisitedPointl = Mathf.Infinity;
+    private float _timeSinceVisitedPoint = Mathf.Infinity;
     private int _currentWaypointIndex = 0;
     private bool _wasTriggered = false;
     private void Awake()
@@ -63,7 +63,7 @@ public class EnemyAIController : MonoBehaviour
             }
         }
 
-        _timeSinceVisitedPointl += Time.deltaTime;
+        _timeSinceVisitedPoint += Time.deltaTime;
     }
 
     private void GoToNextWaypoint()

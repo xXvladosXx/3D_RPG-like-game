@@ -45,3 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bowPickUp: {fileID: 1498676120, guid: cdb9750c6581dd24099ac97abe210fb0, type: 3}
   _swordPickUp: {fileID: 1498676120, guid: b8d3d79f1b5803249b08a9918d69e119, type: 3}
+  _items:
+  - ItemType: 2
+    Item: {fileID: 173500, guid: fb5a9652227c545d98a413cd73b80b69, type: 3}
+    Amount: 0

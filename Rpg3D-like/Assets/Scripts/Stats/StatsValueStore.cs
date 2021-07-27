@@ -118,7 +118,7 @@ namespace Stats
 
         public void RestoreState(object state)
         {
-            _assignedPoints = new Dictionary<StatsEnum, int>((IDictionary<StatsEnum, int>) state);
+            _assignedPoints = new Dictionary<StatsEnum, int>((Dictionary<StatsEnum, int>) state);
         }
     }
 }

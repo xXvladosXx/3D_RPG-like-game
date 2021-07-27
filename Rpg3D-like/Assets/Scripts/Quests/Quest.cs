@@ -1,36 +1,46 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 
 namespace Quests
 {
     [CreateAssetMenu(fileName = "Quest", menuName = "Quests/Quest", order = 0)]
+    
     public class Quest : ScriptableObject
     {
-        [SerializeField] private Quest _secondaryQuest;
-        public Quest GetNextQuest => _secondaryQuest;
-        
         [SerializeField] private InitializationQuest _mainQuest;
         public InitializationQuest GetCurrentQuest => _mainQuest;
-        
-        [SerializeField] private GameObject _npcQuestGiver;
 
+        [SerializeField] private InitializationQuest[] _secondaryQuests;
+        [SerializeField] private GameObject _npcQuestGiver;
+        [SerializeField]
         public event Action OnQuestCompleted;
         public void StartQuest()
         {
-            _npcQuestGiver = FindObjectOfType<DialogMessage>().gameObject;
+            _npcQuestGiver = FindObjectOfType<DialogueMaking>().gameObject;
 
             _mainQuest.InitQuest(_npcQuestGiver, () =>
             {
-                ContinueQuest();
+                ContinueQuest(0);
             });
         }
 
-        private void ContinueQuest()
+        private void ContinueQuest(int index)
         {
+            _mainQuest = null;
+            if (index == _secondaryQuests.Length && _mainQuest == null)
+            {
+                OnQuestCompleted?.Invoke();
+            }
+            
+            if(index > _secondaryQuests.Length - 1) return;
+                
+            _mainQuest = _secondaryQuests[index];
+            
             OnQuestCompleted?.Invoke();
             
-            if(_secondaryQuest!=null)
-                _secondaryQuest.StartQuest();
+            _secondaryQuests[index].InitQuest(_npcQuestGiver, () => { ContinueQuest(index + 1); });
+            
         }
     }
 }

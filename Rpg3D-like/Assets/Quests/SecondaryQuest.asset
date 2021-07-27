@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e56c97ae02d431d9062096e46ab5b54, type: 3}
   m_Name: SecondaryQuest
   m_EditorClassIdentifier: 
-  _secondaryQuest: {fileID: 0}
-  _mainQuest: {fileID: 11400000, guid: ad063668df894d148bc40e9c121e97f5, type: 2}
+  _mainQuest: {fileID: 0}
+  _secondaryQuests: []
   _npcQuestGiver: {fileID: 0}

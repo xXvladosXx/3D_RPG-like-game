@@ -15,7 +15,7 @@ namespace UI.StatModifing
 
         private void Start()
         {
-            _statsValue = GameObject.FindGameObjectWithTag("Player").GetComponent<StatsValueStore>();
+            _statsValue = FindObjectOfType<PlayerController>().GetComponent<StatsValueStore>();
             
             _confirmButton.onClick.AddListener( _statsValue.Confirm );
         }
