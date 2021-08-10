@@ -1,18 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using Inventories;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ItemSlot : MonoBehaviour, IDropHandler
+namespace Inventories
 {
-    public void OnDrop(PointerEventData eventData)
+    public class ItemSlot : MonoBehaviour, IDropHandler
     {
-        if (eventData.pointerDrag != null)
+        public void OnDrop(PointerEventData eventData)
         {
-            eventData.pointerDrag.GetComponent<Drag>().SetInSlot(true);
+            if (eventData.pointerDrag != null)
+            {
+                eventData.pointerDrag.GetComponent<Drag>().SetInSlot(true);
             
-            eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition =
-                GetComponent<RectTransform>().anchoredPosition;
+                eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition =
+                    GetComponent<RectTransform>().anchoredPosition;
+            }
         }
     }
+
 }

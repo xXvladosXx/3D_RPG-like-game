@@ -6,86 +6,80 @@ using Enums;
 using Saving;
 using UI.Inventory;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class PlayerInventory : MonoBehaviour, ISaveable
+namespace Inventories
 {
-    private Inventory _inventory;
-    private int _inventoryCapacity = 9;
-    public Inventory GetInventory => _inventory;
-    private Health _health;
-    
+    public class PlayerInventory : MonoBehaviour, ISaveable
+{
+    private readonly int _inventoryCapacity = 9;
+    public Inventory GetInventory { get; private set; }
+
     [SerializeField] private UIInventory _uiInventory;
     private void Awake()
     {
         _uiInventory = FindObjectOfType<UIInventory>();
-        _health = GetComponent<Health>();
-        _inventory = new Inventory(UseItem);
+        
+        GetInventory = new Inventory(UseItem);
     }
 
     private void Start()
-    {
-        _uiInventory.SetInventory(_inventory);
+    {        
+        _uiInventory.SetInventory(GetInventory);
     }
 
-    public bool HasEnoughPlace()
+    public bool HasEnoughPlace(int amountToLocate = 0)
     {
-        if (_inventory.GetInventory.Count >= _inventoryCapacity)
-            return false;
-
-        return true;
+        return GetInventory.GetInventory.Count + amountToLocate < _inventoryCapacity;
     }
     private void UseItem(Item item)
     {
-        switch (item.itemType)
-        {
-            case Item.ItemType.HealthPotion: _inventory.UsePotion(PotionEnum.Health, _health);
-                break;
-            case Item.ItemType.Bow: ItemsSpawnManager.Instance.SpawnItem(item, gameObject.transform.position);
-                break;
-            case Item.ItemType.Sword: ItemsSpawnManager.Instance.SpawnItem(item, gameObject.transform.position);
-                break;
-            case Item.ItemType.Sword1: ItemsSpawnManager.Instance.SpawnItem(item, gameObject.transform.position);
-                break;
-        }
+        if (item.IItem != null) item.IItem.UseItem(gameObject, item);
     }
-    public void InventoryPlacerWeapon(WeaponScriptable weapon)
+ 
+    public void InventoryPlacerItem(ItemType item, int amount = 1)
     {
-        if(weapon == null) return;
-
-        foreach (var item in _inventory.GetInventory)
-        {
-            if(item.itemType == weapon.GetItemType()) return;
-        }
-
-        _inventory.AddItem(new Item {itemType = weapon.GetItemType(),amount = 1});
+        GetInventory.AddItem(ItemsSpawnManager.Instance.ItemTypeSwitcher(item), amount);
     }
 
-    public void InventoryPlacerItem(Item.ItemType item, int amount = 1)
-    {
-        _inventory.AddItem(new Item{itemType = item, amount = amount});
-    }
-
-
+    
     public void DropItem(Item item, Vector3 playerPositionPosition)
     {
         Vector3 randomDirection = new Vector3(playerPositionPosition.x + 1, playerPositionPosition.y, playerPositionPosition.z+1);
-
-        switch (item.itemType)
+/*
+        switch (item._item)
         {
             case Item.ItemType.HealthPotion: ItemsSpawnManager.Instance.SpawnItem(item, randomDirection);
                 break;
             case Item.ItemType.Gold: ItemsSpawnManager.Instance.SpawnItem(item, randomDirection);
                 break;
-        }   
+        }*/   
     }
 
     public object CaptureState()
     {
-        return _inventory.GetInventory;
+        List<ItemType> items = new List<ItemType>();
+
+        foreach (var item in GetInventory.GetInventory)
+        {
+            while (item.Amount != 0)
+            {
+                items.Add(item.IItem.GetItemType);
+                item.Amount--;
+            }
+        }
+        
+        return items;
     }
 
     public void RestoreState(object state)
     {
-        _inventory.SetInventory(new List<Item>((List<Item>)state));
+        GetInventory.GetInventory.Clear();
+        foreach (var itemType in (List<ItemType>) state)
+        {
+            InventoryPlacerItem(itemType);
+        }
     }
+}
+
 }

@@ -9,17 +9,14 @@ namespace Quests
     public class Quest : ScriptableObject
     {
         [SerializeField] private InitializationQuest _mainQuest;
-        public InitializationQuest GetCurrentQuest => _mainQuest;
-
         [SerializeField] private InitializationQuest[] _secondaryQuests;
         [SerializeField] private GameObject _npcQuestGiver;
         [SerializeField]
         public event Action OnQuestCompleted;
+        public event Action OnSubquestCompleted;
         public void StartQuest()
         {
-            _npcQuestGiver = FindObjectOfType<DialogueMaking>().gameObject;
-
-            _mainQuest.InitQuest(_npcQuestGiver, () =>
+            _mainQuest.InitQuest(() =>
             {
                 ContinueQuest(0);
             });
@@ -37,10 +34,17 @@ namespace Quests
                 
             _mainQuest = _secondaryQuests[index];
             
-            OnQuestCompleted?.Invoke();
+            OnSubquestCompleted?.Invoke();
             
-            _secondaryQuests[index].InitQuest(_npcQuestGiver, () => { ContinueQuest(index + 1); });
+            _secondaryQuests[index].InitQuest(() => { ContinueQuest(index + 1); });
             
+        }
+
+        public Transform GetAim()
+        {
+            if (_mainQuest == null) return null;
+            
+            return _mainQuest.GetAim().transform;
         }
     }
 }

@@ -5,9 +5,6 @@ using UnityEngine.Events;
 
 public class ButtonModifier : MonoBehaviour
 {
-    public event UnityAction action;
-
-
     public void Add()
     {
         print("add");

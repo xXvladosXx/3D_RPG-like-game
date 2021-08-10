@@ -17,6 +17,8 @@ namespace Scriptable.Weapon
         {
             GameObject spell = Instantiate(_spell, skillData.GetMousePosition, Quaternion.identity);
             spell.transform.position = new Vector3(skillData.GetMousePosition.x, skillData.GetMousePosition.y + 2, skillData.GetMousePosition.z);
+            
+            Destroy(spell, 2f);
             finished();
         }
     }

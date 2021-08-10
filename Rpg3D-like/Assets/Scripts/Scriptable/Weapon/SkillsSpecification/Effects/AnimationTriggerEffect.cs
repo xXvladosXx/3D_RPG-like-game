@@ -7,11 +7,16 @@ namespace Scriptable.Weapon
     
     public class AnimationTriggerEffect : EffectStrategy
     {
+        [SerializeField] private AnimatorOverrideController _animator;
         [SerializeField] private string _animationSkill = "";
         private Animator _userAnimator;
         public override void Effect(SkillData skillData, Action finished)
         {
             _userAnimator = skillData.GetUser.GetComponent<Animator>();
+
+            if(_animator!=null)
+                _userAnimator.runtimeAnimatorController = _animator;
+
             _userAnimator.SetTrigger(_animationSkill);
 
             finished();

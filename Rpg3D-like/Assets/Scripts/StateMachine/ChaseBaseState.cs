@@ -29,7 +29,8 @@ public class ChaseBaseState : BaseState
     public override void RunState()
     {
         if(FindObjectOfType<FriendlyAIController>().GetComponent<Health>().IsDead()) return;
-        
+        if(_target == null) return;
+
         _movement.MoveTo(_target.position, 1f);
         
         if (IsInRange())

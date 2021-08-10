@@ -20,7 +20,7 @@ public class DirectionTargeting : TargetingStrategy
         
         if (Physics.Raycast(ray, out raycastHit, 1000, _layerMask))
         {
-            Debug.DrawRay(ray.origin, ray.direction*38, Color.green, 10f);
+            Debug.DrawRay(ray.origin, ray.direction*1000, Color.green, 10f);
             skillData.SetMousePosition(raycastHit.point + ray.direction * _groundOffset /ray.direction.y);
         }
         

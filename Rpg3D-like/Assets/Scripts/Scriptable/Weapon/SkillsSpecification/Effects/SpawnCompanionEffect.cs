@@ -1,4 +1,5 @@
 ﻿using System;
+using Controller;
 using UI.PlayerBars.HealthBar;
 using UnityEngine;
 
@@ -12,9 +13,10 @@ namespace Scriptable.Weapon
         [SerializeField] private GameObject _spawnEffect;
         [SerializeField] private int _maxNumberOfCompanions = 1;
 
-        private bool _hasCompanion = false;
         private GameObject _companionBar;
         private FriendlyAIController _spawnedCompanion;
+        private CompanionChecker _companionChecker;
+
         public override void Effect(SkillData skillData, Action finished)
         {
             SingleProjectileAttack(skillData);
@@ -24,28 +26,17 @@ namespace Scriptable.Weapon
 
         private void SingleProjectileAttack(SkillData skillData)
         {
-            
-            if(_spawnedCompanion == null)
-            {
-                _hasCompanion = false;
+            _companionBar = GameObject.FindWithTag("CompanionBar");
 
-                if (_hasCompanion)
-                {
-                    Destroy(_spawnedCompanion.gameObject);
-                    _spawnedCompanion = Instantiate(_companionToSpawn, skillData.GetMousePosition,
-                        UnityEngine.Quaternion.identity);
-                }
-                
-               
+            _companionChecker = skillData.GetUser.GetComponent<CompanionChecker>();
+            if(!_companionChecker.HasCompanion())
+            {
                 GameObject particleSystem = Instantiate(_spawnEffect, skillData.GetMousePosition,
                     UnityEngine.Quaternion.identity);
 
                 _spawnedCompanion = Instantiate(_companionToSpawn, skillData.GetMousePosition,
                     UnityEngine.Quaternion.identity);
                 
-                _hasCompanion = true;
-                
-                _companionBar = GameObject.FindWithTag("CompanionBar");
                 HealthBarCompanion healthBarCompanion = _companionBar.GetComponent<HealthBarCompanion>();
                 healthBarCompanion.enabled = true;
             
@@ -53,14 +44,15 @@ namespace Scriptable.Weapon
                 {
                     child.gameObject.SetActive(true);
                 }
-
+                
+                _companionChecker.SetCompanion(_spawnedCompanion);
+                    
                 Destroy(particleSystem, 1f);
             }
             else
             {
-                Destroy(_spawnedCompanion.gameObject);
+                _companionChecker.DestroyCompanion();
                 
-                _companionBar = GameObject.FindWithTag("CompanionBar");
                 HealthBarCompanion healthBarCompanion = _companionBar.GetComponent<HealthBarCompanion>();
                 healthBarCompanion.enabled = false;
             
@@ -68,8 +60,6 @@ namespace Scriptable.Weapon
                 {
                     child.gameObject.SetActive(false);
                 }
-                
-                _hasCompanion = false;
             }
             
 

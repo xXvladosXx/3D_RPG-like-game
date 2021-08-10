@@ -3,9 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using Enums;
+using Stats;
 using UnityEngine;
 
-[Serializable]
+namespace Inventories
+{
+
 public class Inventory 
 {
     private List<Item> _inventory;
@@ -16,27 +19,27 @@ public class Inventory
     public void SetInventory(List<Item> items)
     {
         _inventory = items;
+        
     }
     public event EventHandler OnInventoryChanged;
-    public Inventory(Action<Item> useItemAction)
+    public Inventory(Action<Item> useItemAction = null)
     {
         _inventory = new List<Item>();
         _useItemAction = useItemAction;
-        
-        AddItem(new Item{itemType = Item.ItemType.HealthPotion, amount = 3});
-        AddItem(new Item{itemType = Item.ItemType.Gold, amount = 11});
     }
     
     public void AddItem(Item item, int amount = 1)
     {
+        if(item== null) return;
+        item.Amount = amount;
         if (item.IsStackable())
         {
             bool isInInventory = false;
             foreach (Item tempItem in _inventory)
             {
-                if (tempItem.itemType == item.itemType)
+                if (item.IItem != null && tempItem.IItem != null && tempItem.IItem.GetItemType == item.IItem.GetItemType)
                 {
-                    tempItem.amount += item.amount;
+                    tempItem.Amount += amount;
                     isInInventory = true;
                 }
             }
@@ -48,26 +51,29 @@ public class Inventory
         }
         else
         {
-            _inventory.Add(item);
+            for (int i = 0; i < amount; i++)
+            {
+                _inventory.Add(item);
+            }
         }
 
         OnInventoryChanged?.Invoke(this, EventArgs.Empty);
     }
 
-    public void RemoveItem(Item item)
-    {
+    public void RemoveItem(Item item, int amount = 1)
+    { 
         if (item.IsStackable())
         {
             Item isInInventory = null;
             foreach (Item tempItem in _inventory)
             {
-                if (tempItem.itemType == item.itemType)
+                if (tempItem.IItem.GetItemType == item.ItemType)
                 {
-                    tempItem.amount --;
-                    isInInventory = item;
+                    tempItem.Amount -= amount;
+                    isInInventory = tempItem;
                 }
             }
-            if (isInInventory != null && isInInventory.amount <= 0)
+            if (isInInventory != null && isInInventory.Amount <= 0)
             {
                 _inventory.Remove(isInInventory);
             }
@@ -82,13 +88,28 @@ public class Inventory
 
     public void UseItem(Item item)
     {
+        Debug.Log(item.ItemType);
         _useItemAction(item);
         RemoveItem(item);
     }
     
-    public void UsePotion(PotionEnum potion, Health health)
+    public void UsePotion(ItemType itemType, Health health = null, Mana mana = null)
     {
-        health.RegenerateHealth(20);
+        if (mana is { })
+        {
+            mana.RegenerateMana(20);
+            UseItem(new Item{ItemType = itemType});
+        }
+
+        if (health is { })
+        {
+            Debug.Log("wad");
+            health.RegenerateHealth(20);
+            UseItem(new Item{ItemType = itemType});
+        }
+        
     }
 
 }
+}
+

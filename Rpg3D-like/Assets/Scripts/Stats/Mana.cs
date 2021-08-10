@@ -14,7 +14,7 @@ namespace Stats
         private FindStat _findStat;
         [SerializeField] private float _manaCurrent;
         [SerializeField] float _manaMax;
-        [SerializeField] private float _manaSpeedRegeneration = 0.5f;
+        [SerializeField] private float _manaSpeedRegeneration = 1.5f;
         private StatsValueStore _statsValueStore;
 
         private void Awake()
@@ -58,7 +58,7 @@ namespace Stats
         public void CasteSkill(float manaPoints)
         {
             _manaCurrent -= manaPoints;
-            if (OnSkillCast != null) OnSkillCast();
+            OnSkillCast?.Invoke();
         }
 
         private void ManaRegeneration()
@@ -69,6 +69,11 @@ namespace Stats
                 if (_manaCurrent > _manaMax)
                     _manaCurrent = _manaMax;
             }
+        }
+
+        public void RegenerateMana(float regeneration)
+        {
+            _manaCurrent = Mathf.Min(_manaCurrent + regeneration, _manaMax);
         }
     }
 }

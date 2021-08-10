@@ -5,48 +5,47 @@ using UnityEngine;
 
 public class ProjectileAttack : MonoBehaviour
 {
-    [SerializeField] private GameObject _projectileTigger;
+    [SerializeField] private GameObject _projectileTrigger;
     
-    private GameObject _target;
+    private Health _target;
     private GameObject _damager;
     private float _damage;
     private float _speed;
     private Vector3 _targetPoint;
-    private Vector3 normalizeDirection;
-
-    private void Start()
+    
+    private void OnEnable()
     {
-        normalizeDirection = (_targetPoint - transform.position).normalized;
+        transform.LookAt(GetAim());
+        Invoke("Disable", 2f);
     }
 
     private void Update()
     {
-        GetTargetToAttack();
-    }
+        transform.LookAt(GetAim());
+        transform.Translate(Vector3.forward * _speed * Time.deltaTime);
+    }   
 
     private void GetTargetToAttack()
     {
-        if (_target == null)
-        {
-            gameObject.transform.position += normalizeDirection * (_speed*10) * Time.deltaTime;
-            Destroy(gameObject, 3f);
-        }
-        else
-        {
-            transform.LookAt(_target.transform);
+        GetAim();
 
-            if (!_target.GetComponent<Health>().IsDead())
-            {
-                gameObject.transform.position =
-                    Vector3.MoveTowards(gameObject.transform.position,
-                        new Vector3(_target.transform.position.x, _target.GetComponent<CapsuleCollider>().height / 2,
-                            _target.transform.position.z),
-                        _speed / 10);
-            }
-        }
+        transform.Translate(Vector3.forward * _speed * Time.deltaTime);
     }
 
-    public void SetProjectileTarget(GameObject target, GameObject damager, float damage, float speed)
+    private Vector3 GetAim()
+    {
+        if(_target == null) return _targetPoint;
+        
+        CapsuleCollider capsuleCollider = _target.GetComponent<CapsuleCollider>();
+        if (capsuleCollider == null)
+        {
+            return _target.transform.position;
+        }
+
+        return _target.transform.position + Vector3.up * capsuleCollider.height / 2;
+    }
+
+    public void SetProjectileTarget(Health target, GameObject damager, float damage, float speed)
     {
         SetProjectileTarget(damager, damage, speed, target);
     }
@@ -54,9 +53,10 @@ public class ProjectileAttack : MonoBehaviour
     public void SetProjectileTarget(Vector3 targetPoint, GameObject damager, float damage, float speed)
     {
         SetProjectileTarget(damager, damage, speed,null, targetPoint);
+
     }
     
-    public void SetProjectileTarget(GameObject damager, float damage, float speed, GameObject target = null, Vector3 targetPoint=default)
+    private void SetProjectileTarget(GameObject damager, float damage, float speed, Health target = null, Vector3 targetPoint=default)
     {   
         _damager = damager;
         _target = target;
@@ -71,12 +71,24 @@ public class ProjectileAttack : MonoBehaviour
             
         if (!other.gameObject.GetComponent<Health>().IsDead() && other.gameObject != _damager)
         {
-            if (_projectileTigger != null)
-                Instantiate(_projectileTigger, gameObject.transform.position, Quaternion.identity);
+            if (_projectileTrigger != null)
+                Instantiate(_projectileTrigger, gameObject.transform.position, _target.transform.rotation);
                 
-            Destroy(gameObject);
+            Disable();
             other.GetComponent<Health>().TakeDamage(_damage, _damager);
         }
         
+    }
+
+    private void Disable()
+    {
+        gameObject.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        transform.LookAt(GetAim());
+
+        CancelInvoke();
     }
 }

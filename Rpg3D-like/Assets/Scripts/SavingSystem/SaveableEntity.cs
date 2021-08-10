@@ -64,8 +64,6 @@ public class SaveableEntity : MonoBehaviour
 
    private bool IsUnique(string candidate)
    { 
-      print("Here it is");
-
       if(!globalLookThrough.ContainsKey(candidate))
       {
          return true;

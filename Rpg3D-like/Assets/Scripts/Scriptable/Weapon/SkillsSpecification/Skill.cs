@@ -16,7 +16,11 @@ namespace Controller
         [SerializeField] private int _manaCost;
         [SerializeField] private Sprite _image;
         public Sprite GetSkillSprite => _image;
-        
+
+        [SerializeField] private Skill _nextLevelSkill;
+
+        [SerializeField] private Skill[] _previousSkills;
+        public Skill GetNextLevelSkill => _nextLevelSkill;
         [SerializeField] private FilterStrategy[] _filterStrategies;
         [SerializeField] private EffectStrategy[] _effectStrategies;
         [SerializeField] private TargetingStrategy _targetingStrategy;
@@ -36,36 +40,34 @@ namespace Controller
                return;
            }
  
-            if (_animator == null)
-            {
-                _animator = user.GetComponent<Animator>();
-            }
+           if (_animator == null)
+           {
+               _animator = user.GetComponent<Animator>();
+           }
 
-            if(_targetingStrategy == null)
-                return;
+           if(_targetingStrategy == null)
+               return;
 
-            _cooldownSkillManager = user.GetComponent<CooldownSkillManager>();
-            if (_cooldownSkillManager.GetCooldownSkill(this) > 0)
-            {
-                return;
-            }
-           
+           _cooldownSkillManager = user.GetComponent<CooldownSkillManager>();
+           if (_cooldownSkillManager.GetCooldownSkill(this) > 0)
+           {
+               return;
+           }
 
-            TriggerSkill("isCasting", true);
-
-            SkillData skillData = new SkillData(user);
-            ActionScheduler actionScheduler = user.GetComponent<ActionScheduler>();
+           SkillData skillData = new SkillData(user);
+           ActionScheduler actionScheduler = user.GetComponent<ActionScheduler>();
             
-            actionScheduler.StartAction(skillData);
-            
-            _targetingStrategy.StartTargeting(skillData,() =>
-            {
-                AquireTarget(skillData, mana);
-            }, Cancel);
+           actionScheduler.StartAction(skillData);
+
+           _targetingStrategy.StartTargeting(skillData,() =>
+           {
+               AquireTarget(skillData, mana);
+           }, Cancel);
        }
 
         private void AquireTarget(SkillData skillData, Mana mana)
         { 
+
             OnSkillInteract?.Invoke();
             
             if(skillData.IsCancelled) return;
@@ -79,31 +81,28 @@ namespace Controller
                skillData.SetTargets(filterStrategy.Filter(skillData.GetTargets));
            }
            
-           skillData.GetUser.transform.LookAt(skillData.GetMousePosition);
 
            foreach (var attackTarget in _effectStrategies)
            {
+               skillData.GetUser.transform.LookAt(skillData.GetMousePosition);
+
                attackTarget.Effect(skillData, EffectFinished);
            }
 
-           TriggerSkill("isCasting", false);
         }
 
         private void EffectFinished()
         {
-            
-        }
-
-        private void TriggerSkill(String animation, bool flag)
-        {
-            _animator.SetBool(animation, flag);
+            if (_previousSkills.Length <= 0) return;
+            foreach (var skill in _previousSkills)
+            {
+                skill.CasteSkill(FindObjectOfType<PlayerController>().gameObject);
+            }
         }
 
         public void Cancel()
         {
-            Debug.Log("interaterd");
             OnSkillInteract?.Invoke();
-            TriggerSkill("isCasting", false);
         }
     }
 }

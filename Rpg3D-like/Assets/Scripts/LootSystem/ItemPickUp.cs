@@ -1,36 +1,78 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Inventories;
+using UI.Cursor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class ItemPickUp : MonoBehaviour
+namespace Inventories
 {
-    [Serializable]
-    public class ItemInfo
+    public class ItemPickUp : MonoBehaviour, IRaycastable
     {
-        public Item.ItemType ItemType;
-        public GameObject Item;
-        public int Amount;
-    }
-
-    [SerializeField] private ItemInfo[] _itemsInfo;
-    [SerializeField] private int _minSoul;
-    [SerializeField] private int _maxSoul;
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent(out PlayerController playerController))
+        [Serializable]
+        public class ItemInfo
         {
-            foreach (var itemInfo in _itemsInfo)
-            {
-                if(itemInfo.Amount == 0)
-                    itemInfo.Amount = Random.Range(_minSoul, _maxSoul);
-                
-                if(!other.GetComponent<PlayerInventory>().HasEnoughPlace()) return;
-                    other.GetComponent<PlayerInventory>().InventoryPlacerItem(itemInfo.ItemType, itemInfo.Amount);
-            }
-            
-            Destroy(gameObject);
+            public Item Item;
+            public int Amount;
+            public GameObject ItemPrefab;
         }
+    
+        [SerializeField] private ItemInfo[] _itemsInfo;
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.TryGetComponent(out PlayerController playerController))
+            {
+                foreach (var itemInfo in _itemsInfo)
+                {
+                    if(!other.GetComponent<PlayerInventory>().HasEnoughPlace()) return;
+                        other.GetComponent<PlayerInventory>().InventoryPlacerItem(itemInfo.Item.ItemType, itemInfo.Amount);
+                }
+                
+                Destroy(gameObject);
+            }
+        }
+
+        public PlayerController.CursorType GetCursorType()
+        {
+            return PlayerController.CursorType.PickUp;
+        }
+
+        public bool HandleRaycast(PlayerController player)
+        {
+            if (Input.GetMouseButton(0))
+            {
+                player.GetComponent<Movement>().StartMoveToAction(gameObject.transform.position, 1f);
+            }
+            return true;
+        }
+    }
+    
+    public enum ItemType
+    {
+        Unexisted,
+        
+        Sword0,
+        Sword1,
+        Sword2,
+        Sword3,
+        Sword4,
+    
+        Bow0,
+        Bow1,
+        Bow2,
+        Bow3,
+        Bow4,
+    
+        HealthPotion,
+    }
+    
+    public enum ItemCategory
+    {
+        None,
+        Weapon,
+        Armour,
+        Potion
+
     }
 }

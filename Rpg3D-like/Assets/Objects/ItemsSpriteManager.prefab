@@ -43,9 +43,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbf083fcb99899443ad7f0179f7d7c89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabItemTransform: {fileID: 0}
-  SwordSprite: {fileID: 21300000, guid: ce8d484039900f748b6ca3d19d29a9fa, type: 3}
-  BowSprite: {fileID: 21300000, guid: 41407543d3fbd874bbe1f81ed841bc10, type: 3}
-  HealthPotionSprite: {fileID: 21300000, guid: 9e4fbebb6cde952428e19243aeb3289f, type: 3}
+  SwordSprite0: {fileID: 21300000, guid: 11b4f9e4aaa3bdb4f8d3f9d5e17a7c06, type: 3}
+  SwordSprite1: {fileID: 21300000, guid: 0f242f46dc1dde941833a1d7c7e672ab, type: 3}
+  SwordSprite2: {fileID: 21300000, guid: f1a68b4d96090bf40a11d92f82d12db2, type: 3}
+  SwordSprite3: {fileID: 21300000, guid: dc9854d45a9eec8439dba3b8baacbbcf, type: 3}
+  SwordSprite4: {fileID: 21300000, guid: 2f3772202c10e004ca7215a7a00bcf83, type: 3}
+  BowSprite0: {fileID: 21300000, guid: 98e4aa2740372b142b2903fa3bd7b7a8, type: 3}
+  BowSprite1: {fileID: 21300000, guid: 96d76e67641cdb249bcc3da2b427a714, type: 3}
+  BowSprite2: {fileID: 21300000, guid: 96f47b59ef4e66a409af66009f32a129, type: 3}
+  BowSprite3: {fileID: 21300000, guid: f30485f4602d8d443a838b3d8372cc19, type: 3}
+  BowSprite4: {fileID: 21300000, guid: 753280d24f43c214ba9282522b4dd125, type: 3}
+  HealthPotionSprite: {fileID: 21300000, guid: cd57493d4a17891448f4110fab0eece2, type: 3}
   ManaPotionSprite: {fileID: 21300000, guid: fd10626a10c79644dbde2e6f1b1476b9, type: 3}
   GoldSprite: {fileID: 21300000, guid: 33ae274aa946dfe459692bec7cecbdcc, type: 3}

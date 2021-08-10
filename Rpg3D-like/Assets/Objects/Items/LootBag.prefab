@@ -58,19 +58,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c79074d3f97924f40bf71093df711cb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _myClass:
-  - _itemType: 3
-    _amount: 0
-    _minSoul: 1
-    _maxSoul: 111
-  - _itemType: 2
-    _amount: 0
-    _minSoul: 0
-    _maxSoul: 2
-  - _itemType: 1
-    _amount: 0
-    _minSoul: 1
-    _maxSoul: 1
+  _itemsInfo:
+  - Item:
+      ItemType: 11
+      amount: 100
+    ItemPrefab: {fileID: 932527724149973423}
+  _minSoul: 0
+  _maxSoul: 0
 --- !u!1001 &932527723489775790
 PrefabInstance:
   m_ObjectHideFlags: 0

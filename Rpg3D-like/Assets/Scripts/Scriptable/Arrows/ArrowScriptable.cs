@@ -25,6 +25,6 @@ public class ArrowScriptable : ScriptableObject
         _attacker = damager.gameObject;
         _projectileInstance = Instantiate(_projectile, new Vector3(damager.position.x, damager.GetComponent<CapsuleCollider>().height/2, damager.position.z) , Quaternion.identity);
         
-        _projectileInstance.GetComponent<ProjectileAttack>().SetProjectileTarget(_target, damager.gameObject, _damage + currentDamage, _speed);
+        _projectileInstance.GetComponent<ProjectileAttack>().SetProjectileTarget(_target.GetComponent<Health>(), damager.gameObject, _damage + currentDamage, _speed);
     }
 }

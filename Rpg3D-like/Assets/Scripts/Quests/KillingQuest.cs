@@ -18,7 +18,7 @@ namespace Quests
 
         private GameObject _player;
 
-        public override void InitQuest(GameObject questGiver, Action completed)
+        public override void InitQuest(Action completed)
         {
             _player = GameObject.FindWithTag("Player");
 

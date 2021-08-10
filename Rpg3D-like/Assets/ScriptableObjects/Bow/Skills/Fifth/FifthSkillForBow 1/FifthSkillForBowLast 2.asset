@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 284e5252b2c84b90be29743a6d843eef, type: 3}
+  m_Name: FifthSkillForBowLast 2
+  m_EditorClassIdentifier: 
+  _cooldown: 10
+  _manaCost: 50
+  _image: {fileID: 21300000, guid: a1bf967fe8ff15041b96200e52b73720, type: 3}
+  _nextLevelSkill: {fileID: 0}
+  _previousSkills: []
+  _filterStrategies:
+  - {fileID: 11400000, guid: f2a2c7f5e1005974ca592462c946060d, type: 2}
+  _effectStrategies:
+  - {fileID: 11400000, guid: b5ad7fe118a51814eaf69ba5b8446535, type: 2}
+  - {fileID: 11400000, guid: 6a11cb1a0949a814cb56d66df2927083, type: 2}
+  _targetingStrategy: {fileID: 11400000, guid: 9753a4d3833e43e4f8f75d2e9b144017, type: 2}

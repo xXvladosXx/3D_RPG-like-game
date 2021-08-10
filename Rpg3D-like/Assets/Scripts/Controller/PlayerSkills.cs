@@ -11,6 +11,12 @@ public class PlayerSkills : MonoBehaviour
 {
     [SerializeField] private Skill[] _playerSkills;
     public Skill[] GetPlayerSkills => _playerSkills;
+
+    public void SetNewLevelSkill(int index)
+    {
+        _playerSkills[index] = _playerSkills[index].GetNextLevelSkill;
+        OnSkillsChanged?.Invoke();
+    }
     [SerializeField] private SkillBarPlayer _skillBarPlayer;
 
     private Skill _previousSkill;
@@ -52,6 +58,11 @@ public class PlayerSkills : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha4) && this._playerSkills.Length >= 4 && _isAbleToUseSkill)
         {
             InteractWithSkill(3);
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Alpha5) && this._playerSkills.Length >= 5 && _isAbleToUseSkill)
+        {
+            InteractWithSkill(4);
         }
         
     }

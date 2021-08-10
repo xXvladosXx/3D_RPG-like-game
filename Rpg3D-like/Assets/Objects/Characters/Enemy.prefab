@@ -273,7 +273,7 @@ MonoBehaviour:
   _attackSpeed: 2
   _rightHandTransform: {fileID: 7083142404836281063}
   _leftHandTransform: {fileID: 7085167090003369047}
-  _defaultWeaponName: Sword
+  _defaultWeaponName: Sword 0
   _defaultWeapon: {fileID: 11400000, guid: 2681e94824ed50c46b7f19c09568732b, type: 2}
   _currentWeapon: {fileID: 0}
   _defaultDamage: 1
@@ -421,7 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7519b89026250424089e289f69bf2baf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _uniqueIdentifier: 946ac161-aee9-431c-8f31-de7f4278a3e9
+  _uniqueIdentifier: 7fbc8fb7-9e1f-419d-a4c1-d5437854ed2a
 --- !u!114 &1421405680
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ namespace Quests
         [SerializeField] private float _experience;
         [SerializeField] private string _questName;
         
-        public override void InitQuest(GameObject questGiver, Action completed)
+        public override void InitQuest(Action completed)
         {
             GameObject player = GameObject.FindWithTag("Player");
 

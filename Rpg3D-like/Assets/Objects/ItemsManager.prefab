@@ -43,9 +43,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b96fb692d8e44b0801d624218173bfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bowPickUp: {fileID: 1498676120, guid: cdb9750c6581dd24099ac97abe210fb0, type: 3}
-  _swordPickUp: {fileID: 1498676120, guid: b8d3d79f1b5803249b08a9918d69e119, type: 3}
   _items:
-  - ItemType: 2
-    Item: {fileID: 173500, guid: fb5a9652227c545d98a413cd73b80b69, type: 3}
-    Amount: 0
+  - Item:
+      ItemType: 0
+      amount: 1
+    ItemPrefab: {fileID: 4450941199624973008, guid: b8d3d79f1b5803249b08a9918d69e119, type: 3}
+  - Item:
+      ItemType: 1
+      amount: 1
+    ItemPrefab: {fileID: 4450941199624973008, guid: 4be1fc87ff361de45a94e1f6425112c4, type: 3}
+  - Item:
+      ItemType: 2
+      amount: 1
+    ItemPrefab: {fileID: 4450941199624973008, guid: bc49551b3ab840b43b8199df8bc3853e, type: 3}
+  - Item:
+      ItemType: 3
+      amount: 1
+    ItemPrefab: {fileID: 4450941199624973008, guid: 8dcd3e8d95cc97b47a4f64253d618853, type: 3}
+  - Item:
+      ItemType: 4
+      amount: 1
+    ItemPrefab: {fileID: 4450941199624973008, guid: 76defb22f8fa5f9468fa4141be7cd27b, type: 3}
+  - Item:
+      ItemType: 5
+      amount: 1
+    ItemPrefab: {fileID: 4450941199624973008, guid: cdb9750c6581dd24099ac97abe210fb0, type: 3}
+  - Item:
+      ItemType: 6
+      amount: 1
+    ItemPrefab: {fileID: 4450941199624973008, guid: 3cb16c30e6041b5458dc85a8200aa54f, type: 3}
+  - Item:
+      ItemType: 7
+      amount: 1
+    ItemPrefab: {fileID: 4450941199624973008, guid: c1adc09ae99c97d4e9304c98ac737d76, type: 3}
+  - Item:
+      ItemType: 8
+      amount: 1
+    ItemPrefab: {fileID: 4450941199624973008, guid: 74f8acf5ae408b0448df73ec96af43a8, type: 3}
+  - Item:
+      ItemType: 9
+      amount: 1
+    ItemPrefab: {fileID: 4450941199624973008, guid: d73d580b624c1f54e827550337b2680d, type: 3}

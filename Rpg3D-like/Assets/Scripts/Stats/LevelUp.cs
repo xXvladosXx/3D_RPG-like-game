@@ -7,19 +7,16 @@ using UnityEngine;
 public class LevelUp : MonoBehaviour, ISaveable
 {
     [SerializeField] private float _currentExp;
-    private FindStat _findStat;
     public event Action OnExperienceGained;
     
     [SerializeField] private ParticleSystem _levelUpEffect;
-    private void Awake()
-    {
-        _findStat = GetComponent<FindStat>();
-        _currentExp = _findStat.GetStat(StatsEnum.Experience);
 
-    }
-
-    private void Start()
+    private void Update()
     {
+        if (Input.GetKey(KeyCode.E))
+        {
+            ExperienceReward(Time.deltaTime*10);
+        }
     }
 
     public float GetExperience()
@@ -30,7 +27,7 @@ public class LevelUp : MonoBehaviour, ISaveable
     public void ExperienceReward(float experience)
     {
         _currentExp += experience;
-        if (OnExperienceGained != null) OnExperienceGained();
+        OnExperienceGained?.Invoke();
     }
   
     public void SpawnLevelUpEffect()

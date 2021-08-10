@@ -6,7 +6,7 @@ using UnityEngine;
 
 public abstract class InitializationQuest : ScriptableObject
 {
-    public abstract void InitQuest(GameObject questGiver, Action completed);
+    public abstract void InitQuest(Action completed);
     public abstract GameObject GetAim();
 }
 

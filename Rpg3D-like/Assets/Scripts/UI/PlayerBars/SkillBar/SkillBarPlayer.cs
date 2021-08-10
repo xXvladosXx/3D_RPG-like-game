@@ -30,13 +30,13 @@ namespace UI.SkillBar
             {
                 foreach (var skillBox in _childSkillsList.Values)
                 {
-                    skillBox.GetComponent<Image>().sprite = _sprite;
+                    skillBox.GetComponentInChildren<Image>().sprite = _sprite;
                 }
                 
                 _skillIndex = 0;
                 foreach (var skill in _playerSkills.GetPlayerSkills)
                 {
-                    var skillGetSkillSprite = _childSkillsList[_skillIndex].GetComponent<Image>();
+                    var skillGetSkillSprite = _childSkillsList[_skillIndex].GetComponentInChildren<Image>();
                     skillGetSkillSprite.sprite = skill.GetSkillSprite;
                     _skillIndex++;
                 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Controller;
 using Scriptable.Weapon;
 using UnityEngine;
@@ -9,14 +10,25 @@ using Random = UnityEngine.Random;
 [CreateAssetMenu(fileName = "Weapon", menuName = "ScriptableObjects/Weapon", order = 1)]
 public class WeaponScriptable : ScriptableObject
 {
-    
+    [SerializeField] private WeaponScriptable _previousWeaponUpgrade;
     [SerializeField] private GameObject _prefabWeapon;
     [SerializeField] private AnimatorOverrideController _weaponOverrideController;
-    [SerializeField] private Item.ItemType _itemType;
-    [SerializeField] private Item.ItemLevel _itemLevel; 
     [SerializeField] private ArrowScriptable _arrow;
     [SerializeField] private Skill[] _weaponSkills;
-    public Skill[] GetWeaponSkills => _weaponSkills;
+
+    private Skill[] GetPreviousWeaponSkills()
+    {
+        return _previousWeaponUpgrade!=null ? _previousWeaponUpgrade.GetCurrentWeaponSkills() : null;
+    }
+
+    private Skill[] GetCurrentWeaponSkills()
+    {
+        return _weaponSkills;
+    }
+    public Skill[] GetWeaponSkills()
+    {
+        return GetPreviousWeaponSkills() == null ? GetCurrentWeaponSkills() : GetCurrentWeaponSkills().Concat(GetPreviousWeaponSkills()).ToArray();
+    }
 
     [SerializeField] private float _damage = 1f;
     public float GetDamage => _damage;
@@ -75,11 +87,4 @@ public class WeaponScriptable : ScriptableObject
     {
         return _arrow;
     }
-    
-    public Item.ItemType GetItemType()
-    {
-        return _itemType;
-    }
-    
-    
 }

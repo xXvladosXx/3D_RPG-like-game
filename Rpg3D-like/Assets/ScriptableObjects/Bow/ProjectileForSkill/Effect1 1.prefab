@@ -9234,7 +9234,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4805788057881982}
-  - component: {fileID: 114503623341167234}
   m_Layer: 0
   m_Name: Collision
   m_TagString: Untagged
@@ -9257,37 +9256,6 @@ Transform:
   m_Father: {fileID: 4709693737692316}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114503623341167234
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1526951460247498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9320f3afef659b64cb7316ce3c0bfbab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UseCollisionDetect: 1
-  MaxDistnace: -1
-  Mass: 1
-  Speed: 80
-  RandomSpeedOffset: 0
-  AirDrag: 0.1
-  UseGravity: 0
-  ForceMode: 1
-  AddRealtimeForce: {x: 0, y: 0, z: 0}
-  MinSpeed: 0
-  ColliderRadius: 0.05
-  FreezeRotation: 0
-  UseTargetPositionAfterCollision: 0
-  EffectOnCollision: {fileID: 145962, guid: a61618b17590c45429257dd0092ca327, type: 3}
-  CollisionEffectInWorldSpace: 1
-  LookAtNormal: 1
-  CollisionEffectDestroyAfter: 5
-  DeactivateObjectsAfterCollision: []
-  HUE: -1
 --- !u!1 &1748139164946814
 GameObject:
   m_ObjectHideFlags: 0
@@ -9297,7 +9265,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4709693737692316}
-  - component: {fileID: 114595567569386552}
   - component: {fileID: 8115220934874700093}
   - component: {fileID: -2806774077934315732}
   m_Layer: 0
@@ -9322,32 +9289,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114595567569386552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1748139164946814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97fa9d480f3b21744a9ed30ffa97c4d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ParticlesBudget: 1
-  UseLightShadows: 0
-  UseFastFlatDecalsForMobiles: 1
-  UseCustomColor: 0
-  EffectColor: {r: 1, g: 0, b: 0, a: 1}
-  IsVisible: 1
-  FadeoutTime: 0.41
-  UseCollisionDetection: 0
-  LimitMaxDistance: 0
-  MaxDistnace: -1
-  Mass: 1
-  Speed: 50
-  AirDrag: 0
-  UseGravity: 0
 --- !u!114 &8115220934874700093
 MonoBehaviour:
   m_ObjectHideFlags: 0

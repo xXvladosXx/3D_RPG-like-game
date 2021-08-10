@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class SkillBox : MonoBehaviour
@@ -9,6 +10,8 @@ public class SkillBox : MonoBehaviour
     [SerializeField] private GameObject _player;
     [SerializeField] private GameObject _cooldown;
     [SerializeField] private int _skillIndex;
+
+    public int GetIndex => _skillIndex;
     
     private PlayerSkills _playerSkills;
     private CooldownSkillManager _cooldownSkillManager;

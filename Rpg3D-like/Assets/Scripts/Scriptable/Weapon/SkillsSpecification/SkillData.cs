@@ -9,6 +9,7 @@ namespace Scriptable.Weapon
     {
         private GameObject _user;
         public GameObject GetUser => _user;
+              
         private bool _cancelled = false;
         public bool IsCancelled => _cancelled;
 
@@ -41,7 +42,7 @@ namespace Scriptable.Weapon
         { 
             _cancelled = true;
         }
-        
+
         
     }
 }

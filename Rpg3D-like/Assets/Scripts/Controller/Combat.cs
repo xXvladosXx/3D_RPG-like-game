@@ -25,17 +25,12 @@ public class Combat : MonoBehaviour, IAction, IModifierStat, ISaveable
 
     [SerializeField] private float _defaultDamage = 1f;
     [SerializeField] private float _currentDamage = 1f;
+    public float GetCurrentDamage => _currentDamage;
     
-    private Health _health;
     private bool _isWeaponEquipped = false;
-
-    
-    public Transform GetTarget => _target;
-
     
     private void Awake()
     {
-        _health = GetComponent<Health>();
         _animator = GetComponent<Animator>();
         _actionScheduler = GetComponent<ActionScheduler>();
         _findStat = GetComponent<FindStat>();
@@ -44,11 +39,6 @@ public class Combat : MonoBehaviour, IAction, IModifierStat, ISaveable
         _defaultWeapon = weaponScriptable;
     }
 
-    private void Start()
-    {
-        //f(_currentWeapon == null)
-            //EquipWeapon(_defaultWeapon);
-    }
 
     void Update()
     {
@@ -76,7 +66,7 @@ public class Combat : MonoBehaviour, IAction, IModifierStat, ISaveable
         }
     }
 
-    public Transform FindNewTarget()
+    private Transform FindNewTarget()
     {
         CombatTarget[] targets = FindObjectsOfType<CombatTarget>();
         float minDistance = 3f;
@@ -104,7 +94,7 @@ public class Combat : MonoBehaviour, IAction, IModifierStat, ISaveable
     }
 
 
-    public bool GetDistance()
+    private bool GetDistance()
     {
         return Vector3.Distance(gameObject.transform.position, _target.transform.position) < _attackRange;
     }
@@ -160,8 +150,7 @@ public class Combat : MonoBehaviour, IAction, IModifierStat, ISaveable
         
         if (gameObject.TryGetComponent(out PlayerController playerController))
         {
-            GetComponent<PlayerInventory>().InventoryPlacerWeapon(weapon);
-            GetComponent<PlayerSkills>().SetPlayerSkills(weapon.GetWeaponSkills);
+            GetComponent<PlayerSkills>().SetPlayerSkills(weapon.GetWeaponSkills());
         }
         
         Animator animator = GetComponent<Animator>();
@@ -182,9 +171,12 @@ public class Combat : MonoBehaviour, IAction, IModifierStat, ISaveable
     
     public IEnumerable<float> GetStatModifier(StatsEnum stat)
     {
-        if (stat == StatsEnum.Damage)
+        if (_currentWeapon != null)
         {
-            yield return _currentWeapon.GetDamage;
+            if (stat == StatsEnum.Damage)
+            {
+                yield return _currentWeapon.GetDamage;
+            }
         }
     }
     

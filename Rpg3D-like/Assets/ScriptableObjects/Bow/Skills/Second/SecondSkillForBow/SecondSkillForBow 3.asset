@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 284e5252b2c84b90be29743a6d843eef, type: 3}
+  m_Name: SecondSkillForBow 3
+  m_EditorClassIdentifier: 
+  _cooldown: 4
+  _manaCost: 50
+  _image: {fileID: 21300000, guid: 06fd18faa147f3e4dbf4d6206ff581a6, type: 3}
+  _nextLevelSkill: {fileID: 0}
+  _filterStrategies:
+  - {fileID: 11400000, guid: f2a2c7f5e1005974ca592462c946060d, type: 2}
+  _effectStrategies:
+  - {fileID: 11400000, guid: b5ad7fe118a51814eaf69ba5b8446535, type: 2}
+  - {fileID: 11400000, guid: 6743d369f5a7a2947825747779aa6453, type: 2}
+  _targetingStrategy: {fileID: 11400000, guid: 2bcf37b1dcdbc3b4eb15d2c0cba7c404, type: 2}

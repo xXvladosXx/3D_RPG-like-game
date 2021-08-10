@@ -13,10 +13,13 @@ namespace UI.StatModifing
 
         private StatsValueStore _statsValue;
 
-        private void Start()
+        private void Awake()
         {
             _statsValue = FindObjectOfType<PlayerController>().GetComponent<StatsValueStore>();
-            
+        }
+
+        private void Start()
+        {
             _confirmButton.onClick.AddListener( _statsValue.Confirm );
         }
 

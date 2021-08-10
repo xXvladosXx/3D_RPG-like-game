@@ -52,7 +52,7 @@ public class FindStat : MonoBehaviour
             _currentLevel = newLevel;
             levelUp.SpawnLevelUpEffect();
 
-            if (OnLevelUp != null) OnLevelUp();
+            OnLevelUp?.Invoke();
         }
     }
     
