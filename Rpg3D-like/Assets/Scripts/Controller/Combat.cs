@@ -18,7 +18,7 @@ public class Combat : MonoBehaviour, IAction, IModifierStat, ISaveable
     private ActionScheduler _actionScheduler;
     private FindStat _findStat;
     
-    [SerializeField] private string _defaultWeaponName = "Sword";
+    [SerializeField] private string _defaultWeaponName = "Sword 0";
     
     [SerializeField] private WeaponScriptable _defaultWeapon = null;
     [SerializeField] private WeaponScriptable _currentWeapon;
@@ -37,6 +37,7 @@ public class Combat : MonoBehaviour, IAction, IModifierStat, ISaveable
         
         WeaponScriptable weaponScriptable = Resources.Load<WeaponScriptable>(_defaultWeaponName);
         _defaultWeapon = weaponScriptable;
+        EquipWeapon(weaponScriptable);
     }
 
 
@@ -150,6 +151,7 @@ public class Combat : MonoBehaviour, IAction, IModifierStat, ISaveable
         
         if (gameObject.TryGetComponent(out PlayerController playerController))
         {
+            if(GetComponent<PlayerSkills>() == null) return;
             GetComponent<PlayerSkills>().SetPlayerSkills(weapon.GetWeaponSkills());
         }
         

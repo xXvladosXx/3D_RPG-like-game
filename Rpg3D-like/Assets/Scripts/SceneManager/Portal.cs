@@ -21,10 +21,8 @@ public class Portal : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.TryGetComponent(out PlayerController playerController))
         {
-            print("PlayerCollided");
-
             StartCoroutine(WaitSceneToLoad()); 
         }
     }
@@ -34,7 +32,9 @@ public class Portal : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         SavingHandler savingHandler = FindObjectOfType<SavingHandler>();
         savingHandler.Save(_defaultSaveFile);
-        
+        LevelLoader.Instance.StartFading();
+
+        yield return new WaitForSeconds(1f);
         yield return SceneManager.LoadSceneAsync(_sceneToLoad);
         
         savingHandler.Load(_defaultSaveFile);
@@ -55,7 +55,6 @@ public class Portal : MonoBehaviour
         player.transform.rotation = otherPortal._spawnPoint.rotation;
         
         player.GetComponent<NavMeshAgent>().enabled = true;
-
     }
 
     private Portal GetOtherPortal()

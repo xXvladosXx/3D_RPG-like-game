@@ -1,0 +1,1842 @@
+Using pre-set license
+Built from '2020.3/release' branch; Version is '2020.3.2f1 (8fd9074bf66c) revision 9427207'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Pro; OS build 19043.1165; Version 2009; 64bit' Language: 'ru' Physical Memory: 16329 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2020.3.2f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker1
+-projectPath
+C:/Users/glek/Documents/GitHub/3D_RPG-like-game/Rpg3D-like
+-logFile
+Logs/AssetImportWorker1.log
+-srvPort
+59028
+Successfully changed project path to: C:/Users/glek/Documents/GitHub/3D_RPG-like-game/Rpg3D-like
+C:/Users/glek/Documents/GitHub/3D_RPG-like-game/Rpg3D-like
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 93.78 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.2f1 (8fd9074bf66c)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.2f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/glek/Documents/GitHub/3D_RPG-like-game/Rpg3D-like/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: Radeon RX 580 Series (ID=0x67df)
+    Vendor:   
+    VRAM:     8171 MB
+    Driver:   27.20.21002.112
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.2f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.2f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.2f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56576
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001484 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 99.25 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.082 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.001122 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.06 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.744 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 1.18 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1887 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 133.8 MB.
+System memory in use after: 132.9 MB.
+
+Unloading 13 unused Assets to reduce memory usage. Loaded Objects now: 2360.
+Total: 2.127400 ms (FindLiveObjects: 0.267000 ms CreateObjectMapping: 0.083000 ms MarkObjects: 1.319200 ms  DeleteObjects: 0.457200 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Objects/Characters/Core Variant.prefab
+  artifactKey: Guid(530b3aa6019acd944855900ca4820937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Objects/Characters/Core Variant.prefab using Guid(530b3aa6019acd944855900ca4820937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '881679e0fcf51064684a9cc4ce3280d3') in 0.269643 seconds
+  Import took 0.281612 seconds .
+
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 1.50 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 90.0 MB.
+System memory in use after: 89.2 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2363.
+Total: 2.584100 ms (FindLiveObjects: 0.241300 ms CreateObjectMapping: 0.048000 ms MarkObjects: 1.790900 ms  DeleteObjects: 0.502300 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 22.013420 seconds.
+  path: Assets/Scenes/SampleScene.unity
+  artifactKey: Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/SampleScene.unity using Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a545984aa38e631d9fc497a90c2bc630') in 0.001979 seconds
+  Import took 0.005302 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 56.989430 seconds.
+  path: Assets/Scenes/Sandbox2.unity
+  artifactKey: Guid(ccad5e81c5ce9aa45b4192cb06b5cd6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Sandbox2.unity using Guid(ccad5e81c5ce9aa45b4192cb06b5cd6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2198d8d449416631ad3ebd31b17810e2') in 0.001820 seconds
+  Import took 0.004738 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001330 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.06 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.682 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.07 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1746 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 121.4 MB.
+System memory in use after: 120.5 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2366.
+Total: 2.032900 ms (FindLiveObjects: 0.232300 ms CreateObjectMapping: 0.043500 ms MarkObjects: 1.232900 ms  DeleteObjects: 0.523400 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 105.041851 seconds.
+  path: Assets/Scenes/Main menu.unity
+  artifactKey: Guid(f933fab75f3a39a40ba96769b7f90a34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Main menu.unity using Guid(f933fab75f3a39a40ba96769b7f90a34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fca3a52a50b3b7d764453da3feffc676') in 0.010874 seconds
+  Import took 0.014364 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001260 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.06 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.679 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.07 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1746 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 121.4 MB.
+System memory in use after: 120.6 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2369.
+Total: 2.200200 ms (FindLiveObjects: 0.277500 ms CreateObjectMapping: 0.045100 ms MarkObjects: 1.320300 ms  DeleteObjects: 0.556400 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 282.112875 seconds.
+  path: Assets/Scenes/Main menu.unity
+  artifactKey: Guid(f933fab75f3a39a40ba96769b7f90a34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Main menu.unity using Guid(f933fab75f3a39a40ba96769b7f90a34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3264037fd092ab70d6f137e178ec510c') in 0.011243 seconds
+  Import took 0.014583 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001450 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.12 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.669 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.04 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1746 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 121.5 MB.
+System memory in use after: 120.6 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2372.
+Total: 2.180900 ms (FindLiveObjects: 0.193000 ms CreateObjectMapping: 0.049900 ms MarkObjects: 1.380400 ms  DeleteObjects: 0.556400 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 385.815431 seconds.
+  path: Assets/Scenes/SampleScene.unity
+  artifactKey: Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/SampleScene.unity using Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '47bf3afedff80d3b5951fb39221985f6') in 0.011137 seconds
+  Import took 0.014801 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 24.989338 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_00_Static.prefab
+  artifactKey: Guid(e3644ff54dc458f4fa481c16ed4e8fda) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_00_Static.prefab using Guid(e3644ff54dc458f4fa481c16ed4e8fda) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a6bbc856bf1b8509820da6feccb0387b') in 0.063580 seconds
+  Import took 0.066669 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000172 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_05_Static.prefab
+  artifactKey: Guid(5381229e9e4ad4d488a3d2d619eb6c05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_05_Static.prefab using Guid(5381229e9e4ad4d488a3d2d619eb6c05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2211034735110fe9a701387f1f5a6d0d') in 0.010649 seconds
+  Import took 0.013370 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000183 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_17_Static.prefab
+  artifactKey: Guid(28b94d5869447574e9dc88683c683b2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_17_Static.prefab using Guid(28b94d5869447574e9dc88683c683b2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '68bfee3355160e49476bb4442f3ee74a') in 0.012844 seconds
+  Import took 0.015895 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000164 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_00_Static.prefab
+  artifactKey: Guid(4434848510878594fa2f4f7c3cc414e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_00_Static.prefab using Guid(4434848510878594fa2f4f7c3cc414e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e19d12bee9efcafbf96c678f3a954c66') in 0.009685 seconds
+  Import took 0.012786 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000189 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_10_Static.prefab
+  artifactKey: Guid(b8f7150319ee76742b9fbe541c86a6c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_10_Static.prefab using Guid(b8f7150319ee76742b9fbe541c86a6c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '092ae9689d874ad35e3f1b6e12b44c9d') in 0.009517 seconds
+  Import took 0.012279 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000186 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_07_Static.prefab
+  artifactKey: Guid(db35ac4f61cb13447b39c278ab2fe6f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_07_Static.prefab using Guid(db35ac4f61cb13447b39c278ab2fe6f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '254b4d5bbcaec4123c366863f5c706c7') in 0.009649 seconds
+  Import took 0.012514 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000207 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_04_Static.prefab
+  artifactKey: Guid(65116c422bde28745b4bccc8e7676b42) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_04_Static.prefab using Guid(65116c422bde28745b4bccc8e7676b42) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b75f7f2b26bf185fb1d8821929d43e25') in 0.009309 seconds
+  Import took 0.012144 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000222 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_02_Static.prefab
+  artifactKey: Guid(f8c6342af532cbb40b089cbf7f9626bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_02_Static.prefab using Guid(f8c6342af532cbb40b089cbf7f9626bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '54f5fd533c54121192a8f8f5250bb784') in 0.010623 seconds
+  Import took 0.013953 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000207 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_12_Static.prefab
+  artifactKey: Guid(94cfff91c774e8d43a88e9874b4d0b01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_12_Static.prefab using Guid(94cfff91c774e8d43a88e9874b4d0b01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0b80e596f7a7bcbabf0f5453dffe8914') in 0.008944 seconds
+  Import took 0.012140 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000203 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_05_Static.prefab
+  artifactKey: Guid(855c8c2ce24a2d04e9e2522cd0385f5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_05_Static.prefab using Guid(855c8c2ce24a2d04e9e2522cd0385f5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e314aaa5c2596a8a0cac64e6f4649f05') in 0.009857 seconds
+  Import took 0.013019 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000198 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_17_Static.prefab
+  artifactKey: Guid(c7c7cd1e2a23061458ad1de57f931331) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_17_Static.prefab using Guid(c7c7cd1e2a23061458ad1de57f931331) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eef79911ac56af3049fcbc3d1d277b47') in 0.010505 seconds
+  Import took 0.013568 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000185 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_09_Static.prefab
+  artifactKey: Guid(831c7af18f949ef44a5676fc09bab35c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_09_Static.prefab using Guid(831c7af18f949ef44a5676fc09bab35c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '424a12b9346a73b8a7a840d271ecd882') in 0.010782 seconds
+  Import took 0.013597 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000182 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_03_Static.prefab
+  artifactKey: Guid(6eba0bb3e36316f4d8fd99c1a436df80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_03_Static.prefab using Guid(6eba0bb3e36316f4d8fd99c1a436df80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a9019fcb32f8897643239e7c4b61abb3') in 0.012631 seconds
+  Import took 0.015433 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000198 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_03_Static.prefab
+  artifactKey: Guid(c54015ccc22c743419f36096e22d471b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_03_Static.prefab using Guid(c54015ccc22c743419f36096e22d471b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a4f361ce44588c84d7e7c23d716d9e49') in 0.009832 seconds
+  Import took 0.012965 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000184 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_15_Static.prefab
+  artifactKey: Guid(fd71b5e8d8da8a542b7222bc43ce7e71) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_15_Static.prefab using Guid(fd71b5e8d8da8a542b7222bc43ce7e71) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4260a9d7abde598d324d8413e1e053b4') in 0.010728 seconds
+  Import took 0.014057 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000185 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_14_Static.prefab
+  artifactKey: Guid(b778af8f9667c6e469f59a0ec4c218d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_14_Static.prefab using Guid(b778af8f9667c6e469f59a0ec4c218d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '52703632719d65228bbc66507e850fc8') in 0.012878 seconds
+  Import took 0.015833 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000183 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_16_Static.prefab
+  artifactKey: Guid(9cd027975130f3e4c8cd8218d9670e88) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_16_Static.prefab using Guid(9cd027975130f3e4c8cd8218d9670e88) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ab11214c3a5f8012f1a628e62adae698') in 0.009792 seconds
+  Import took 0.012714 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000207 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_10_Static.prefab
+  artifactKey: Guid(43a296f639b8a8d428d0b1b6c820daac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_10_Static.prefab using Guid(43a296f639b8a8d428d0b1b6c820daac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a5cf8dac6e263d9b60a728f5fa8c96b') in 0.009919 seconds
+  Import took 0.013181 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000223 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_16_Static.prefab
+  artifactKey: Guid(455baf03ece130e4faa41b9dbd45944b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_16_Static.prefab using Guid(455baf03ece130e4faa41b9dbd45944b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c9c726db37428277c17924142f380459') in 0.009300 seconds
+  Import took 0.012541 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000195 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_02_Static.prefab
+  artifactKey: Guid(170dd56f2790ea442833d954e5c2b0d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_02_Static.prefab using Guid(170dd56f2790ea442833d954e5c2b0d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2c03c53f56c52944835e1321a9162472') in 0.009533 seconds
+  Import took 0.012688 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000169 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_01_Static.prefab
+  artifactKey: Guid(bda0dfebcb0ec0546836cfb60e917a37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_01_Static.prefab using Guid(bda0dfebcb0ec0546836cfb60e917a37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '45533695d1a2d8a143a43fc816899379') in 0.009806 seconds
+  Import took 0.012716 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000202 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_17_Static.prefab
+  artifactKey: Guid(186abaecabee34c41950133dd95147ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_17_Static.prefab using Guid(186abaecabee34c41950133dd95147ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '634e0faaf2f9a2e03c09d6540206f84c') in 0.009770 seconds
+  Import took 0.012583 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000181 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_13_Static.prefab
+  artifactKey: Guid(43b75939687790042970f742acbe2091) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_13_Static.prefab using Guid(43b75939687790042970f742acbe2091) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '646945120fe6b2d85a98e2ecbbc9ca87') in 0.011012 seconds
+  Import took 0.013890 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000220 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_04_Static.prefab
+  artifactKey: Guid(7c7fe622be5194144af95ddf9d4888f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_04_Static.prefab using Guid(7c7fe622be5194144af95ddf9d4888f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '78d3fb0d32bcd73818972e859bc97a94') in 0.009654 seconds
+  Import took 0.012773 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000189 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_01_Static.prefab
+  artifactKey: Guid(f02d83b498cea7f40b3ddf4be497f394) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_01_Static.prefab using Guid(f02d83b498cea7f40b3ddf4be497f394) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a64e35d6037f6cc6a456500ec72d1692') in 0.012649 seconds
+  Import took 0.015444 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000230 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_13_Static.prefab
+  artifactKey: Guid(99c40bf0e70ce484dbd468a6061c3007) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_13_Static.prefab using Guid(99c40bf0e70ce484dbd468a6061c3007) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ecaca7ca893d366ef4f20cdfa8bb4040') in 0.010939 seconds
+  Import took 0.014059 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000218 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_11_Static.prefab
+  artifactKey: Guid(e22480cc6d8dad94bb3faef0d07dd337) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_11_Static.prefab using Guid(e22480cc6d8dad94bb3faef0d07dd337) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '795a0a85a821410b47acce60de1edbd3') in 0.009524 seconds
+  Import took 0.012705 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000189 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_14_Static.prefab
+  artifactKey: Guid(a7a569f2b08c95948a0ce0a397834c0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_14_Static.prefab using Guid(a7a569f2b08c95948a0ce0a397834c0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1dbf3489d9c836a06440efa9a14c630e') in 0.011076 seconds
+  Import took 0.014123 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000194 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_11_Static.prefab
+  artifactKey: Guid(5bb429c8a7803ee428ff2aa3c1fd0fca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_11_Static.prefab using Guid(5bb429c8a7803ee428ff2aa3c1fd0fca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a9de7e985d941a0b5c6e262b0397bf3') in 0.012432 seconds
+  Import took 0.015348 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000265 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_12_Static.prefab
+  artifactKey: Guid(fd15d20ef941a3744b0100addb36c8f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_12_Static.prefab using Guid(fd15d20ef941a3744b0100addb36c8f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b76ae2fa2dd00490f9e67f8fd7d3ca51') in 0.009796 seconds
+  Import took 0.012946 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000207 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_11_Static.prefab
+  artifactKey: Guid(c91108df775c1fa4f94972bae81514a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_11_Static.prefab using Guid(c91108df775c1fa4f94972bae81514a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f7bbafb6cb77c237b56909c7a1cca766') in 0.011232 seconds
+  Import took 0.014399 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000181 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_01_Static.prefab
+  artifactKey: Guid(bf39c249c0141304fb683192be111366) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_01_Static.prefab using Guid(bf39c249c0141304fb683192be111366) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4385c23587d06e515a75789175edc920') in 0.012230 seconds
+  Import took 0.015063 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000190 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_06_Static.prefab
+  artifactKey: Guid(6d15ff3827c6132408a99c226d2d1da7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_06_Static.prefab using Guid(6d15ff3827c6132408a99c226d2d1da7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0ca669d28a05e318d042da79e5449789') in 0.009399 seconds
+  Import took 0.012537 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000170 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_15_Static.prefab
+  artifactKey: Guid(f623b7ff3183e06409039da2523a5888) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_15_Static.prefab using Guid(f623b7ff3183e06409039da2523a5888) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '50d7a51ce8378c87075d1e643370992a') in 0.011516 seconds
+  Import took 0.014314 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000186 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_08_Static.prefab
+  artifactKey: Guid(fc9d012621dccd6489356dff2653ba3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_08_Static.prefab using Guid(fc9d012621dccd6489356dff2653ba3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '988e957054b645869e62ebf44ee76069') in 0.009318 seconds
+  Import took 0.012226 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000189 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_16_Static.prefab
+  artifactKey: Guid(8d66fdd81592fa74ca94856a15057c57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_16_Static.prefab using Guid(8d66fdd81592fa74ca94856a15057c57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c77688da86444e27ba75b94241a61f2a') in 0.009242 seconds
+  Import took 0.012471 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000192 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_15_Static.prefab
+  artifactKey: Guid(d698427ee4360fc45976f1fc547bb6f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_15_Static.prefab using Guid(d698427ee4360fc45976f1fc547bb6f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0babdeca2cf37b79d37ec6b2c10e38ae') in 0.009605 seconds
+  Import took 0.012832 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000215 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_00_Static.prefab
+  artifactKey: Guid(eab38c667005eb345bb06c8d5dc9f1f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_00_Static.prefab using Guid(eab38c667005eb345bb06c8d5dc9f1f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fe48b295cb117fe29ad04fb60211ca56') in 0.009402 seconds
+  Import took 0.012899 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000234 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_05_Static.prefab
+  artifactKey: Guid(a1504279b5153c847a62629bca19dd8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_05_Static.prefab using Guid(a1504279b5153c847a62629bca19dd8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fa345a57cfe42e698002163e735b6a1d') in 0.009570 seconds
+  Import took 0.012484 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000196 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_04_Static.prefab
+  artifactKey: Guid(fe1616ec9f6c51341834b388a680e477) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_04_Static.prefab using Guid(fe1616ec9f6c51341834b388a680e477) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6058edb3fdbc6f36456ce1e120f564c3') in 0.009155 seconds
+  Import took 0.012321 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000174 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_02_Static.prefab
+  artifactKey: Guid(86cd42d47adf3354596a86fd1090f4c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_02_Static.prefab using Guid(86cd42d47adf3354596a86fd1090f4c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '07fd777ea289c81ad9d7628a21ec9fee') in 0.011729 seconds
+  Import took 0.014566 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000176 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_15_Static.prefab
+  artifactKey: Guid(bb4499a408642e94fb1b86e359ff2ee4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_15_Static.prefab using Guid(bb4499a408642e94fb1b86e359ff2ee4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2b7951883a1aab3a61bc1322eef1c5d9') in 0.011838 seconds
+  Import took 0.015074 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000246 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_02_Static.prefab
+  artifactKey: Guid(756cab96247031047bbe6a922280b9ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_02_Static.prefab using Guid(756cab96247031047bbe6a922280b9ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '037b303a07448f0df68308e2b343c5b9') in 0.009088 seconds
+  Import took 0.012232 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000184 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_06_Static.prefab
+  artifactKey: Guid(afa6009c242d1b2458f26e902958b0b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_06_Static.prefab using Guid(afa6009c242d1b2458f26e902958b0b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '46795096b0bd897a3c8175eec5d5cf48') in 0.011317 seconds
+  Import took 0.014356 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000197 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_13_Static.prefab
+  artifactKey: Guid(2453f977428c31a49ba1e4c30f1093cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_13_Static.prefab using Guid(2453f977428c31a49ba1e4c30f1093cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a5fdf0810e9f153070fd4bfdce0181f') in 0.011826 seconds
+  Import took 0.015097 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000189 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_08_Static.prefab
+  artifactKey: Guid(18db25c342c32624ab298bfd7023101c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_08_Static.prefab using Guid(18db25c342c32624ab298bfd7023101c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bdd7e524a1e2de2f1434da4dc2185574') in 0.009761 seconds
+  Import took 0.012963 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000186 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_17_Static.prefab
+  artifactKey: Guid(112fadfe625fffe4791b361c50f543cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_17_Static.prefab using Guid(112fadfe625fffe4791b361c50f543cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '245ee07434b976ecc52413331944658a') in 0.012621 seconds
+  Import took 0.015766 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000181 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_16_Static.prefab
+  artifactKey: Guid(63e522a3913da9b459f1630cdb23672a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_16_Static.prefab using Guid(63e522a3913da9b459f1630cdb23672a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2e91dd84bdfa5a04e60ae50fd697fa18') in 0.009335 seconds
+  Import took 0.012254 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000210 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_18_Static.prefab
+  artifactKey: Guid(46bf9f88b81c25d4eac45ed65d478866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_18_Static.prefab using Guid(46bf9f88b81c25d4eac45ed65d478866) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a25fde07b544a2490bdd7febc6bb192c') in 0.010645 seconds
+  Import took 0.013780 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000186 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_07_Static.prefab
+  artifactKey: Guid(9d31f3e6922fa5040beee64a957764c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_07_Static.prefab using Guid(9d31f3e6922fa5040beee64a957764c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '48bbc7b159ba7787c6334f8b50dc7618') in 0.009407 seconds
+  Import took 0.012162 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000215 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_06_Static.prefab
+  artifactKey: Guid(343043d179e89494ab90bb3a43689f6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_06_Static.prefab using Guid(343043d179e89494ab90bb3a43689f6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '125a3ed6297a619f03375299e6a9f744') in 0.009451 seconds
+  Import took 0.012641 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000201 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_12_Static.prefab
+  artifactKey: Guid(e0ebff9d66c3bca4cbd880bfe23e07d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_12_Static.prefab using Guid(e0ebff9d66c3bca4cbd880bfe23e07d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cd358f75bcec83c8d9622b35b63d048e') in 0.010127 seconds
+  Import took 0.013008 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000202 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_09_Static.prefab
+  artifactKey: Guid(8cc913f3e0f88244295b4f54b1336fa1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_09_Static.prefab using Guid(8cc913f3e0f88244295b4f54b1336fa1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '92886de09e03d263f1e27051121bd4a2') in 0.009736 seconds
+  Import took 0.012955 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000159 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_09_Static.prefab
+  artifactKey: Guid(e93f33b3f3f183e4abc2e7413d895c46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_09_Static.prefab using Guid(e93f33b3f3f183e4abc2e7413d895c46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95462f945ef8d0c89df7a43bf59597e9') in 0.010424 seconds
+  Import took 0.013268 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000190 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_13_Static.prefab
+  artifactKey: Guid(bff01565083fd6a4f9a7ae4028b9b913) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_13_Static.prefab using Guid(bff01565083fd6a4f9a7ae4028b9b913) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '18913f0d14debed2c569a96e05fd47bf') in 0.009441 seconds
+  Import took 0.012724 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000180 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_03_Static.prefab
+  artifactKey: Guid(9115e81122a340a4e8d5f2746306c169) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_03_Static.prefab using Guid(9115e81122a340a4e8d5f2746306c169) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '687283b4f540bf52b15af07a8619feb7') in 0.009915 seconds
+  Import took 0.013045 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000208 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_03_Static.prefab
+  artifactKey: Guid(3b7d25e15860de541bf1b4527b45dc42) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_03_Static.prefab using Guid(3b7d25e15860de541bf1b4527b45dc42) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b05bdb9fc31e4791546a29d8580b1615') in 0.009231 seconds
+  Import took 0.012326 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000193 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_04_Static.prefab
+  artifactKey: Guid(49cf389d40d6f9d40959f83df98a9f07) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_04_Static.prefab using Guid(49cf389d40d6f9d40959f83df98a9f07) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '98fb2d9e2ec032ceef4314ea4f30e404') in 0.010410 seconds
+  Import took 0.013604 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000200 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_12_Static.prefab
+  artifactKey: Guid(027d661bc010dbe44968b575aa1ed2aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_12_Static.prefab using Guid(027d661bc010dbe44968b575aa1ed2aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b1f6a69b52359559cbea1895957eb3f5') in 0.009210 seconds
+  Import took 0.012135 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000173 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_14_Static.prefab
+  artifactKey: Guid(e25a598d7f6952145b8fb539b0933d58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_14_Static.prefab using Guid(e25a598d7f6952145b8fb539b0933d58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4f5a87c1e8c490d49792051bf48df94b') in 0.008974 seconds
+  Import took 0.012179 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000206 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_05_Static.prefab
+  artifactKey: Guid(f6541ee6b5d5f9b4191f67f89e62d5d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_05_Static.prefab using Guid(f6541ee6b5d5f9b4191f67f89e62d5d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6f92e33f8a0036aee4fba74438084371') in 0.009132 seconds
+  Import took 0.012266 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000198 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_18_Static.prefab
+  artifactKey: Guid(9276b01b868dc3f44bf285d8d8846dab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_18_Static.prefab using Guid(9276b01b868dc3f44bf285d8d8846dab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e7dae2ac5409bb42e6727ba6b6b25250') in 0.012669 seconds
+  Import took 0.015819 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000186 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_10_Static.prefab
+  artifactKey: Guid(646b42c9e1a1dd24a9ffc1c5635ff35c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_10_Static.prefab using Guid(646b42c9e1a1dd24a9ffc1c5635ff35c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b427a4c680489f9bd6b6dc890e92c8f1') in 0.009137 seconds
+  Import took 0.011983 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000183 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_18_Static.prefab
+  artifactKey: Guid(64ff2002d4bf43046a17047d95e67ada) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_18_Static.prefab using Guid(64ff2002d4bf43046a17047d95e67ada) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6fd2e9c84c3c32a9ceca62c5fb98aac5') in 0.009998 seconds
+  Import took 0.013143 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000205 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_08_Static.prefab
+  artifactKey: Guid(55bf608e2c9454341a2e65902e9ad3db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_08_Static.prefab using Guid(55bf608e2c9454341a2e65902e9ad3db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd4dc4f4be65aacd71a4e287d9aab7a8f') in 0.009174 seconds
+  Import took 0.012340 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000209 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_18_Static.prefab
+  artifactKey: Guid(d21d98aaa108da74694759eeb674aa25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_18_Static.prefab using Guid(d21d98aaa108da74694759eeb674aa25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7865c6f0b2fefbf8d66a47dbf2f2e74b') in 0.008954 seconds
+  Import took 0.012104 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000179 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_07_Static.prefab
+  artifactKey: Guid(a55caee2f0c7f954ba5efc4aca6d0aa6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_07_Static.prefab using Guid(a55caee2f0c7f954ba5efc4aca6d0aa6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0909c2a35d5752a57f3534f13c9446af') in 0.008892 seconds
+  Import took 0.011953 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000193 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_07_Static.prefab
+  artifactKey: Guid(9c1206e20e8a47d4f83e4fba1f0cab4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_07_Static.prefab using Guid(9c1206e20e8a47d4f83e4fba1f0cab4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f031b3401bb38c4f346cbc80f944ebdd') in 0.008933 seconds
+  Import took 0.011905 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000203 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_06_Static.prefab
+  artifactKey: Guid(ad68f58ea6f924d40b260069df9e07a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_06_Static.prefab using Guid(ad68f58ea6f924d40b260069df9e07a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d7aa168181b1a39e9a8c390fb7e65e5') in 0.009050 seconds
+  Import took 0.012315 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000303 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_08_Static.prefab
+  artifactKey: Guid(6714ef091e7c57c4a94a09c3f760f603) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_08_Static.prefab using Guid(6714ef091e7c57c4a94a09c3f760f603) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c8c6f94be82430d7d7bcb3af4358b527') in 0.009588 seconds
+  Import took 0.012446 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000207 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_10_Static.prefab
+  artifactKey: Guid(02819a5922cb83242af19c3567a4ab00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_10_Static.prefab using Guid(02819a5922cb83242af19c3567a4ab00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '34d90954f01ef9effbd0cecd00633412') in 0.009985 seconds
+  Import took 0.013607 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000202 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_14_Static.prefab
+  artifactKey: Guid(8cbdef9b7612b4d4b9696a4302d8c1eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Male_14_Static.prefab using Guid(8cbdef9b7612b4d4b9696a4302d8c1eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5106e0ee982f17a67dcbf4cf747e7fd1') in 0.010060 seconds
+  Import took 0.013311 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000196 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_01_Static.prefab
+  artifactKey: Guid(d7f50d17ec183594ca76dce99fe040f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerRight_Female_01_Static.prefab using Guid(d7f50d17ec183594ca76dce99fe040f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf6f240b6008957225172b231b859424') in 0.009050 seconds
+  Import took 0.012385 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000185 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_00_Static.prefab
+  artifactKey: Guid(e8e2d5020a121a142acfd7a369be83d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_00_Static.prefab using Guid(e8e2d5020a121a142acfd7a369be83d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '435d2a240bada653c24ce079e77c1841') in 0.008939 seconds
+  Import took 0.011764 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000207 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_11_Static.prefab
+  artifactKey: Guid(64da71a36ef74ca42b1b80aae0bc8904) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Male_11_Static.prefab using Guid(64da71a36ef74ca42b1b80aae0bc8904) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d1aed37986a7bd6671e15d20fc1f08b') in 0.009239 seconds
+  Import took 0.012544 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000186 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_09_Static.prefab
+  artifactKey: Guid(b9057f7020c0fdb41ab5bff12a26010c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_ModularParts_Static/Chr_ArmLowerLeft_Female_09_Static.prefab using Guid(b9057f7020c0fdb41ab5bff12a26010c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c3e460f5e5a31ee1ec96d4e05e117a4f') in 0.012052 seconds
+  Import took 0.014910 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.655308 seconds.
+  path: Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_Presets/Chr_FantasyHero_Preset_51.prefab
+  artifactKey: Guid(3ca80bb38c4d28149802cf273f2ad3fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/AssetStore/PolygonFantasyHeroCharacters/Prefabs/Characters_Presets/Chr_FantasyHero_Preset_51.prefab using Guid(3ca80bb38c4d28149802cf273f2ad3fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '13e9b768b162e9f418a00556a6253952') in 0.191324 seconds
+  Import took 0.206537 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001377 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.18 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.666 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.05 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1746 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.2 MB.
+System memory in use after: 138.4 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2383.
+Total: 2.083400 ms (FindLiveObjects: 0.265200 ms CreateObjectMapping: 0.050300 ms MarkObjects: 1.255300 ms  DeleteObjects: 0.511800 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001370 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.23 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.715 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.06 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1746 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.2 MB.
+System memory in use after: 138.4 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2386.
+Total: 2.325800 ms (FindLiveObjects: 0.245700 ms CreateObjectMapping: 0.052300 ms MarkObjects: 1.423800 ms  DeleteObjects: 0.603100 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001275 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.07 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.715 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.07 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1746 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.2 MB.
+System memory in use after: 138.4 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2389.
+Total: 2.274400 ms (FindLiveObjects: 0.282700 ms CreateObjectMapping: 0.059800 ms MarkObjects: 1.372700 ms  DeleteObjects: 0.558300 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001369 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.08 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.685 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.04 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1746 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.3 MB.
+System memory in use after: 138.4 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2392.
+Total: 2.130800 ms (FindLiveObjects: 0.263900 ms CreateObjectMapping: 0.045400 ms MarkObjects: 1.232600 ms  DeleteObjects: 0.588000 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001346 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.18 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.692 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.08 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1746 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.3 MB.
+System memory in use after: 138.4 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2395.
+Total: 2.312600 ms (FindLiveObjects: 0.273700 ms CreateObjectMapping: 0.051500 ms MarkObjects: 1.409800 ms  DeleteObjects: 0.576400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001445 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.06 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.660 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.04 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1746 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.3 MB.
+System memory in use after: 138.4 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2398.
+Total: 2.263200 ms (FindLiveObjects: 0.226200 ms CreateObjectMapping: 0.060900 ms MarkObjects: 1.379800 ms  DeleteObjects: 0.595200 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 10191.659364 seconds.
+  path: Assets/Scenes/Main menu.unity
+  artifactKey: Guid(f933fab75f3a39a40ba96769b7f90a34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Main menu.unity using Guid(f933fab75f3a39a40ba96769b7f90a34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b20fb921c837bf2b76b8bc9b2380a2b0') in 0.091705 seconds
+  Import took 0.172621 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001483 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.20 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.769 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.07 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1746 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.3 MB.
+System memory in use after: 138.4 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2401.
+Total: 2.388800 ms (FindLiveObjects: 0.218800 ms CreateObjectMapping: 0.045800 ms MarkObjects: 1.468900 ms  DeleteObjects: 0.654200 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001393 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.11 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.694 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.04 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1746 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.3 MB.
+System memory in use after: 138.5 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2404.
+Total: 2.663400 ms (FindLiveObjects: 0.239300 ms CreateObjectMapping: 0.061300 ms MarkObjects: 1.717800 ms  DeleteObjects: 0.644100 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001305 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.05 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.676 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.09 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1746 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.3 MB.
+System memory in use after: 138.5 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2407.
+Total: 2.372600 ms (FindLiveObjects: 0.229100 ms CreateObjectMapping: 0.046900 ms MarkObjects: 1.462900 ms  DeleteObjects: 0.632700 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 1938.137422 seconds.
+  path: Assets/Scenes/SampleScene.unity
+  artifactKey: Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/SampleScene.unity using Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bcaf2daf1c627525354ff4c0e2454642') in 0.010963 seconds
+  Import took 0.014799 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001390 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.08 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.677 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.17 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1746 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.3 MB.
+System memory in use after: 138.5 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2410.
+Total: 2.207900 ms (FindLiveObjects: 0.223600 ms CreateObjectMapping: 0.045000 ms MarkObjects: 1.289400 ms  DeleteObjects: 0.649000 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 9.351287 seconds.
+  path: Assets/Scenes/Main menu.unity
+  artifactKey: Guid(f933fab75f3a39a40ba96769b7f90a34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Main menu.unity using Guid(f933fab75f3a39a40ba96769b7f90a34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4dcb3784f6441a844fba9e7e54aa4b0e') in 0.010536 seconds
+  Import took 0.013967 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001520 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.11 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.894 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.12 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1746 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.3 MB.
+System memory in use after: 138.5 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2413.
+Total: 2.236000 ms (FindLiveObjects: 0.261600 ms CreateObjectMapping: 0.048900 ms MarkObjects: 1.300400 ms  DeleteObjects: 0.624100 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001316 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.16 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.723 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.14 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1746 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.3 MB.
+System memory in use after: 138.5 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2416.
+Total: 2.741300 ms (FindLiveObjects: 0.417200 ms CreateObjectMapping: 0.066700 ms MarkObjects: 1.588900 ms  DeleteObjects: 0.667300 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002149 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.09 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.736 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.20 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1746 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.4 MB.
+System memory in use after: 138.5 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2419.
+Total: 2.313500 ms (FindLiveObjects: 0.219300 ms CreateObjectMapping: 0.050300 ms MarkObjects: 1.391100 ms  DeleteObjects: 0.652000 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001289 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.12 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.682 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.03 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1747 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.4 MB.
+System memory in use after: 138.5 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2423.
+Total: 2.398100 ms (FindLiveObjects: 0.212900 ms CreateObjectMapping: 0.044000 ms MarkObjects: 1.538800 ms  DeleteObjects: 0.601200 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001638 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.15 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.753 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.13 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1747 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.4 MB.
+System memory in use after: 138.5 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2426.
+Total: 2.332500 ms (FindLiveObjects: 0.264100 ms CreateObjectMapping: 0.049100 ms MarkObjects: 1.409700 ms  DeleteObjects: 0.608600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001374 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.86 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.683 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.11 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1747 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.4 MB.
+System memory in use after: 138.5 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2429.
+Total: 2.386000 ms (FindLiveObjects: 0.316300 ms CreateObjectMapping: 0.061200 ms MarkObjects: 1.372400 ms  DeleteObjects: 0.635000 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001348 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.08 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.718 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.77 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1747 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.4 MB.
+System memory in use after: 138.5 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2432.
+Total: 2.401400 ms (FindLiveObjects: 0.379000 ms CreateObjectMapping: 0.060800 ms MarkObjects: 1.298100 ms  DeleteObjects: 0.662200 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001578 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.73 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.832 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.12 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1747 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.4 MB.
+System memory in use after: 138.5 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2435.
+Total: 2.275900 ms (FindLiveObjects: 0.313700 ms CreateObjectMapping: 0.060400 ms MarkObjects: 1.278700 ms  DeleteObjects: 0.622400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001404 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.11 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.697 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.15 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1747 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.4 MB.
+System memory in use after: 138.6 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2438.
+Total: 2.447000 ms (FindLiveObjects: 0.357800 ms CreateObjectMapping: 0.063200 ms MarkObjects: 1.391900 ms  DeleteObjects: 0.632700 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001353 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.06 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.650 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.04 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1747 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.4 MB.
+System memory in use after: 138.6 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2441.
+Total: 2.227100 ms (FindLiveObjects: 0.197200 ms CreateObjectMapping: 0.062300 ms MarkObjects: 1.355300 ms  DeleteObjects: 0.611400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001259 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.74 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.736 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.93 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1747 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.4 MB.
+System memory in use after: 138.6 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2444.
+Total: 2.329400 ms (FindLiveObjects: 0.282800 ms CreateObjectMapping: 0.055600 ms MarkObjects: 1.393500 ms  DeleteObjects: 0.596200 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001269 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.10 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.691 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.10 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1747 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.4 MB.
+System memory in use after: 138.6 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2447.
+Total: 2.248200 ms (FindLiveObjects: 0.251800 ms CreateObjectMapping: 0.050700 ms MarkObjects: 1.333300 ms  DeleteObjects: 0.611300 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001382 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.67 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.804 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.16 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1747 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.4 MB.
+System memory in use after: 138.6 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2450.
+Total: 2.336500 ms (FindLiveObjects: 0.262100 ms CreateObjectMapping: 0.048300 ms MarkObjects: 1.388600 ms  DeleteObjects: 0.635900 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001904 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.20 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.759 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.15 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1747 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.4 MB.
+System memory in use after: 138.6 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2453.
+Total: 2.406100 ms (FindLiveObjects: 0.266600 ms CreateObjectMapping: 0.056400 ms MarkObjects: 1.442700 ms  DeleteObjects: 0.639100 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001283 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.34 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.716 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.25 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1747 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.4 MB.
+System memory in use after: 138.6 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2456.
+Total: 2.416100 ms (FindLiveObjects: 0.295100 ms CreateObjectMapping: 0.048200 ms MarkObjects: 1.439000 ms  DeleteObjects: 0.632400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002017 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.21 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.748 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.49 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1747 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.4 MB.
+System memory in use after: 138.6 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2459.
+Total: 2.278800 ms (FindLiveObjects: 0.219100 ms CreateObjectMapping: 0.055400 ms MarkObjects: 1.381300 ms  DeleteObjects: 0.621900 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001460 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.09 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.674 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.06 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1747 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.4 MB.
+System memory in use after: 138.6 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2462.
+Total: 2.224900 ms (FindLiveObjects: 0.304400 ms CreateObjectMapping: 0.042400 ms MarkObjects: 1.262500 ms  DeleteObjects: 0.614600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001405 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.11 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.729 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.15 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1747 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.4 MB.
+System memory in use after: 138.6 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2465.
+Total: 2.947300 ms (FindLiveObjects: 0.431000 ms CreateObjectMapping: 0.063900 ms MarkObjects: 1.616900 ms  DeleteObjects: 0.833800 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001300 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.11 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.690 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.14 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1747 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.4 MB.
+System memory in use after: 138.6 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2468.
+Total: 2.299400 ms (FindLiveObjects: 0.233900 ms CreateObjectMapping: 0.046500 ms MarkObjects: 1.381600 ms  DeleteObjects: 0.636400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001341 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.19 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.709 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.11 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1747 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.5 MB.
+System memory in use after: 138.6 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2471.
+Total: 2.332800 ms (FindLiveObjects: 0.238900 ms CreateObjectMapping: 0.049500 ms MarkObjects: 1.421000 ms  DeleteObjects: 0.622400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001277 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.09 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.772 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.05 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1747 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.5 MB.
+System memory in use after: 138.6 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2474.
+Total: 2.412400 ms (FindLiveObjects: 0.300300 ms CreateObjectMapping: 0.059400 ms MarkObjects: 1.424100 ms  DeleteObjects: 0.627700 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001341 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.13 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.724 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.06 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1747 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.5 MB.
+System memory in use after: 138.6 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2477.
+Total: 2.406300 ms (FindLiveObjects: 0.265400 ms CreateObjectMapping: 0.057500 ms MarkObjects: 1.451600 ms  DeleteObjects: 0.630100 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001741 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.13 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.746 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.12 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1747 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.5 MB.
+System memory in use after: 138.6 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2480.
+Total: 2.373400 ms (FindLiveObjects: 0.345200 ms CreateObjectMapping: 0.065100 ms MarkObjects: 1.324700 ms  DeleteObjects: 0.637200 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001334 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.06 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.716 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.75 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1747 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.5 MB.
+System memory in use after: 138.6 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2483.
+Total: 2.325800 ms (FindLiveObjects: 0.321600 ms CreateObjectMapping: 0.047900 ms MarkObjects: 1.326300 ms  DeleteObjects: 0.628800 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001420 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.05 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.682 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.06 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1747 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139.5 MB.
+System memory in use after: 138.6 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2486.
+Total: 2.343300 ms (FindLiveObjects: 0.272100 ms CreateObjectMapping: 0.058200 ms MarkObjects: 1.370400 ms  DeleteObjects: 0.641500 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 2323.080592 seconds.
+  path: Assets/Objects/Core.prefab
+  artifactKey: Guid(c0555f69c60d1fb47b402dd628604ee0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Objects/Core.prefab using Guid(c0555f69c60d1fb47b402dd628604ee0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c9a6720f92ad8a636abc2a0eaa706670') in 0.635187 seconds
+  Import took 0.659805 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001332 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.13 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.661 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.04 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1747 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 141.4 MB.
+System memory in use after: 140.5 MB.
+
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 2490.
+Total: 2.400700 ms (FindLiveObjects: 0.239900 ms CreateObjectMapping: 0.063600 ms MarkObjects: 1.496100 ms  DeleteObjects: 0.599700 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 6265.102015 seconds.
+  path: Assets/UI/CharacterSelection/CharacterInfo.prefab
+  artifactKey: Guid(9dfd1dba30b9dda44b9977bf16f806aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UI/CharacterSelection/CharacterInfo.prefab using Guid(9dfd1dba30b9dda44b9977bf16f806aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd600f0d1d4c7825d311cb9587406c78a') in 0.192936 seconds
+  Import took 0.270109 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.466974 seconds.
+  path: Assets/UI/Crossfade/Crossfade.anim
+  artifactKey: Guid(bc0de13c887f87145aab50f6ecd76d27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UI/Crossfade/Crossfade.anim using Guid(bc0de13c887f87145aab50f6ecd76d27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a4a201ba6c4d48e7b8d332c69a57fdc7') in 0.005532 seconds
+  Import took 0.008890 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.003645 seconds.
+  path: Assets/UI/Crossfade/Crossfade.anim
+  artifactKey: Guid(bc0de13c887f87145aab50f6ecd76d27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UI/Crossfade/Crossfade.anim using Guid(bc0de13c887f87145aab50f6ecd76d27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a4a201ba6c4d48e7b8d332c69a57fdc7') in 0.001981 seconds
+  Import took 0.004917 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.683393 seconds.
+  path: Assets/UI/Crossfade/CrossfadeEnd.anim
+  artifactKey: Guid(e4bc0bf59ae5f5c4a80149272bdeaed7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UI/Crossfade/CrossfadeEnd.anim using Guid(e4bc0bf59ae5f5c4a80149272bdeaed7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '19565548fc0f273fe23f05a3493dc7cb') in 0.002310 seconds
+  Import took 0.005992 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000602 seconds.
+  path: Assets/UI/Crossfade/CrossfadeEnd.anim
+  artifactKey: Guid(e4bc0bf59ae5f5c4a80149272bdeaed7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UI/Crossfade/CrossfadeEnd.anim using Guid(e4bc0bf59ae5f5c4a80149272bdeaed7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '19565548fc0f273fe23f05a3493dc7cb') in 0.001992 seconds
+  Import took 0.004953 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 108.412605 seconds.
+  path: Assets/UI/Crossfade/Crossfade.controller
+  artifactKey: Guid(319eefe1261c0ae428f72209a9cf01e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UI/Crossfade/Crossfade.controller using Guid(319eefe1261c0ae428f72209a9cf01e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '85f4bab7b193a69c9652aed1d7830755') in 0.004145 seconds
+  Import took 0.007926 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001437 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.09 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.746 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.08 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1748 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 141.4 MB.
+System memory in use after: 140.5 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2494.
+Total: 2.254800 ms (FindLiveObjects: 0.255600 ms CreateObjectMapping: 0.056600 ms MarkObjects: 1.325000 ms  DeleteObjects: 0.616500 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001294 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.09 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.724 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.15 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1748 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 141.4 MB.
+System memory in use after: 140.6 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2497.
+Total: 2.285000 ms (FindLiveObjects: 0.228800 ms CreateObjectMapping: 0.047800 ms MarkObjects: 1.424300 ms  DeleteObjects: 0.583000 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001362 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.10 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.764 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.17 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1748 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 141.4 MB.
+System memory in use after: 140.6 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2500.
+Total: 2.423800 ms (FindLiveObjects: 0.269000 ms CreateObjectMapping: 0.057900 ms MarkObjects: 1.474400 ms  DeleteObjects: 0.621300 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001580 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.43 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.750 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.39 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1748 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 141.4 MB.
+System memory in use after: 140.6 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2503.
+Total: 2.510100 ms (FindLiveObjects: 0.282600 ms CreateObjectMapping: 0.057500 ms MarkObjects: 1.539000 ms  DeleteObjects: 0.629500 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001189 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.05 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.668 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.07 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1748 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 141.4 MB.
+System memory in use after: 140.6 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2506.
+Total: 2.483900 ms (FindLiveObjects: 0.375100 ms CreateObjectMapping: 0.063500 ms MarkObjects: 1.412600 ms  DeleteObjects: 0.631200 ms)
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

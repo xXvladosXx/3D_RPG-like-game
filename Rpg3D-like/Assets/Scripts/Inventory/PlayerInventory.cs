@@ -18,7 +18,8 @@ namespace Inventories
     [SerializeField] private UIInventory _uiInventory;
     private void Awake()
     {
-        _uiInventory = FindObjectOfType<UIInventory>();
+        if(_uiInventory == null)
+            _uiInventory = FindObjectOfType<UIInventory>();
         
         GetInventory = new Inventory(UseItem);
     }
@@ -34,7 +35,7 @@ namespace Inventories
     }
     private void UseItem(Item item)
     {
-        if (item.IItem != null) item.IItem.UseItem(gameObject, item);
+        item.IItem?.UseItem(gameObject, item);
     }
  
     public void InventoryPlacerItem(ItemType item, int amount = 1)

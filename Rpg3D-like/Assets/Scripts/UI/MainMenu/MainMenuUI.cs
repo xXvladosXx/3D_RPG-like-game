@@ -31,9 +31,15 @@ public class MainMenuUI : MonoBehaviour
 
     public void CreateName(string saveFile)
     {
+
         _saveFile = saveFile;
+
     }
-    
+
+    private void Update()
+    {
+    }
+
     public void StartNewGame()
     {
         _savingHandler.Value.StartNewGame(_saveFile);

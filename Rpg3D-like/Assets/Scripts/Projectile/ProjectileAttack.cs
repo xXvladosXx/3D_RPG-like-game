@@ -68,12 +68,15 @@ public class ProjectileAttack : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(other.GetComponent<Health>() == null) return;
-            
+        
         if (!other.gameObject.GetComponent<Health>().IsDead() && other.gameObject != _damager)
         {
             if (_projectileTrigger != null)
-                Instantiate(_projectileTrigger, gameObject.transform.position, _target.transform.rotation);
-                
+            {
+                GameObject projectilePostEffect = Instantiate(_projectileTrigger, gameObject.transform.position, other.transform.rotation);
+                Destroy(projectilePostEffect, 0.5f);
+            }
+
             Disable();
             other.GetComponent<Health>().TakeDamage(_damage, _damager);
         }

@@ -81,14 +81,12 @@ public class Health : MonoBehaviour, ISaveable
         return _healthCurrent == 0;
     }
 
-    public void Death()
+    private void Death()
     {
-
         if (!_wasDead && IsDead())
         {
             _actionScheduler.Cancel();
             _animator.SetTrigger("isDead");
-            GetComponent<NavMeshAgent>().enabled = false;
         }
         
         if(_wasDead && !IsDead())

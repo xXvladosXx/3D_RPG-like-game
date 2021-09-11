@@ -13,6 +13,16 @@ public class MainMenuSwitcherUI : MonoBehaviour
             SwitchTo(_mainMenu);
     }
 
+    private void Update()
+    {
+        print(gameObject.transform);
+        print(gameObject.transform.parent);
+    }
+
+    public void UIDisabler()
+    {
+        gameObject.transform.parent.gameObject.SetActive(false);
+    }
     public void OnDisable()
     {
         foreach (Transform child in transform)

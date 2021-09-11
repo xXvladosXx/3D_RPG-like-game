@@ -98,18 +98,24 @@ MonoBehaviour:
     - stat: 0
       levels:
       - 12
-      - 13
       - 14
+      - 16
+      - 16
+      - 16
     - stat: 1
       levels:
-      - 3
-      - 5
-      - 7
+      - 222
+      - 333
+      - 444
+      - 444
+      - 444
     - stat: 3
       levels:
-      - 11
-      - 12
-      - 13
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
     - stat: 4
       levels:
       - 12
@@ -121,12 +127,15 @@ MonoBehaviour:
       - 1
       - 1
       - 13
+      - 13
+      - 13
     - stat: 5
       levels:
-      - 11111
-      - 1111
-      - 11111
-      - 11111
+      - 12
+      - 16
+      - 26
+      - 56
+      - 56
   - characterClass: 2
     stats:
     - stat: 0

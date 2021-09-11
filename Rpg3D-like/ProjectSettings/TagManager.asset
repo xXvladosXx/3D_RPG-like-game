@@ -17,6 +17,7 @@ TagManager:
   - DialogBar
   - Weapon
   - InventoryContainer
+  - View
   layers:
   - Default
   - TransparentFX
@@ -25,7 +26,7 @@ TagManager:
   - Water
   - UI
   - QuestLayer
-  - 
+  - Projectile
   - 
   - 
   - 

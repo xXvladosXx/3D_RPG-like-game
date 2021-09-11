@@ -20,7 +20,7 @@ namespace Quests
         private void Awake()
         {
             _quests = new List<Quest>();
-            _mainCanvas = GameObject.FindWithTag("MainCanvas").GetComponent<Canvas>();
+            _mainCanvas = GetComponentInChildren<Canvas>();
         }
 
         private void Update()

@@ -16,6 +16,8 @@ using UnityEngine.EventSystems;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private ParticleSystem _clickedEffect;
+    [SerializeField] private LayerMask _layerMask;
+    [SerializeField] private ObjectPooler _objectPooler;
     public event Action<Transform> OnEnemyAttacked;
 
     private Health _health;
@@ -49,6 +51,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if(_health == null) return;
         if(PointerOverUI()) return;
         
         if (_health.IsDead())
@@ -116,16 +119,27 @@ public class PlayerController : MonoBehaviour
 
         if (hasHit)
         {
-            if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
-            {
-                ParticleSystem clickedEffect = Instantiate(_clickedEffect, raycastHit.point, Quaternion.identity);
-                Destroy(clickedEffect.gameObject, 0.1f);
-            }
-
             if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject())
             {
                 GetComponent<Movement>().StartMoveToAction(raycastHit.point, 1f);
-                float checkDistance = Vector3.Distance(gameObject.transform.position, raycastHit.point);
+                
+                if (Physics.Raycast(GetRay(), out raycastHit, 1000, _layerMask))
+                {
+
+                    if (_objectPooler.GetPooledObject() == null)
+                    {
+                        SetCursor(CursorType.Move);
+                        return true;
+                    }
+                    
+                    ParticleSystem clickedEffect = _objectPooler.GetPooledObject().GetComponent<ParticleSystem>();
+
+                    clickedEffect.transform.position = new Vector3(raycastHit.point.x, raycastHit.point.y, raycastHit.point.z);
+                    clickedEffect.transform.rotation = Quaternion.identity;
+
+                    clickedEffect.gameObject.SetActive(true);
+                    StartCoroutine(WaitToDisableClickedEffect(clickedEffect));
+                }
             }
 
             SetCursor(CursorType.Move);
@@ -133,6 +147,12 @@ public class PlayerController : MonoBehaviour
         }
 
         return false;
+    }
+
+    private IEnumerator WaitToDisableClickedEffect(ParticleSystem clickedEffect)
+    {
+        yield return new WaitForSeconds(0.5f);
+        clickedEffect.gameObject.SetActive(false);
     }
 
     public static Ray GetRay()

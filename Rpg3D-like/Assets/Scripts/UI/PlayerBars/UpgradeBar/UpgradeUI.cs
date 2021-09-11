@@ -94,7 +94,7 @@ namespace UI.PlayerBars.UpgradeBar
             SetItem(_upgradeDialogueStrategy.GetItems.LastOrDefault());
         }
 
-        public void SetItem(Item item)
+        private void SetItem(Item item)
         {
             if(item == null) return;
             

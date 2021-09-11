@@ -18,3 +18,5 @@ MonoBehaviour:
   _damageModifier: 0.6
   _speed: 12
   _isPointTarget: 1
+  _radius: 5
+  _selfCasted: 1

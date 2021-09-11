@@ -1,46 +1,44 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ObjectPooler : MonoBehaviour
 {
     [SerializeField] public static ObjectPooler CurrentObjectPooler;
-    [SerializeField] private ProjectileAttack _pooledObject;
+    [SerializeField] private GameObject _pooledObject;
     [SerializeField] private int _pooledAmount;
     [SerializeField] private bool _willGrow;
 
-    private List<ProjectileAttack> _pooledObjects;
+    private List<GameObject> _pooledObjects;
 
     private void Awake()
     {
-        _pooledObjects = new List<ProjectileAttack>();
+        _pooledObjects = new List<GameObject>();
         
         CurrentObjectPooler = this;
 
         for (int i = 0; i < _pooledAmount; i++)
         {
-            ProjectileAttack obj = Instantiate(_pooledObject);
+            GameObject obj = Instantiate(_pooledObject, transform);
             obj.gameObject.SetActive(false);
             _pooledObjects.Add(obj);
         }
     }
 
-    public ProjectileAttack GetPooledObject()
+    public GameObject GetPooledObject()
     {
-        foreach (var pooledObject in _pooledObjects)
+        foreach (var pooledObject in _pooledObjects.Where(pooledObject => !pooledObject.gameObject.activeInHierarchy))
         {
-            if (!pooledObject.gameObject.activeInHierarchy)
-                return pooledObject;
+            return pooledObject;
         }
 
-        if (_willGrow)
-        {
-            ProjectileAttack obj = Instantiate(_pooledObject);
-            _pooledObjects.Add(obj);
-            return obj;
-        }
+        if (!_willGrow) return null;
         
-        return null;
+        GameObject obj = Instantiate(_pooledObject);
+        _pooledObjects.Add(obj);
+        return obj;
+
     }
 }

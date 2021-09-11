@@ -28,12 +28,16 @@ public class SavingHandler : MonoBehaviour
     
     private IEnumerator LoadScene(string saveFile)
     {
+        LevelLoader.Instance.StartFading();
+
         DontDestroyOnLoad(gameObject);
         yield return GetComponent<SavingSystem>().LoadScene(saveFile);
     }
     
     private IEnumerator LoadStartScene(string saveFile)
     {
+        LevelLoader.Instance.StartFading();
+
         DontDestroyOnLoad(gameObject);
         yield return SceneManager.LoadSceneAsync(2);
         Save(saveFile);
@@ -54,11 +58,13 @@ public class SavingHandler : MonoBehaviour
 
     public void Load(string saveFile)
     {
+
         GetComponent<SavingSystem>().Load(saveFile);
     }
 
     public void Save(string saveFile)
     {
+
         GetComponent<SavingSystem>().Save(saveFile);
     }
 

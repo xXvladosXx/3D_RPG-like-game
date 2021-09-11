@@ -3,6 +3,6 @@
     public interface IRaycastable
     {
         PlayerController.CursorType GetCursorType();
-        bool HandleRaycast(PlayerController player);
+        bool HandleRaycast(PlayerController player = null);
     }
 }
