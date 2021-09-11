@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 284e5252b2c84b90be29743a6d843eef, type: 3}
+  m_Name: FirstSkillForSword 1
+  m_EditorClassIdentifier: 
+  _damage: 45
+  _radius: 3
+  _delay: 0.5
+  _amount: 12
+  _cooldown: 6
+  _manaCost: 30
+  _image: {fileID: 21300000, guid: 4010c00f8f2101744965158d02cc09fa, type: 3}
+  _nextLevelSkill: {fileID: 11400000, guid: 28857249278706541bee9e36969cf63e, type: 2}
+  _previousSkills: []
+  _filterStrategies:
+  - {fileID: 11400000, guid: cfb3b07d1d419c343b8572857f47b794, type: 2}
+  _effectStrategies:
+  - {fileID: 11400000, guid: 36c1308ec00ff324bb2d2142d620faf1, type: 2}
+  - {fileID: 11400000, guid: a5f30761b9f8e1a479369f2b9e262f6e, type: 2}
+  _targetingStrategy: {fileID: 11400000, guid: 0d21a03eabf9c194bbc73a68852535dd, type: 2}

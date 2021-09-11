@@ -1,0 +1,1357 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00668fd727de9bb4081a8a202ce24c3b, type: 3}
+  m_Name: Settings
+  m_EditorClassIdentifier: 
+  globalData:
+    showActiveToggles: 1
+    showComponentIcons: 1
+    showAllComponents: 0
+    twoToneBackground: 1
+    showLayers: 1
+    editableLayers: 1
+    applyChildLayers: 1
+  styleData:
+    displayLayers: 1
+    displayIcons: 1
+    styles:
+    - prefix: =
+      name: Header (Centered)
+      font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
+      fontSize: 11
+      fontAlignment: 4
+      fontStyle: 1
+      modes:
+      - fontColour: {r: 0.1764706, g: 0.1764706, b: 0.1764706, a: 1}
+        backgroundColour: {r: 0.6666667, g: 0.6666667, b: 0.6666667, a: 1}
+      - fontColour: {r: 1, g: 1, b: 1, a: 1}
+        backgroundColour: {r: 0.1764706, g: 0.1764706, b: 0.1764706, a: 1}
+      style:
+        m_Name: 
+        m_Normal:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 1, g: 1, b: 1, a: 1}
+        m_Hover:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_Active:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_Focused:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_OnNormal:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_OnHover:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_OnActive:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_OnFocused:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_Border:
+          m_Left: 0
+          m_Right: 0
+          m_Top: 0
+          m_Bottom: 0
+        m_Margin:
+          m_Left: 0
+          m_Right: 0
+          m_Top: 0
+          m_Bottom: 0
+        m_Padding:
+          m_Left: 0
+          m_Right: 0
+          m_Top: 0
+          m_Bottom: 0
+        m_Overflow:
+          m_Left: 0
+          m_Right: 0
+          m_Top: 0
+          m_Bottom: 0
+        m_Font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
+        m_FontSize: 11
+        m_FontStyle: 1
+        m_Alignment: 4
+        m_WordWrap: 0
+        m_RichText: 1
+        m_TextClipping: 0
+        m_ImagePosition: 0
+        m_ContentOffset: {x: 0, y: 0}
+        m_FixedWidth: 0
+        m_FixedHeight: 0
+        m_StretchWidth: 1
+        m_StretchHeight: 0
+    - prefix: '-'
+      name: Subheader
+      font: {fileID: 0}
+      fontSize: 10
+      fontAlignment: 3
+      fontStyle: 1
+      modes:
+      - fontColour: {r: 0.245283, g: 0.245283, b: 0.245283, a: 1}
+        backgroundColour: {r: 0.7960785, g: 0.7960785, b: 0.7960785, a: 1}
+      - fontColour: {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 1}
+        backgroundColour: {r: 0.2352941, g: 0.2352941, b: 0.2352941, a: 1}
+      style:
+        m_Name: 
+        m_Normal:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 1}
+        m_Hover:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_Active:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_Focused:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_OnNormal:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_OnHover:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_OnActive:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_OnFocused:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_Border:
+          m_Left: 0
+          m_Right: 0
+          m_Top: 0
+          m_Bottom: 0
+        m_Margin:
+          m_Left: 0
+          m_Right: 0
+          m_Top: 0
+          m_Bottom: 0
+        m_Padding:
+          m_Left: 0
+          m_Right: 0
+          m_Top: 0
+          m_Bottom: 0
+        m_Overflow:
+          m_Left: 0
+          m_Right: 0
+          m_Top: 0
+          m_Bottom: 0
+        m_Font: {fileID: 0}
+        m_FontSize: 10
+        m_FontStyle: 1
+        m_Alignment: 3
+        m_WordWrap: 0
+        m_RichText: 1
+        m_TextClipping: 0
+        m_ImagePosition: 0
+        m_ContentOffset: {x: 0, y: 0}
+        m_FixedWidth: 0
+        m_FixedHeight: 0
+        m_StretchWidth: 1
+        m_StretchHeight: 0
+    - prefix: +
+      name: Mini Header (Centered)
+      font: {fileID: 0}
+      fontSize: 10
+      fontAlignment: 4
+      fontStyle: 1
+      modes:
+      - fontColour: {r: 1, g: 1, b: 1, a: 1}
+        backgroundColour: {r: 0.38568, g: 0.6335747, b: 0.764151, a: 1}
+      - fontColour: {r: 1, g: 1, b: 1, a: 1}
+        backgroundColour: {r: 0.2671325, g: 0.4473481, b: 0.6509434, a: 1}
+      style:
+        m_Name: 
+        m_Normal:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 1, g: 1, b: 1, a: 1}
+        m_Hover:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_Active:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_Focused:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_OnNormal:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_OnHover:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_OnActive:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_OnFocused:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_Border:
+          m_Left: 0
+          m_Right: 0
+          m_Top: 0
+          m_Bottom: 0
+        m_Margin:
+          m_Left: 0
+          m_Right: 0
+          m_Top: 0
+          m_Bottom: 0
+        m_Padding:
+          m_Left: 0
+          m_Right: 0
+          m_Top: 0
+          m_Bottom: 0
+        m_Overflow:
+          m_Left: 0
+          m_Right: 0
+          m_Top: 0
+          m_Bottom: 0
+        m_Font: {fileID: 0}
+        m_FontSize: 10
+        m_FontStyle: 1
+        m_Alignment: 4
+        m_WordWrap: 0
+        m_RichText: 1
+        m_TextClipping: 0
+        m_ImagePosition: 0
+        m_ContentOffset: {x: 0, y: 0}
+        m_FixedWidth: 0
+        m_FixedHeight: 0
+        m_StretchWidth: 1
+        m_StretchHeight: 0
+  componentData:
+    showMissingScriptsWarning: 0
+    unityComponents:
+    - name: NavMeshAgent
+      shown: 0
+    - name: NavMeshObstacle
+      shown: 0
+    - name: OffMeshLink
+      shown: 0
+    - name: Animator
+      shown: 0
+    - name: Animation
+      shown: 0
+    - name: AimConstraint
+      shown: 0
+    - name: PositionConstraint
+      shown: 0
+    - name: RotationConstraint
+      shown: 0
+    - name: ScaleConstraint
+      shown: 0
+    - name: LookAtConstraint
+      shown: 0
+    - name: ParentConstraint
+      shown: 0
+    - name: AudioSource
+      shown: 0
+    - name: AudioLowPassFilter
+      shown: 0
+    - name: AudioHighPassFilter
+      shown: 0
+    - name: AudioReverbFilter
+      shown: 0
+    - name: AudioBehaviour
+      shown: 0
+    - name: AudioListener
+      shown: 0
+    - name: AudioReverbZone
+      shown: 0
+    - name: AudioDistortionFilter
+      shown: 0
+    - name: AudioEchoFilter
+      shown: 0
+    - name: AudioChorusFilter
+      shown: 0
+    - name: Cloth
+      shown: 0
+    - name: Camera
+      shown: 0
+    - name: FlareLayer
+      shown: 0
+    - name: ReflectionProbe
+      shown: 0
+    - name: BillboardRenderer
+      shown: 0
+    - name: Renderer
+      shown: 0
+    - name: Projector
+      shown: 0
+    - name: TrailRenderer
+      shown: 0
+    - name: LineRenderer
+      shown: 0
+    - name: OcclusionPortal
+      shown: 0
+    - name: OcclusionArea
+      shown: 0
+    - name: LensFlare
+      shown: 0
+    - name: Light
+      shown: 0
+    - name: Skybox
+      shown: 0
+    - name: MeshFilter
+      shown: 0
+    - name: Halo
+      shown: 0
+    - name: LightProbeProxyVolume
+      shown: 0
+    - name: SkinnedMeshRenderer
+      shown: 0
+    - name: MeshRenderer
+      shown: 0
+    - name: LightProbeGroup
+      shown: 0
+    - name: LODGroup
+      shown: 0
+    - name: NetworkView
+      shown: 0
+    - name: Behaviour
+      shown: 0
+    - name: MonoBehaviour
+      shown: 0
+    - name: RectTransform
+      shown: 0
+    - name: Transform
+      shown: 0
+    - name: SpriteRenderer
+      shown: 0
+    - name: SortingGroup
+      shown: 0
+    - name: PlayableDirector
+      shown: 0
+    - name: Grid
+      shown: 0
+    - name: GridLayout
+      shown: 0
+    - name: ParticleSystem
+      shown: 0
+    - name: ParticleSystemRenderer
+      shown: 0
+    - name: ParticleSystemForceField
+      shown: 0
+    - name: Rigidbody
+      shown: 0
+    - name: Collider
+      shown: 0
+    - name: CharacterController
+      shown: 0
+    - name: MeshCollider
+      shown: 0
+    - name: CapsuleCollider
+      shown: 0
+    - name: BoxCollider
+      shown: 0
+    - name: SphereCollider
+      shown: 0
+    - name: ConstantForce
+      shown: 0
+    - name: Joint
+      shown: 0
+    - name: HingeJoint
+      shown: 0
+    - name: SpringJoint
+      shown: 0
+    - name: FixedJoint
+      shown: 0
+    - name: CharacterJoint
+      shown: 0
+    - name: ConfigurableJoint
+      shown: 0
+    - name: ArticulationBody
+      shown: 0
+    - name: Rigidbody2D
+      shown: 0
+    - name: Collider2D
+      shown: 0
+    - name: CircleCollider2D
+      shown: 0
+    - name: CapsuleCollider2D
+      shown: 0
+    - name: EdgeCollider2D
+      shown: 0
+    - name: BoxCollider2D
+      shown: 0
+    - name: PolygonCollider2D
+      shown: 0
+    - name: CompositeCollider2D
+      shown: 0
+    - name: Joint2D
+      shown: 0
+    - name: AnchoredJoint2D
+      shown: 0
+    - name: SpringJoint2D
+      shown: 0
+    - name: DistanceJoint2D
+      shown: 0
+    - name: FrictionJoint2D
+      shown: 0
+    - name: HingeJoint2D
+      shown: 0
+    - name: RelativeJoint2D
+      shown: 0
+    - name: SliderJoint2D
+      shown: 0
+    - name: TargetJoint2D
+      shown: 0
+    - name: FixedJoint2D
+      shown: 0
+    - name: WheelJoint2D
+      shown: 0
+    - name: Effector2D
+      shown: 0
+    - name: AreaEffector2D
+      shown: 0
+    - name: BuoyancyEffector2D
+      shown: 0
+    - name: PointEffector2D
+      shown: 0
+    - name: PlatformEffector2D
+      shown: 0
+    - name: SurfaceEffector2D
+      shown: 0
+    - name: PhysicsUpdateBehaviour2D
+      shown: 0
+    - name: ConstantForce2D
+      shown: 0
+    - name: SpriteMask
+      shown: 0
+    - name: SpriteShapeRenderer
+      shown: 0
+    - name: StreamingController
+      shown: 0
+    - name: Terrain
+      shown: 0
+    - name: Tree
+      shown: 0
+    - name: TerrainCollider
+      shown: 0
+    - name: TextMesh
+      shown: 0
+    - name: Tilemap
+      shown: 0
+    - name: TilemapRenderer
+      shown: 0
+    - name: TilemapCollider2D
+      shown: 0
+    - name: CanvasGroup
+      shown: 0
+    - name: CanvasRenderer
+      shown: 0
+    - name: Canvas
+      shown: 0
+    - name: NetworkMatch
+      shown: 0
+    - name: VisualEffect
+      shown: 0
+    - name: VFXRenderer
+      shown: 0
+    - name: WheelCollider
+      shown: 0
+    - name: VideoPlayer
+      shown: 0
+    - name: WindZone
+      shown: 0
+    - name: AlphaButtonClickMask
+      shown: 0
+    - name: EventSystemChecker
+      shown: 0
+    - name: ForcedReset
+      shown: 0
+    - name: ActivateTrigger
+      shown: 0
+    - name: AutoMobileShaderSwitch
+      shown: 0
+    - name: AutoMoveAndRotate
+      shown: 0
+    - name: DragRigidbody
+      shown: 0
+    - name: DynamicShadowSettings
+      shown: 0
+    - name: FPSCounter
+      shown: 0
+    - name: FollowTarget
+      shown: 0
+    - name: ObjectResetter
+      shown: 0
+    - name: ParticleSystemDestroyer
+      shown: 0
+    - name: PlatformSpecificContent
+      shown: 0
+    - name: SimpleActivatorMenu
+      shown: 0
+    - name: SimpleMouseRotator
+      shown: 0
+    - name: SmoothFollow
+      shown: 0
+    - name: TimedObjectActivator
+      shown: 0
+    - name: TimedObjectDestructor
+      shown: 0
+    - name: WaypointCircuit
+      shown: 0
+    - name: WaypointProgressTracker
+      shown: 0
+    - name: AfterburnerPhysicsForce
+      shown: 0
+    - name: ExplosionFireAndDebris
+      shown: 0
+    - name: ExplosionPhysicsForce
+      shown: 0
+    - name: Explosive
+      shown: 0
+    - name: ExtinguishableParticleSystem
+      shown: 0
+    - name: FireLight
+      shown: 0
+    - name: Hose
+      shown: 0
+    - name: ParticleSystemMultiplier
+      shown: 0
+    - name: SmokeParticles
+      shown: 0
+    - name: WaterHoseParticles
+      shown: 0
+    - name: WaterBasic
+      shown: 0
+    - name: Displace
+      shown: 0
+    - name: GerstnerDisplace
+      shown: 0
+    - name: PlanarReflection
+      shown: 0
+    - name: SpecularLighting
+      shown: 0
+    - name: Water
+      shown: 0
+    - name: WaterBase
+      shown: 0
+    - name: WaterTile
+      shown: 0
+    - name: AxisTouchButton
+      shown: 0
+    - name: ButtonHandler
+      shown: 0
+    - name: InputAxisScrollbar
+      shown: 0
+    - name: Joystick
+      shown: 0
+    - name: MobileControlRig
+      shown: 0
+    - name: TiltInput
+      shown: 0
+    - name: TouchPad
+      shown: 0
+    - name: BrakeLight
+      shown: 0
+    - name: CarAIControl
+      shown: 0
+    - name: CarAudio
+      shown: 0
+    - name: CarController
+      shown: 0
+    - name: CarSelfRighting
+      shown: 0
+    - name: CarUserControl
+      shown: 0
+    - name: Mudguard
+      shown: 0
+    - name: SkidTrail
+      shown: 0
+    - name: Suspension
+      shown: 0
+    - name: WheelEffects
+      shown: 0
+    - name: AeroplaneAiControl
+      shown: 0
+    - name: AeroplaneAudio
+      shown: 0
+    - name: AeroplaneControlSurfaceAnimator
+      shown: 0
+    - name: AeroplaneController
+      shown: 0
+    - name: AeroplanePropellerAnimator
+      shown: 0
+    - name: AeroplaneUserControl2Axis
+      shown: 0
+    - name: AeroplaneUserControl4Axis
+      shown: 0
+    - name: JetParticleEffect
+      shown: 0
+    - name: LandingGear
+      shown: 0
+    - name: Ball
+      shown: 0
+    - name: BallUserControl
+      shown: 0
+    - name: AICharacterControl
+      shown: 0
+    - name: ThirdPersonCharacter
+      shown: 0
+    - name: ThirdPersonUserControl
+      shown: 0
+    - name: FirstPersonController
+      shown: 0
+    - name: HeadBob
+      shown: 0
+    - name: RigidbodyFirstPersonController
+      shown: 0
+    - name: AbstractTargetFollower
+      shown: 0
+    - name: AutoCam
+      shown: 0
+    - name: FreeLookCam
+      shown: 0
+    - name: HandHeldCam
+      shown: 0
+    - name: LookatTarget
+      shown: 0
+    - name: PivotBasedCameraRig
+      shown: 0
+    - name: ProtectCameraFromWallClip
+      shown: 0
+    - name: TargetFieldOfView
+      shown: 0
+    - name: Camera2DFollow
+      shown: 0
+    - name: CameraFollow
+      shown: 0
+    - name: Platformer2DUserControl
+      shown: 0
+    - name: PlatformerCharacter2D
+      shown: 0
+    - name: Restarter
+      shown: 0
+    - name: ETFXProjectileScript
+      shown: 0
+    - name: ETFXSceneManager
+      shown: 0
+    - name: PEButtonScript
+      shown: 0
+    - name: ParticleEffectsLibrary
+      shown: 0
+    - name: UICanvasManager
+      shown: 0
+    - name: FlyDemo
+      shown: 0
+    - name: RFX4_AudioCurves
+      shown: 0
+    - name: RFX4_LightCurves
+      shown: 0
+    - name: RFX4_PhysicsForceCurves
+      shown: 0
+    - name: RFX4_ScaleCurves
+      shown: 0
+    - name: RFX4_ShaderColorGradient
+      shown: 0
+    - name: RFX4_ShaderFloatCurve
+      shown: 0
+    - name: RFX4_WindCurves
+      shown: 0
+    - name: RFX4_EffectSettings
+      shown: 0
+    - name: RFX4_CollisionPropertyDeactiavtion
+      shown: 0
+    - name: RFX4_ParticleGravityDelay
+      shown: 0
+    - name: RFX4_ParticleLight
+      shown: 0
+    - name: RFX4_ParticleTrail
+      shown: 0
+    - name: RFX4_Turbulence
+      shown: 0
+    - name: RFX4_CameraShake
+      shown: 0
+    - name: RFX4_CopyPosition
+      shown: 0
+    - name: RFX4_CustomLight
+      shown: 0
+    - name: RFX4_DeactivateByTime
+      shown: 0
+    - name: RFX4_DeactivateRigidbodyByTime
+      shown: 0
+    - name: RFX4_Decal
+      shown: 0
+    - name: RFX4_DemoReactivation
+      shown: 0
+    - name: RFX4_EffectEvent
+      shown: 0
+    - name: RFX4_MaterialQueue
+      shown: 0
+    - name: RFX4_OnEnableResetTransform
+      shown: 0
+    - name: RFX4_ParticleCollisionGameObject
+      shown: 0
+    - name: RFX4_ParticleGravityPoint
+      shown: 0
+    - name: RFX4_PhysXSetImpulse
+      shown: 0
+    - name: RFX4_PhysicsMotion
+      shown: 0
+    - name: RFX4_RaycastCollision
+      shown: 0
+    - name: RFX4_ReplaceModelOnCollision
+      shown: 0
+    - name: RFX4_RotateAround
+      shown: 0
+    - name: RFX4_StartDelay
+      shown: 0
+    - name: RFX4_TornadoParticles
+      shown: 0
+    - name: RFX4_TrailRenderer
+      shown: 0
+    - name: RFX4_UVAnimation
+      shown: 0
+    - name: RFX4_UVScroll
+      shown: 0
+    - name: RFX4_MobileDistortion
+      shown: 0
+    - name: RFX4_PerPlatformSettings
+      shown: 0
+    - name: RFX4_MobileBloom
+      shown: 0
+    - name: FPS
+      shown: 0
+    - name: RFX4_Debug
+      shown: 0
+    - name: RFX4_DemoGUI
+      shown: 0
+    - name: RFX4_FPS
+      shown: 0
+    - name: RFX4_MouseOrbit
+      shown: 0
+    - name: RFX4_RealtimeReflection
+      shown: 0
+    - name: DemoGUI
+      shown: 0
+    - name: MyGUI3_1
+      shown: 0
+    - name: RealtimeReflection
+      shown: 0
+    - name: AddMaterialOnHit
+      shown: 0
+    - name: AnimatorBehaviour
+      shown: 0
+    - name: IceOffsetBehaviour
+      shown: 0
+    - name: LazyLoad
+      shown: 0
+    - name: LineProjectileCollisionBehaviour
+      shown: 0
+    - name: ProjectileCollisionBehaviour
+      shown: 0
+    - name: ScaleParticlesFromBound
+      shown: 0
+    - name: AnimationSpeedDebuff
+      shown: 0
+    - name: DebuffOnEnemyFromCollision
+      shown: 0
+    - name: ShieldCollisionBehaviour
+      shown: 0
+    - name: WaterUvAnimation
+      shown: 0
+    - name: MoveOnGround
+      shown: 0
+    - name: OffsetOnNormal
+      shown: 0
+    - name: OnRigidbodySendCollision
+      shown: 0
+    - name: ResetPositionOnDiactivated
+      shown: 0
+    - name: LineRendererBehaviour
+      shown: 0
+    - name: Billboard
+      shown: 0
+    - name: CollisionActiveBehaviour
+      shown: 0
+    - name: DeadTime
+      shown: 0
+    - name: DistortionMobileCamera
+      shown: 0
+    - name: EffectSettings
+      shown: 0
+    - name: EffectsColorizer
+      shown: 0
+    - name: EffectsParticleSystemScaler
+      shown: 0
+    - name: FadeInOutLight
+      shown: 0
+    - name: FadeInOutParticles
+      shown: 0
+    - name: FadeInOutScale
+      shown: 0
+    - name: FadeInOutShaderColor
+      shown: 0
+    - name: FadeInOutShaderFloat
+      shown: 0
+    - name: FadeInOutSound
+      shown: 0
+    - name: FixShaderQueue
+      shown: 0
+    - name: OnStartSendCollision
+      shown: 0
+    - name: RotateAround
+      shown: 0
+    - name: SetPositionOnHit
+      shown: 0
+    - name: UVTextureAnimator
+      shown: 0
+    - name: AuraArrayController
+      shown: 0
+    - name: AuraController
+      shown: 0
+    - name: Slide
+      shown: 0
+    - name: Togglescript
+      shown: 0
+    - name: MenuSceneLoader
+      shown: 0
+    - name: PauseMenu
+      shown: 0
+    - name: SceneAndURLLoader
+      shown: 0
+    - name: CameraSwitch
+      shown: 0
+    - name: LevelReset
+      shown: 0
+    - name: DistanceRadiusRenderer
+      shown: 0
+    - name: ItemRenderer
+      shown: 0
+    - name: CombatTarget
+      shown: 0
+    - name: BaseState
+      shown: 0
+    - name: Equipment
+      shown: 0
+    - name: CanvasController
+      shown: 0
+    - name: ButtonModifier
+      shown: 0
+    - name: SkillRadiusRadiusRenderer
+      shown: 0
+    - name: HotBarInteraction
+      shown: 0
+    - name: Tooltip
+      shown: 0
+    - name: StatsConfirmUI
+      shown: 0
+    - name: StatsDestributorUI
+      shown: 0
+    - name: UIActivator
+      shown: 0
+    - name: UpgradeUI
+      shown: 0
+    - name: WeaponUpgradedUI
+      shown: 0
+    - name: CooldownSkillManager
+      shown: 0
+    - name: SkillBarController
+      shown: 0
+    - name: SkillBox
+      shown: 0
+    - name: SkillsUpgrader
+      shown: 0
+    - name: FilterButton
+      shown: 0
+    - name: RowUI
+      shown: 0
+    - name: ShopUI
+      shown: 0
+    - name: ManaBarPlayer
+      shown: 0
+    - name: HealthBarCompanion
+      shown: 0
+    - name: HealthBarEnemy
+      shown: 0
+    - name: HealthBarPlayer
+      shown: 0
+    - name: GoldUI
+      shown: 0
+    - name: MainMenuSwitcherUI
+      shown: 0
+    - name: MainMenuUI
+      shown: 0
+    - name: SaveLoadUI
+      shown: 0
+    - name: DamageText
+      shown: 0
+    - name: DamageTextSpawner
+      shown: 0
+    - name: DestroyEffect
+      shown: 0
+    - name: Armour
+      shown: 0
+    - name: CompanionLevelUp
+      shown: 0
+    - name: Health
+      shown: 0
+    - name: Intelligence
+      shown: 0
+    - name: LevelUp
+      shown: 0
+    - name: Mana
+      shown: 0
+    - name: StatsModifierContainer
+      shown: 0
+    - name: StatsValueStore
+      shown: 0
+    - name: Strength
+      shown: 0
+    - name: Customer
+      shown: 0
+    - name: ShopSystem
+      shown: 0
+    - name: PlayerMesh
+      shown: 0
+    - name: ThrowSkill
+      shown: 0
+    - name: FindStat
+      shown: 0
+    - name: LevelLoader
+      shown: 0
+    - name: Portal
+      shown: 0
+    - name: SceneController
+      shown: 0
+    - name: LoadedObjects
+      shown: 0
+    - name: SaveableEntity
+      shown: 0
+    - name: Saving
+      shown: 0
+    - name: SavingHandler
+      shown: 0
+    - name: QuestCheckerLocation
+      shown: 0
+    - name: QuestSetter
+      shown: 0
+    - name: QuestSystem
+      shown: 0
+    - name: ProjectileAttack
+      shown: 0
+    - name: ObjectPooler
+      shown: 0
+    - name: LootSystem
+      shown: 0
+    - name: ChestPickUp
+      shown: 0
+    - name: WeaponPickUp
+      shown: 0
+    - name: DynamicInterface
+      shown: 0
+    - name: Gold
+      shown: 0
+    - name: PlayerInventory
+      shown: 0
+    - name: StaticInterface
+      shown: 0
+    - name: UserInterface
+      shown: 0
+    - name: ItemTrigger
+      shown: 0
+    - name: DialogueBar
+      shown: 0
+    - name: DialogueInteraction
+      shown: 0
+    - name: DialogueWithPlayer
+      shown: 0
+    - name: InitializeDialogueStrategy
+      shown: 0
+    - name: QuestDialogueStrategy
+      shown: 0
+    - name: TransactionDialogueStrategy
+      shown: 0
+    - name: SpeakableInstantiator
+      shown: 0
+    - name: SpeakableObject
+      shown: 0
+    - name: DialogueInstantiator
+      shown: 0
+    - name: AttackCompanionState
+      shown: 0
+    - name: ChaseCompanionState
+      shown: 0
+    - name: CompanionStateManager
+      shown: 0
+    - name: IdleCompanionState
+      shown: 0
+    - name: AttackEnemyState
+      shown: 0
+    - name: ChaseEnemyState
+      shown: 0
+    - name: EnemyStateManager
+      shown: 0
+    - name: IdleEnemyState
+      shown: 0
+    - name: AttackBaseState
+      shown: 0
+    - name: ChaseBaseState
+      shown: 0
+    - name: IdleBaseState
+      shown: 0
+    - name: ActionScheduler
+      shown: 0
+    - name: Combat
+      shown: 0
+    - name: CompanionChecker
+      shown: 0
+    - name: FriendlyAIController
+      shown: 0
+    - name: Movement
+      shown: 0
+    - name: PlayerController
+      shown: 0
+    - name: PlayerSkills
+      shown: 0
+    - name: UnchangeableState
+      shown: 0
+    - name: CameraController
+      shown: 0
+    - name: CharacterInfo
+      shown: 0
+    - name: CharacterSelector
+      shown: 0
+    - name: CharacterToSelect
+      shown: 0
+    - name: ClickToInteract
+      shown: 0
+    - name: EmptyCombat
+      shown: 0
+    - name: RadiusRenderer
+      shown: 0
+    - name: ChangeUI
+      shown: 0
+    - name: EscapeUI
+      shown: 0
+    - name: DialogueChoiceUI
+      shown: 0
+    - name: TextDialogueControllerUI
+      shown: 0
+    - name: BossSkills
+      shown: 0
+    - name: BehaviorTree
+      shown: 0
+    - name: CharacterRandomizer
+      shown: 0
+    - name: LowPolyWater
+      shown: 0
+    - name: ParticleSceneControls
+      shown: 0
+    - name: PlaceTargetWithMouse
+      shown: 0
+    - name: SlowMoButton
+      shown: 0
+    - name: Bloom
+      shown: 0
+    - name: PostEffectsBase
+      shown: 0
+    - name: Bloom
+      shown: 0
+    - name: ETFXButtonScript
+      shown: 0
+    - name: ETFXFireProjectile
+      shown: 0
+    - name: ETFXLoopScript
+      shown: 0
+    - name: ETFXMouseOrbit
+      shown: 0
+    - name: ETFXTarget
+      shown: 0
+    - name: ETFXLightFade
+      shown: 0
+    - name: ETFXPitchRandomizer
+      shown: 0
+    - name: ETFXRotation
+      shown: 0
+    - name: ExampleScript
+      shown: 0
+    - name: ExampleScript2
+      shown: 0
+    - name: ExampleScriptWithIcon
+      shown: 0
+    - name: PlaymodeTestsController
+      shown: 0
+    - name: PlayModeRunnerCallback
+      shown: 0
+    - name: PlayerQuitHandler
+      shown: 0
+    - name: RemoteTestResultSender
+      shown: 0
+    - name: TestResultRendererCallback
+      shown: 0
+    - name: SignalReceiver
+      shown: 0
+    - name: TMP_Dropdown
+      shown: 0
+    - name: TMP_InputField
+      shown: 0
+    - name: TMP_ScrollbarEventHandler
+      shown: 0
+    - name: TMP_SelectionCaret
+      shown: 0
+    - name: TMP_SpriteAnimator
+      shown: 0
+    - name: TMP_SubMesh
+      shown: 0
+    - name: TMP_SubMeshUI
+      shown: 0
+    - name: TMP_Text
+      shown: 0
+    - name: TextMeshPro
+      shown: 0
+    - name: TextMeshProUGUI
+      shown: 0
+    - name: TextContainer
+      shown: 0
+    - name: DropdownItem
+      shown: 0
+    - name: Button
+      shown: 0
+    - name: Dropdown
+      shown: 0
+    - name: Graphic
+      shown: 0
+    - name: GraphicRaycaster
+      shown: 0
+    - name: Image
+      shown: 0
+    - name: InputField
+      shown: 0
+    - name: AspectRatioFitter
+      shown: 0
+    - name: CanvasScaler
+      shown: 0
+    - name: ContentSizeFitter
+      shown: 0
+    - name: GridLayoutGroup
+      shown: 0
+    - name: HorizontalLayoutGroup
+      shown: 0
+    - name: HorizontalOrVerticalLayoutGroup
+      shown: 0
+    - name: LayoutElement
+      shown: 0
+    - name: LayoutGroup
+      shown: 0
+    - name: VerticalLayoutGroup
+      shown: 0
+    - name: Mask
+      shown: 0
+    - name: MaskableGraphic
+      shown: 0
+    - name: RawImage
+      shown: 0
+    - name: RectMask2D
+      shown: 0
+    - name: ScrollRect
+      shown: 0
+    - name: Scrollbar
+      shown: 0
+    - name: Selectable
+      shown: 0
+    - name: Slider
+      shown: 0
+    - name: Text
+      shown: 0
+    - name: Toggle
+      shown: 0
+    - name: ToggleGroup
+      shown: 0
+    - name: BaseMeshEffect
+      shown: 0
+    - name: Outline
+      shown: 0
+    - name: PositionAsUV1
+      shown: 0
+    - name: Shadow
+      shown: 0
+    - name: EventSystem
+      shown: 0
+    - name: EventTrigger
+      shown: 0
+    - name: BaseInput
+      shown: 0
+    - name: BaseInputModule
+      shown: 0
+    - name: PointerInputModule
+      shown: 0
+    - name: StandaloneInputModule
+      shown: 0
+    - name: TouchInputModule
+      shown: 0
+    - name: BaseRaycaster
+      shown: 0
+    - name: Physics2DRaycaster
+      shown: 0
+    - name: PhysicsRaycaster
+      shown: 0
+    - name: UIBehaviour
+      shown: 0
+    - name: DropdownItem
+      shown: 0
+    - name: InputSystemEventSystem
+      shown: 0
+    - name: CinemachineCameraOffset
+      shown: 0
+    - name: CinemachineRecomposer
+      shown: 0
+    - name: CinemachineTouchInputMapper
+      shown: 0
+    - name: Cinemachine3rdPersonAim
+      shown: 0
+    - name: CinemachineBlendListCamera
+      shown: 0
+    - name: CinemachineBrain
+      shown: 0
+    - name: CinemachineClearShot
+      shown: 0
+    - name: CinemachineCollider
+      shown: 0
+    - name: CinemachineConfiner
+      shown: 0
+    - name: CinemachineDollyCart
+      shown: 0
+    - name: CinemachineExternalCamera
+      shown: 0
+    - name: CinemachineFollowZoom
+      shown: 0
+    - name: CinemachineFreeLook
+      shown: 0
+    - name: CinemachineMixingCamera
+      shown: 0
+    - name: CinemachinePath
+      shown: 0
+    - name: CinemachinePipeline
+      shown: 0
+    - name: CinemachinePixelPerfect
+      shown: 0
+    - name: CinemachineSmoothPath
+      shown: 0
+    - name: CinemachineStateDrivenCamera
+      shown: 0
+    - name: CinemachineStoryboard
+      shown: 0
+    - name: CinemachineTargetGroup
+      shown: 0
+    - name: CinemachineVirtualCamera
+      shown: 0
+    - name: Cinemachine3rdPersonFollow
+      shown: 0
+    - name: CinemachineBasicMultiChannelPerlin
+      shown: 0
+    - name: CinemachineComposer
+      shown: 0
+    - name: CinemachineFramingTransposer
+      shown: 0
+    - name: CinemachineGroupComposer
+      shown: 0
+    - name: CinemachineHardLockToTarget
+      shown: 0
+    - name: CinemachineHardLookAt
+      shown: 0
+    - name: CinemachineOrbitalTransposer
+      shown: 0
+    - name: CinemachinePOV
+      shown: 0
+    - name: CinemachineSameAsFollowTarget
+      shown: 0
+    - name: CinemachineTrackedDolly
+      shown: 0
+    - name: CinemachineTransposer
+      shown: 0
+    - name: CinemachineComponentBase
+      shown: 0
+    - name: CinemachineExtension
+      shown: 0
+    - name: CinemachinePathBase
+      shown: 0
+    - name: CinemachineVirtualCameraBase
+      shown: 0
+    - name: CinemachineInputProvider
+      shown: 0
+    - name: CinemachineTriggerAction
+      shown: 0
+    - name: GroupWeightManipulator
+      shown: 0
+    - name: CinemachineCollisionImpulseSource
+      shown: 0
+    - name: CinemachineImpulseListener
+      shown: 0
+    - name: CinemachineImpulseSource
+      shown: 0
+    - name: CinemachineIndependentImpulseListener
+      shown: 0
+    - name: CinemachinePostProcessing
+      shown: 0
+    - name: CinemachineVolumeSettings
+      shown: 0
+    - name: PostProcessDebug
+      shown: 0
+    - name: PostProcessLayer
+      shown: 0
+    - name: PostProcessVolume
+      shown: 0
+    - name: InputWrapper
+      shown: 0
+    - name: UIDocument
+      shown: 0
+    - name: Behavior
+      shown: 0
+    - name: BehaviorGameGUI
+      shown: 0
+    - name: AOTLinker
+      shown: 0
+    - name: BehaviorManager
+      shown: 0
+    - name: VariableSynchronizer
+      shown: 0
+    - name: TaskReferences
+      shown: 0
+    - name: DOTweenComponent
+      shown: 0
+    customComponents:
+    - name: PlayerController
+      shown: 1
+      script: {fileID: 11500000, guid: 0a7cdf4e415e0914a96077fd69dcaefa, type: 3}

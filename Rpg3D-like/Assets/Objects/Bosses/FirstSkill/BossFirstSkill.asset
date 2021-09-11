@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 284e5252b2c84b90be29743a6d843eef, type: 3}
+  m_Name: BossFirstSkill
+  m_EditorClassIdentifier: 
+  _damage: 0
+  _radius: 0
+  _delay: 0
+  _amount: 0
+  _cooldown: 0.5
+  _manaCost: 30
+  _image: {fileID: 21300000, guid: beb4181ef568e0f4fa18f06a2b4210d2, type: 3}
+  _nextLevelSkill: {fileID: 11400000, guid: 085720f4ca91b1a4aa4934a1cd70fe56, type: 2}
+  _previousSkills: []
+  _filterStrategies:
+  - {fileID: 11400000, guid: 52632bdb9cdcb0640b97401a1a0baf69, type: 2}
+  _effectStrategies:
+  - {fileID: 11400000, guid: d996eef8ba5b9504d887eb822d483bd5, type: 2}
+  - {fileID: 11400000, guid: 9dc75fabd96562b4ea6abd3d75898850, type: 2}
+  - {fileID: 11400000, guid: 1cb8775c3fd17a5428401fb8f9305eca, type: 2}
+  _targetingStrategy: {fileID: 11400000, guid: 2eff350cd125b074a8d99db26045e012, type: 2}

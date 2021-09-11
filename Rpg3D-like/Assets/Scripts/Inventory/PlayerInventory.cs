@@ -1,86 +1,48 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using Enums;
-using Saving;
-using UI.Inventory;
+using Controller;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-namespace Inventories
+namespace Inventory
 {
-    public class PlayerInventory : MonoBehaviour, ISaveable
-{
-    private readonly int _inventoryCapacity = 9;
-    public Inventory GetInventory { get; private set; }
+    public class PlayerInventory : MonoBehaviour
+    {
+        [SerializeField] private InventoryObject _inventoryObject;
+        [SerializeField] private InventoryObject _hotbarObject;
+        public InventoryObject InventoryObject => _inventoryObject;
+        private Collider _lastClickedObject;
 
-    [SerializeField] private UIInventory _uiInventory;
-    private void Awake()
-    {
-        if(_uiInventory == null)
-            _uiInventory = FindObjectOfType<UIInventory>();
-        
-        GetInventory = new Inventory(UseItem);
-    }
-
-    private void Start()
-    {        
-        _uiInventory.SetInventory(GetInventory);
-    }
-
-    public bool HasEnoughPlace(int amountToLocate = 0)
-    {
-        return GetInventory.GetInventory.Count + amountToLocate < _inventoryCapacity;
-    }
-    private void UseItem(Item item)
-    {
-        item.IItem?.UseItem(gameObject, item);
-    }
- 
-    public void InventoryPlacerItem(ItemType item, int amount = 1)
-    {
-        GetInventory.AddItem(ItemsSpawnManager.Instance.ItemTypeSwitcher(item), amount);
-    }
-
-    
-    public void DropItem(Item item, Vector3 playerPositionPosition)
-    {
-        Vector3 randomDirection = new Vector3(playerPositionPosition.x + 1, playerPositionPosition.y, playerPositionPosition.z+1);
-/*
-        switch (item._item)
+        public event Action<ItemObject> OnItemPicked;
+        private void Update()
         {
-            case Item.ItemType.HealthPotion: ItemsSpawnManager.Instance.SpawnItem(item, randomDirection);
-                break;
-            case Item.ItemType.Gold: ItemsSpawnManager.Instance.SpawnItem(item, randomDirection);
-                break;
-        }*/   
-    }
-
-    public object CaptureState()
-    {
-        List<ItemType> items = new List<ItemType>();
-
-        foreach (var item in GetInventory.GetInventory)
-        {
-            while (item.Amount != 0)
+            if (Input.GetMouseButtonDown(0))
             {
-                items.Add(item.IItem.GetItemType);
-                item.Amount--;
+                RaycastHit raycastHit;
+                Physics.Raycast(PlayerController.GetRay(), out raycastHit);
+                _lastClickedObject = raycastHit.collider;
             }
         }
-        
-        return items;
-    }
 
-    public void RestoreState(object state)
-    {
-        GetInventory.GetInventory.Clear();
-        foreach (var itemType in (List<ItemType>) state)
+        private void OnTriggerEnter(Collider other)
         {
-            InventoryPlacerItem(itemType);
+            if (other.GetComponent<ItemTrigger>() != null && other == _lastClickedObject)
+            {
+                if (_hotbarObject._inventory.Items.Where(inventorySlot => inventorySlot != null)
+                    .Any(inventorySlot => inventorySlot.itemData.Id == other.GetComponent<ItemTrigger>().GetItem.Data.Id && inventorySlot.ItemObject.Stackable))
+                {
+                    OnItemPicked?.Invoke(other.GetComponent<ItemTrigger>().GetItem);
+                    _hotbarObject.AddItem(new ItemData(other.GetComponent<ItemTrigger>().GetItem), other.GetComponent<ItemTrigger>().GetItemAmount);
+                    Destroy(other.gameObject);
+                    return;
+                }
+            }
+            
+            if (other.GetComponent<ItemTrigger>() != null && _inventoryObject.HasEnoughPlace() && other == _lastClickedObject)
+            {
+                OnItemPicked?.Invoke(other.GetComponent<ItemTrigger>().GetItem);
+                _inventoryObject.AddItem(new ItemData(other.GetComponent<ItemTrigger>().GetItem), other.GetComponent<ItemTrigger>().GetItemAmount);
+                Destroy(other.gameObject);
+            }
         }
     }
-}
-
 }

@@ -1,47 +1,42 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Stats;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBarEnemy : MonoBehaviour
+namespace UI.PlayerBars.HealthBar
 {
-    [SerializeField] private Image _imageHealthForeground;
-    [SerializeField] private GameObject _healthBar;
-    [SerializeField] private GameObject _enemy;
-    
-    private Health _health;
-    private void Awake()
+    public class HealthBarEnemy : MonoBehaviour
     {
-        _health = _enemy.GetComponent<Health>();
-
-        _health.OnTakeDamage += HealthBarMaintenance;
-        _health.OnTakeHealing += HealthBarMaintenance;
-        _health.OnDied += () =>
+        [SerializeField] private Image _imageHealthForeground;
+        [SerializeField] private GameObject _healthBar;
+        [SerializeField] private GameObject _enemy;
+    
+        private Health _health;
+        private void Awake()
         {
-            _healthBar.SetActive(false);
-        };
-    }
+            _health = _enemy.GetComponent<Health>();
 
-    private void Start()
-    {
-        _imageHealthForeground.fillAmount =_health.GetFraction();
-    }
+            _health.OnHealthChanged += HealthBarMaintenance;
+            _health.OnDied += () =>
+            {
+                _healthBar.SetActive(false);
+            };
+        }
 
-    private void LateUpdate()
-    {
-        transform.LookAt(Camera.main.transform);
-    }
+        private void Start()
+        {
+            _imageHealthForeground.fillAmount =_health.GetFraction();
+        }
 
-    private void HealthBarMaintenance(GameObject damager)
-    {
-        HealthBarMaintenance();
-    }
+        private void LateUpdate()
+        {
+            transform.LookAt(Camera.main.transform);
+        }
     
-    private void HealthBarMaintenance()
-    {
-        _healthBar.SetActive(true);
-        _imageHealthForeground.fillAmount = _health.GetFraction();
-    }
+        private void HealthBarMaintenance()
+        {
+            _healthBar.SetActive(true);
+            _imageHealthForeground.fillAmount = _health.GetFraction();
+        }
     
+    }
 }

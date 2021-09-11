@@ -8,7 +8,7 @@ namespace UI.StatModifing
 {
     public class StatsDestributorUI : MonoBehaviour
     {
-        [SerializeField] private StatsEnum _stat;
+        [SerializeField] private StatsModifier _stat;
         [SerializeField] private TextMeshProUGUI _valueText;
         [SerializeField] private Button _minus;
         [SerializeField] private Button _plus;

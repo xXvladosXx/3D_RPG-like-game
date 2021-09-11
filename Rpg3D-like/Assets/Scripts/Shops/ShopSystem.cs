@@ -2,22 +2,24 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Inventories;
-using Saving;
+using Controller;
+using Inventory;
+using SavingSystem;
+using Scriptable.Stats;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Shops{
     public class ShopSystem : MonoBehaviour, ISaveable
     {
+        [SerializeField] private ItemDatabaseObject _database;
         [SerializeField] private float _sellingModifier = 50f;
         [SerializeField] private ShopConfigItem[] _shopConfigItems;
-
-        private Inventory _sellerInventory;
+        
         private ItemCategory _itemCategory = ItemCategory.None;
 
-        private Dictionary<ItemType, int> _transaction = new Dictionary<ItemType, int>();
-        private Dictionary<ItemType, int> _stock = new Dictionary<ItemType, int>();
+        private Dictionary<ItemObject, int> _transaction = new Dictionary<ItemObject, int>();
+        private Dictionary<ItemObject, int> _stock = new Dictionary<ItemObject, int>();
         private Customer _customer;
         private bool _buyingState = true;
         
@@ -27,18 +29,16 @@ namespace Shops{
         class ShopConfigItem
         {
             public int Availability;
-            public Item Item;
+            public int ItemID;
             public int Price;
             public int ItemLevelAvailability;
         }
 
         private void Awake()
         {
-            _sellerInventory = new Inventory();
             foreach (var shopItem in _shopConfigItems)
             {
-                _stock[shopItem.Item.ItemType] = shopItem.Availability;
-                _sellerInventory.AddItem(shopItem.Item, shopItem.Availability);
+                _stock[_database.GetItem[shopItem.ItemID]] = shopItem.Availability;
             }
         }
 
@@ -46,7 +46,7 @@ namespace Shops{
         {
             foreach (var shopItem in GetAllItems())
             {
-                if (shopItem.GetItem.GetItemCategory != _itemCategory 
+                if (shopItem.GetItem.Category != _itemCategory 
                     && _itemCategory != ItemCategory.None) 
                     continue;
                 
@@ -54,7 +54,7 @@ namespace Shops{
             }
         }
 
-        public void AddToTransaction(ItemType item, int amount)
+        public void AddToTransaction(ItemObject item, int amount)
         {
             if (!_transaction.ContainsKey(item))
             {
@@ -86,13 +86,13 @@ namespace Shops{
 
         public void ConfirmTransaction()
         {
-            PlayerInventory playerInventory = _customer.GetComponent<PlayerInventory>();
+            PlayerInventory inventory = _customer.GetComponent<PlayerInventory>();
             Gold playerGold = _customer.GetComponent<Gold>();
-            if(playerInventory == null) return;
+            if(inventory == null) return;
 
             foreach (ShopItem shopItem in GetAllItems())
             {
-                ItemType item = shopItem.GetItem.GetItemType;
+                ItemObject item = shopItem.GetItem;
                 int amount = shopItem.GetAmount;
                 float price = shopItem.GetPrice;
 
@@ -100,11 +100,11 @@ namespace Shops{
                 {
                     if (_buyingState)
                     {
-                        BuyItem(playerGold, price, playerInventory, item);
+                        BuyItem(playerGold, price, inventory.InventoryObject, item);
                     }
                     else
                     {
-                        SellItem(playerGold, price, playerInventory, item);
+                        SellItem(playerGold, price, inventory.InventoryObject, item);
                     }
                 }
             }
@@ -112,41 +112,53 @@ namespace Shops{
             OnChanged?.Invoke();
         }
 
-        private void SellItem(Gold playerGold, float price, PlayerInventory playerInventory, ItemType item)
+        private void SellItem(Gold playerGold, float price, InventoryObject inventory, ItemObject item)
         {
             AddToTransaction(item, -1);
-            playerInventory.GetInventory.RemoveItem(new Item{ItemType = item});
+            inventory.RemoveItem(item.Data.Id, 1);
             _stock[item]++;
             playerGold.UpdateGold(price);
+            
+            foreach (var shopConfigItem in _shopConfigItems)
+            {
+                if(shopConfigItem.ItemID == item.Data.Id)
+                    shopConfigItem.Availability = _stock[item];
+            }
         }
 
-        private void BuyItem(Gold playerGold, float price, PlayerInventory playerInventory, ItemType item)
+        private void BuyItem(Gold playerGold, float price, InventoryObject inventory, ItemObject item)
         {
             if(playerGold.GetGold < price) return;
             
-            bool hasEnoughPlace = playerInventory.HasEnoughPlace();
+            bool hasEnoughPlace = inventory.HasEnoughPlace();
             if (!hasEnoughPlace) return;
 
             AddToTransaction(item, -1);
             _stock[item]--;
-            playerInventory.InventoryPlacerItem(item);
+            inventory.AddItem(item.Data, 1);
             playerGold.UpdateGold(-price);
+
+            foreach (var shopConfigItem in _shopConfigItems)
+            {
+                if(shopConfigItem.ItemID == item.Data.Id)
+                    shopConfigItem.Availability = _stock[item];
+            }
         }
 
         public IEnumerable<ShopItem> GetAllItems()
         {
             foreach (var shopConfigItem in _shopConfigItems)
             {
-                _transaction.TryGetValue(shopConfigItem.Item.ItemType, out var amount);
+                _transaction.TryGetValue(_database.GetItem[shopConfigItem.ItemID], out var amount);
                 
-                var itemAvailability = GetItemAvailability(shopConfigItem.Item.ItemType);
+                var itemAvailability = GetItemAvailability(_database.GetItem[shopConfigItem.ItemID]);
 
                 if (IsBuyingMode())
                 {
                     if (GetCustomerLevel() > shopConfigItem.ItemLevelAvailability)
                     {
                         yield return new ShopItem(
-                            ItemsSpawnManager.Instance.ItemTypeSwitcher(shopConfigItem.Item.ItemType),
+                            _database.GetItem[shopConfigItem.ItemID],
                             itemAvailability,
                             GetPrice(shopConfigItem), amount);
                     }
@@ -154,14 +166,14 @@ namespace Shops{
                 else
                 {
                         yield return new ShopItem(
-                            ItemsSpawnManager.Instance.ItemTypeSwitcher(shopConfigItem.Item.ItemType),
+                            _database.GetItem[shopConfigItem.ItemID],
                             itemAvailability,
                             GetPrice(shopConfigItem), amount);
                 }
             }
         }
 
-        private int GetItemAvailability(ItemType item)
+        private int GetItemAvailability(ItemObject item)
         {
             if (_buyingState)
             {
@@ -172,19 +184,16 @@ namespace Shops{
             return CountItemsInInventory(item);
         }
 
-        private int CountItemsInInventory(ItemType itemType)
+        private int CountItemsInInventory(ItemObject item)
         {
-            PlayerInventory playerInventory = _customer.GetComponent<PlayerInventory>();
-            if (playerInventory == null) return 0;
+            PlayerInventory inventory = _customer.GetComponent<PlayerInventory>();
+            if (inventory == null) return 0;
 
             int total = 0;
-            foreach (var item in playerInventory.GetInventory.GetInventory)
+            foreach (var inventorySlot in inventory.InventoryObject._inventory.Items)
             {
-                if (item.IItem.GetItemType == itemType)
-                {
-                    total += item.Amount;
-                }
-                
+                if(inventorySlot.itemData.Id == item.Data.Id)
+                    total += inventorySlot.Amount;
             }
 
             return total;
@@ -227,14 +236,13 @@ namespace Shops{
 
         public bool HasEnoughPlace()
         {
-            if (_shopConfigItems.Any(shopItem => shopItem.Item.IsStackable()))
+            if (_shopConfigItems.Any(shopItem => _database.GetItem[shopItem.ItemID].Stackable))
             {
                 return true;
             }
 
             return GetAllItems().Select(shopItem => shopItem.GetAmount)
-                .Select(amount => _customer.GetComponent<PlayerInventory>()
-                    .HasEnoughPlace(amount))
+                .Select(amount => _customer.GetComponent<PlayerController>())
                 .All(hasEnoughPlace => hasEnoughPlace);
         }
 
@@ -271,12 +279,22 @@ namespace Shops{
 
         public object CaptureState()
         {
-            return _stock;
+            foreach (var shopConfigItem in _shopConfigItems)
+            {
+                print(shopConfigItem.Availability);
+            }
+            
+            return _shopConfigItems;
         }
 
         public void RestoreState(object state)
         {
-            _stock = new Dictionary<ItemType, int>((Dictionary<ItemType, int>) state);
+            _shopConfigItems = (ShopConfigItem[])state;
+            
+            foreach (var shopConfigItem in _shopConfigItems)
+            {
+                print(shopConfigItem.Availability);
+            }
         }
     }
 }

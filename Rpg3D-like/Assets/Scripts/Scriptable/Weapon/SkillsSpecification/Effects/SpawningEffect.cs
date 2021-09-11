@@ -1,9 +1,10 @@
 ﻿using System;
+using Scriptable.Weapon.SkillsSpecification.Strategies;
 using UnityEngine;
 
-namespace Scriptable.Weapon
+namespace Scriptable.Weapon.SkillsSpecification.Effects
 {
-    [CreateAssetMenu(fileName = "DelayClickTargeting", menuName = "Abilities/SpawnEffect", order = 0)]
+    [CreateAssetMenu(fileName = "DelayClickTargeting", menuName = "Abilities/Core/Effect", order = 0)]
     public class SpawningEffect : EffectStrategy
     {
         [SerializeField] private GameObject _spell;
@@ -13,12 +14,17 @@ namespace Scriptable.Weapon
             SpawnEffect(skillData, finished);
         }
 
+        public override void SetData(DataCollector dataCollector)
+        {
+            
+        }
+
         private void SpawnEffect(SkillData skillData, Action finished)
         {
             GameObject spell = Instantiate(_spell, skillData.GetMousePosition, Quaternion.identity);
-            spell.transform.position = new Vector3(skillData.GetMousePosition.x, skillData.GetMousePosition.y + 2, skillData.GetMousePosition.z);
+            spell.transform.position = new Vector3(skillData.GetMousePosition.x, skillData.GetMousePosition.y, skillData.GetMousePosition.z);
             
-            Destroy(spell, 2f);
+            Destroy(spell, 3f);
             finished();
         }
     }

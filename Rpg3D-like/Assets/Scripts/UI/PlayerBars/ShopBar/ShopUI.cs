@@ -1,13 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Inventories;
 using Shops;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.ShopUI
+namespace UI.PlayerBars.ShopBar
 {
     public class ShopUI : MonoBehaviour
     {
@@ -16,6 +12,7 @@ namespace UI.ShopUI
         [SerializeField] private TextMeshProUGUI _totalPrice;
         [SerializeField] private Button _confirmButton;
         [SerializeField] private Button _switcherState;
+        [SerializeField] private Transform _filterButtons;
 
         private Customer _customer;
         private ShopSystem _shop;
@@ -45,11 +42,6 @@ namespace UI.ShopUI
             
             gameObject.SetActive(_customer!= null);
 
-            foreach (FilterButton button in GetComponentsInChildren<FilterButton>())
-            {
-                button.SetShop(_shop);
-                button.RefreshUI();
-            }
             if(_shop == null) return;
 
             _shop.OnChanged += RefreshUI;
@@ -73,6 +65,7 @@ namespace UI.ShopUI
 
             foreach (FilterButton button in GetComponentsInChildren<FilterButton>())
             {
+                button.SetShop(_shop);
                 button.RefreshUI();
             }
             

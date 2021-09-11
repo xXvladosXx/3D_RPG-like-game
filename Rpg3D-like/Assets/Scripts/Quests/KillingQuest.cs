@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Scriptable.Weapon;
+using Stats;
 using TMPro;
 using UnityEngine;
 
@@ -10,10 +11,6 @@ namespace Quests
     [CreateAssetMenu(fileName = "KillingQuest", menuName = "Quests/KillingQuest", order = 0)]
     public class KillingQuest : InitializationQuest
     {
-        [SerializeField] private GameObject _npc; 
-        [SerializeField] private string _questName;
-        [SerializeField] private float _experienceAmount;
-        [SerializeField] private string _questAim;
         [SerializeField] private int _questAmountKill;
 
         private GameObject _player;
@@ -22,19 +19,10 @@ namespace Quests
         {
             _player = GameObject.FindWithTag("Player");
 
-            GameObject.FindGameObjectWithTag("QuestName").GetComponent<TextMeshProUGUI>().text = _questName;
-            TextMeshProUGUI amountToKill = GameObject.FindGameObjectWithTag("QuestAmountToKill").GetComponent<TextMeshProUGUI>();
-            amountToKill.enabled = true;
-            amountToKill.text = _questAmountKill.ToString();
-
-            TextMeshProUGUI enemyToKill = GameObject.FindGameObjectWithTag("QuestAim").GetComponent<TextMeshProUGUI>();
-            enemyToKill.enabled = true;
-            enemyToKill.text = _questAim;
-            
             List<CombatTarget> combatTargets = new List<CombatTarget>();
             foreach (var combatTarget in FindObjectsOfType<CombatTarget>())
             {
-                if (combatTarget.gameObject.CompareTag(_questAim))
+                if (combatTarget.gameObject.CompareTag(QuestAim))
                     combatTargets.Add(combatTarget);
             }
 
@@ -43,11 +31,9 @@ namespace Quests
             
             killingQuest.OnUpdateQuest += () =>
             {
-                _player.GetComponent<LevelUp>().ExperienceReward(_experienceAmount);
+                _player.GetComponent<LevelUp>().ExperienceReward(Experience);
 
                 GameObject.FindGameObjectWithTag("QuestName").GetComponent<TextMeshProUGUI>().text = "None";
-                amountToKill.enabled = false;
-                enemyToKill.enabled = false;
                 completed();
             };
 
@@ -59,7 +45,7 @@ namespace Quests
 
             foreach (var enemy in enemies)
             {
-                if (enemy.gameObject.CompareTag(_questAim))
+                if (enemy.gameObject.CompareTag(QuestAim))
                     return enemy.gameObject;
             }
 

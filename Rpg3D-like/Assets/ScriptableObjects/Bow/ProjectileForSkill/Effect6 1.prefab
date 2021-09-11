@@ -4823,7 +4823,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9320f3afef659b64cb7316ce3c0bfbab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UseCollisionDetect: 1
+  UseCollisionDetect: 0
   MaxDistnace: -1
   Mass: 1
   Speed: 20
@@ -14167,6 +14167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5515a6238eaec149b7fe8a96f9c06a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _projectileTrigger: {fileID: 0}
 --- !u!65 &-6286389536151027553
 BoxCollider:
   m_ObjectHideFlags: 0

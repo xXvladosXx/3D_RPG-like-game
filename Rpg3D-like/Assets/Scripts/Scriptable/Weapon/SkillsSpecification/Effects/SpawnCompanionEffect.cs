@@ -1,12 +1,13 @@
 ﻿using System;
 using Controller;
+using Scriptable.Weapon.SkillsSpecification.Strategies;
 using UI.PlayerBars.HealthBar;
 using UnityEngine;
 
-namespace Scriptable.Weapon
+namespace Scriptable.Weapon.SkillsSpecification.Effects
 {
 
-    [CreateAssetMenu(fileName = "Companion Spawning", menuName = "Abilities/SpellCastingCompanion", order = 0)]
+    [CreateAssetMenu(fileName = "Companion Spawning", menuName = "Abilities/Core/Companion", order = 0)]
     public class SpawnCompanionEffect : EffectStrategy
     {
         [SerializeField] private FriendlyAIController _companionToSpawn;
@@ -22,6 +23,11 @@ namespace Scriptable.Weapon
             SingleProjectileAttack(skillData);
           
             finished();
+        }
+
+        public override void SetData(DataCollector dataCollector)
+        {
+            dataCollector.AddDataFromNewLine(_companionToSpawn.name);
         }
 
         private void SingleProjectileAttack(SkillData skillData)

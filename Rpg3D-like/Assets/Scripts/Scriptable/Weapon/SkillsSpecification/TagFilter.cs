@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEditor;
+using Scriptable.Weapon.SkillsSpecification.Strategies;
 using UnityEngine;
 
-namespace Scriptable.Weapon
+namespace Scriptable.Weapon.SkillsSpecification
 {
     [CreateAssetMenu(fileName = "FilteringByComponent", menuName = "Abilities/FilterComponent", order = 0)]
     public class TagFilter : FilterStrategy

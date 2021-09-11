@@ -1,43 +1,43 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using SavingSystem;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class SaveLoadUI : MonoBehaviour
+namespace UI.MainMenu
 {
-    [SerializeField] private Transform _content;
-    [SerializeField] private GameObject _buttonPref;
-    [SerializeField] private bool _saving = false;
-    
-    private SavingHandler _savingHandler;
-    private void OnEnable()
+    public class SaveLoadUI : MonoBehaviour
     {
-        _savingHandler = FindObjectOfType<SavingHandler>();
-        
-        if(_savingHandler == null) return;
-        
-        foreach (Transform child in _content)
+        [SerializeField] private Transform _content;
+        [SerializeField] private GameObject _buttonPref;
+        [SerializeField] private bool _saving = false;
+    
+        private SavingHandler _savingHandler;
+        private void OnEnable()
         {
-            Destroy(child.gameObject);
-        }
-        foreach (var save in _savingHandler.SaveList())
-        {
-            GameObject savePrefab = Instantiate(_buttonPref, _content);
-            savePrefab.GetComponentInChildren<TextMeshProUGUI>().text = save;
+            _savingHandler = FindObjectOfType<SavingHandler>();
+        
+            if(_savingHandler == null) return;
+        
+            foreach (Transform child in _content)
+            {
+                Destroy(child.gameObject);
+            }
+            foreach (var save in _savingHandler.SaveList())
+            {
+                GameObject savePrefab = Instantiate(_buttonPref, _content);
+                savePrefab.GetComponentInChildren<TextMeshProUGUI>().text = save;
             
-            Button buttonSave = savePrefab.GetComponent<Button>();
-            if (!_saving)
-            {
-                buttonSave.onClick.AddListener((() => { _savingHandler.LoadGame(save); }));
-            }
-            else
-            {
-                buttonSave.onClick.AddListener((() => { _savingHandler.Save(save); }));
+                Button buttonSave = savePrefab.GetComponent<Button>();
+                if (!_saving)
+                {
+                    buttonSave.onClick.AddListener((() => { _savingHandler.LoadGame(save); }));
+                }
+                else
+                {
+                    buttonSave.onClick.AddListener((() => { _savingHandler.Save(save); }));
+                }
             }
         }
-    }
 
+    }
 }

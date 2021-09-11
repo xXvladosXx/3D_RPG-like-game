@@ -1,10 +1,9 @@
-﻿using System;
-using Inventories;
+﻿using Inventory;
 using Shops;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.ShopUI
+namespace UI.PlayerBars.ShopBar
 {
     public class FilterButton : MonoBehaviour
     {

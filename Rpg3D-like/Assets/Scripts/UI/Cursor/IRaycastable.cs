@@ -1,4 +1,6 @@
-﻿namespace UI.Cursor
+﻿using Controller;
+
+namespace UI.Cursor
 {
     public interface IRaycastable
     {

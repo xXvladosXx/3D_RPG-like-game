@@ -18,6 +18,8 @@ TagManager:
   - Weapon
   - InventoryContainer
   - View
+  - UpgradeBar
+  - ShopBar
   layers:
   - Default
   - TransparentFX

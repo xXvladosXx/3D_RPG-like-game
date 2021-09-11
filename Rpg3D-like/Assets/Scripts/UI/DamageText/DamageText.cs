@@ -1,22 +1,25 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class DamageText : MonoBehaviour
+namespace UI.DamageText
 {
-    private TextMeshPro _textMeshPro;
-
-    private void Awake()
+    public class DamageText : MonoBehaviour
     {
-        _textMeshPro = GetComponent<TextMeshPro>();
-    }
+        private TextMeshPro _textMeshPro;
 
-    public void SetDamageText(float amount)
-    {
-        transform.LookAt(Camera.main.transform);
+        private void Awake()
+        {
+            _textMeshPro = GetComponent<TextMeshPro>();
+        }
 
-        _textMeshPro.text = amount.ToString();
+        public void SetDamageText(float amount)
+        {
+            transform.LookAt(Camera.main.transform);
+            Vector3 euler = transform.rotation.eulerAngles;
+            euler.y += 180;
+        
+            transform.rotation = Quaternion.Euler(euler);
+            _textMeshPro.text = amount.ToString();
+        }
     }
 }

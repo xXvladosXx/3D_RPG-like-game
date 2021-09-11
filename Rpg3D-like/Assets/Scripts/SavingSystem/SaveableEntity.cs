@@ -1,92 +1,91 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using Saving;
-#if UNITY_EDITOR
 using UnityEditor;
-#endif
 using UnityEngine;
-using UnityEngine.AI;
+#if UNITY_EDITOR
+#endif
 
-[ExecuteAlways]
-public class SaveableEntity : MonoBehaviour
+namespace SavingSystem
 {
-   [SerializeField] private string _uniqueIdentifier = System.Guid.NewGuid().ToString();
-   private static Dictionary<string, SaveableEntity> globalLookThrough = new Dictionary<string, SaveableEntity>();
-   public string GetUniqueIdentifier()
+   [ExecuteAlways]
+   public class SaveableEntity : MonoBehaviour
    {
-      return _uniqueIdentifier;
-   }
-
-   public object CaptureState()
-   {
-      Dictionary<string, object> state = new Dictionary<string, object>();
-      
-      foreach (var saveable in GetComponents<ISaveable>())
+      [SerializeField] private string _uniqueIdentifier = System.Guid.NewGuid().ToString();
+      private static Dictionary<string, SaveableEntity> globalLookThrough = new Dictionary<string, SaveableEntity>();
+      public string GetUniqueIdentifier()
       {
-         state[saveable.GetType().ToString()] = saveable.CaptureState();
+         return _uniqueIdentifier;
       }
 
-      return state;
-   }
-   
-   public void RestoreState(object state)
-   {
-      Dictionary<string, object> restoredState = state as Dictionary<string, object>;
-
-      foreach (var saveable in GetComponents<ISaveable>())
+      public object CaptureState()
       {
-         string saveableSerialize = saveable.GetType().ToString();
-         if (state is Dictionary<string,object> records)
+         Dictionary<string, object> state = new Dictionary<string, object>();
+      
+         foreach (var saveable in GetComponents<ISaveable>())
          {
-            saveable.RestoreState(restoredState[saveableSerialize]);
+            state[saveable.GetType().ToString()] = saveable.CaptureState();
+         }
+
+         return state;
+      }
+   
+      public void RestoreState(object state)
+      {
+         Dictionary<string, object> restoredState = state as Dictionary<string, object>;
+
+         foreach (var saveable in GetComponents<ISaveable>())
+         {
+            string saveableSerialize = saveable.GetType().ToString();
+            if (state is Dictionary<string,object> records)
+            {
+               saveable.RestoreState(restoredState[saveableSerialize]);
+            }
          }
       }
-   }
 
 #if UNITY_EDITOR
-   private void Update()
-   {
-      if(Application.IsPlaying(gameObject)) return;
-      if(string.IsNullOrEmpty(gameObject.scene.path)) return;
-
-      SerializedObject serializedObject = new SerializedObject(this);
-      SerializedProperty serializedProperty = serializedObject.FindProperty("_uniqueIdentifier");
-
-      if (string.IsNullOrEmpty(serializedProperty.stringValue) || !IsUnique(serializedProperty.stringValue))
+      private void Update()
       {
-         serializedProperty.stringValue = System.Guid.NewGuid().ToString();
-         serializedObject.ApplyModifiedProperties();
+         if(Application.IsPlaying(gameObject)) return;
+         if(string.IsNullOrEmpty(gameObject.scene.path)) return;
+
+         SerializedObject serializedObject = new SerializedObject(this);
+         SerializedProperty serializedProperty = serializedObject.FindProperty("_uniqueIdentifier");
+
+         if (string.IsNullOrEmpty(serializedProperty.stringValue) || !IsUnique(serializedProperty.stringValue))
+         {
+            serializedProperty.stringValue = System.Guid.NewGuid().ToString();
+            serializedObject.ApplyModifiedProperties();
+         }
+
+         globalLookThrough[serializedProperty.stringValue] = this;
       }
 
-      globalLookThrough[serializedProperty.stringValue] = this;
-   }
+      private bool IsUnique(string candidate)
+      { 
+         if(!globalLookThrough.ContainsKey(candidate))
+         {
+            return true;
+         }
 
-   private bool IsUnique(string candidate)
-   { 
-      if(!globalLookThrough.ContainsKey(candidate))
-      {
-         return true;
-      }
+         if (globalLookThrough[candidate] == this)
+         {
+            return true;
+         }
 
-      if (globalLookThrough[candidate] == this)
-      {
-         return true;
-      }
+         if (globalLookThrough[candidate] == null)
+         {
+            globalLookThrough.Remove(candidate);
+            return true;
+         }
 
-      if (globalLookThrough[candidate] == null)
-      {
-         globalLookThrough.Remove(candidate);
-         return true;
-      }
-
-      if (globalLookThrough[candidate].GetUniqueIdentifier() != candidate)
-      {
-         globalLookThrough.Remove(candidate);
-         return true;
-      }
+         if (globalLookThrough[candidate].GetUniqueIdentifier() != candidate)
+         {
+            globalLookThrough.Remove(candidate);
+            return true;
+         }
       
-      return false;
-   }
+         return false;
+      }
 #endif
+   }
 }

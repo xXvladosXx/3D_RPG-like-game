@@ -1,15 +1,14 @@
 ﻿using System;
-using Inventories;
+using Inventory;
 using UnityEngine;
-
 namespace Shops
 {
     public class ShopItem
     {
-        private Item _item;
-        public IItem GetItem => _item.IItem;
-        public string GetItemName => _item.IItem.GetItemType.ToString();
-        public Sprite GetItemSprite => _item.GetItemSprite();
+        private ItemObject _item;
+        public ItemObject GetItem => _item;
+        public string GetItemName => _item.Data.Name.ToString();
+        public Sprite GetItemSprite => _item.UIDisplay;
 
         private int _availability;
         public int GetAvailability => _availability;
@@ -19,7 +18,7 @@ namespace Shops
         private int _amount;
         public int GetAmount => _amount;
 
-        public ShopItem(Item item, int availability, float price, int amount)
+        public ShopItem(ItemObject item, int availability, float price, int amount)
         {
             _item = item;
             _availability = availability;

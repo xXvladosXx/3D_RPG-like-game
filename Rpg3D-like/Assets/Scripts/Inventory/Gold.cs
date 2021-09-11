@@ -1,10 +1,8 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Saving;
+using SavingSystem;
 using UnityEngine;
 
-namespace Inventories
+namespace Inventory
 {
     public class Gold : MonoBehaviour, ISaveable
     {

@@ -1,32 +1,48 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Scriptable.Weapon;
+using System.Linq;
+using Controller;
+using Resistance;
+using Scriptable.Weapon.SkillsSpecification.Strategies;
+using Stats;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "DemoTargeting", menuName = "Abilities/AttackTarget", order = 0)]
-public class AttackTargetEffect : EffectStrategy
+namespace Scriptable.Weapon.SkillsSpecification.Effects
 {
-    [SerializeField] private float _damage;
-    [SerializeField] private float _damageModifier;
-    public override void Effect(SkillData skillData, Action finished)
+    [CreateAssetMenu(fileName = "Damaging", menuName = "Abilities/Core/Damage", order = 0)]
+    public class AttackTargetEffect : EffectStrategy
     {
-        float userDamage = skillData.GetUser.GetComponent<Combat>().GetCurrentDamage;
-        
-        foreach (var target in skillData.GetTargets)
+        [SerializeField] private float _damage;
+        [SerializeField] private float _damageModifier;
+        [SerializeField] private DamageType _damageType = DamageType.Physical;
+        public override void Effect(SkillData skillData, Action finished)
         {
-            if (target.GetComponent<Health>() != null)
+            float userDamage = 0;
+
+            foreach (var damagePair in skillData.GetUser.GetComponent<Equipment>()
+                .GetCurrentWeapon._damage
+                .Where(damagePair => damagePair.Key == _damageType)) { userDamage = damagePair.Value; }
+        
+            foreach (var target in skillData.GetTargets)
             {
-                if (_damage > 0)
+                Debug.Log(target);
+                if (target.GetComponent<Health>() != null)
                 {
-                    target.GetComponent<Health>().RegenerateHealth(_damage + userDamage*_damageModifier);
-                }
-                else
-                {
-                    if(!target.GetComponent<Health>().IsDead())
-                        target.GetComponent<Health>().TakeDamage(-_damage-userDamage*_damageModifier, skillData.GetUser);
+                    if (_damage > 0)
+                    {
+                        target.GetComponent<Health>().RegenerateHealth(_damage + userDamage*_damageModifier);
+                    }
+                    else
+                    {
+                        if(!target.GetComponent<Health>().IsDead())
+                            target.GetComponent<Health>().TakeDamage(-_damage-(-userDamage*_damageModifier), skillData.GetUser, _damageType);
+                    }
                 }
             }
+        }
+
+        public override void SetData(DataCollector dataCollector)
+        {
+            dataCollector.AddDataFromNewLine("Damage " + _damage + " * " + _damageModifier);
         }
     }
 }

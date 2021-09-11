@@ -1,29 +1,28 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Quests;
+using Controller;
 using UnityEngine;
 
-public class QuestCheckerLocation : MonoBehaviour
+namespace Quests
 {
-    [SerializeField] private Quest _quest;
-    public event Action OnLocationEntered;
-    private QuestSystem _questSystem;
-    private void OnTriggerEnter(Collider other)
+    public class QuestCheckerLocation : MonoBehaviour
     {
-        if (other.TryGetComponent(out PlayerController playerController))
+        [SerializeField] private InitializationQuest _quest;
+        public event Action OnLocationEntered ;
+        private QuestSystem _questSystem;
+        private void OnTriggerEnter(Collider other)
         {
-            if (_questSystem == null)
+            if (other.TryGetComponent(out PlayerController playerController))
             {
-                _questSystem = FindObjectOfType<QuestSystem>();
-            }
-            
-            if (_questSystem.GetQuest != null)
-            {
-                if (_questSystem.GetQuest == _quest)
+                if (_questSystem == null)
                 {
-                    OnLocationEntered?.Invoke();
+                    _questSystem = FindObjectOfType<QuestSystem>();
                 }
+            
+                if (_questSystem.GetQuest == null) return;
+                if(_questSystem.GetQuest.GetCurrentQuest == null) return;
+                if (_questSystem.GetQuest.GetCurrentQuest != _quest) return;
+            
+                OnLocationEntered?.Invoke();
             }
         }
     }

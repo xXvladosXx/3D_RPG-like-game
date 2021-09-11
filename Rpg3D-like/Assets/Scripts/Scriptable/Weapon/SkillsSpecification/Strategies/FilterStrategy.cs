@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Scriptable.Weapon
+namespace Scriptable.Weapon.SkillsSpecification.Strategies
 {
     public abstract class FilterStrategy : ScriptableObject
     {

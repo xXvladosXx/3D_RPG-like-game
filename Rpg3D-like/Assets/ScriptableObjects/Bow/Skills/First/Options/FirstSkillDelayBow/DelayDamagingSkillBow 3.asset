@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _delayToDamage: 0.5
   _delayedEffects:
-  - {fileID: 11400000, guid: b1af6fe55f96cea4bb1fda9b4fb6164c, type: 2}
+  - {fileID: 11400000, guid: 01e7e0e5285fb6f498020ed28a87b18e, type: 2}
   - {fileID: 11400000, guid: 9a411e653fe6cf04aa2fdab4c65a196e, type: 2}

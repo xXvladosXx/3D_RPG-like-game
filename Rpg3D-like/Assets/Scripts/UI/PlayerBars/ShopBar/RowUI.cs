@@ -1,12 +1,10 @@
-﻿using System;
-using System.Globalization;
-using Inventories;
+﻿using System.Globalization;
 using Shops;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.ShopUI
+namespace UI.PlayerBars.ShopBar
 {
     public class RowUI : MonoBehaviour
     {
@@ -31,12 +29,12 @@ namespace UI.ShopUI
 
         public void Add()
         {
-            _shop.AddToTransaction(_shopItem.GetItem.GetItemType, 1);
+            _shop.AddToTransaction(_shopItem.GetItem, 1);
         }
 
         public void Remove()
         {
-            _shop.AddToTransaction(_shopItem.GetItem.GetItemType,-1);
+            _shop.AddToTransaction(_shopItem.GetItem,-1);
         }
     }
 }

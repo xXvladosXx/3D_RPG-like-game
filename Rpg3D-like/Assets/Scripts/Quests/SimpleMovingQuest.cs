@@ -1,4 +1,5 @@
 ﻿using System;
+using Controller;
 using UnityEngine;
 
 namespace Quests

@@ -1,24 +1,27 @@
 using UnityEngine;
 
-public class LoadedObjects : MonoBehaviour
+namespace SavingSystem
 {
-    [SerializeField] private GameObject _loadedObjectPrefab;
- 
-    private static bool _hasSpawned = false;
-    private void Awake()
+    public class LoadedObjects : MonoBehaviour
     {
-        if (_hasSpawned)
+        [SerializeField] private GameObject _loadedObjectPrefab;
+ 
+        private static bool _hasSpawned = false;
+        private void Awake()
         {
-            return;
+            if (_hasSpawned)
+            {
+                return;
+            }
+ 
+            SpawnPersistentObjects();
+            _hasSpawned = true;
         }
  
-        SpawnPersistentObjects();
-        _hasSpawned = true;
-    }
- 
-    private void SpawnPersistentObjects()
-    {
-        var persistentObject = Instantiate(_loadedObjectPrefab);
-        DontDestroyOnLoad(persistentObject);
+        private void SpawnPersistentObjects()
+        {
+            var persistentObject = Instantiate(_loadedObjectPrefab);
+            DontDestroyOnLoad(persistentObject);
+        }
     }
 }

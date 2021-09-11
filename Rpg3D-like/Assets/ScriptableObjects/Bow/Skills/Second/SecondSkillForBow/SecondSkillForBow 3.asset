@@ -12,13 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 284e5252b2c84b90be29743a6d843eef, type: 3}
   m_Name: SecondSkillForBow 3
   m_EditorClassIdentifier: 
+  _damage: 0
+  _radius: 0
+  _delay: 0
+  _amount: 0
   _cooldown: 4
   _manaCost: 50
   _image: {fileID: 21300000, guid: 06fd18faa147f3e4dbf4d6206ff581a6, type: 3}
   _nextLevelSkill: {fileID: 0}
+  _previousSkills: []
   _filterStrategies:
-  - {fileID: 11400000, guid: f2a2c7f5e1005974ca592462c946060d, type: 2}
+  - {fileID: 11400000, guid: cfb3b07d1d419c343b8572857f47b794, type: 2}
   _effectStrategies:
   - {fileID: 11400000, guid: b5ad7fe118a51814eaf69ba5b8446535, type: 2}
   - {fileID: 11400000, guid: 6743d369f5a7a2947825747779aa6453, type: 2}
-  _targetingStrategy: {fileID: 11400000, guid: 2bcf37b1dcdbc3b4eb15d2c0cba7c404, type: 2}
+  _targetingStrategy: {fileID: 11400000, guid: 8ff2492b5bad7214a8337abf4eaccc69, type: 2}

@@ -1,9 +1,10 @@
 ﻿using System;
+using Scriptable.Weapon.SkillsSpecification.Strategies;
 using UnityEngine;
 
-namespace Scriptable.Weapon
+namespace Scriptable.Weapon.SkillsSpecification.Effects
 {
-    [CreateAssetMenu(fileName = "AnimationTriggering", menuName = "Abilities/SpellCastingAnimation", order = 0)]
+    [CreateAssetMenu(fileName = "AnimationTriggering", menuName = "Abilities/Optional/SkillAnimation", order = 0)]
     
     public class AnimationTriggerEffect : EffectStrategy
     {
@@ -20,6 +21,10 @@ namespace Scriptable.Weapon
             _userAnimator.SetTrigger(_animationSkill);
 
             finished();
+        }
+
+        public override void SetData(DataCollector dataCollector)
+        {
         }
     }
 }

@@ -1,10 +1,10 @@
 ﻿
 
-namespace Saving
-{
-    public interface ISaveable
+    namespace SavingSystem
     {
-        object CaptureState();
-        void RestoreState(object state);
+        public interface ISaveable
+        {
+            object CaptureState();
+            void RestoreState(object state);
+        }
     }
-}

@@ -2,12 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 namespace Shops
 {
     public class Customer : MonoBehaviour
     {
-        private ShopSystem _activeShop = null;
+        private ShopSystem _activeShop;
         public ShopSystem GetCurrentShop => _activeShop;
         
         public event Action OnActiveShopChange;

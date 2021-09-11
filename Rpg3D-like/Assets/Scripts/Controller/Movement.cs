@@ -1,74 +1,84 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Saving;
+using SavingSystem;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Movement : MonoBehaviour, IAction, ISaveable
+namespace Controller
 {
-    [SerializeField] private float _maxSpeed = 6f;
-
-    private NavMeshAgent _navMeshAgent;
-    private Animator _animator;
-    private ActionScheduler _actionScheduler;
-
-    private void Awake()
+    public class Movement : MonoBehaviour, IAction, ISaveable
     {
-        _navMeshAgent = GetComponent<NavMeshAgent>();
-        _animator = GetComponent<Animator>();
-        _actionScheduler = GetComponent<ActionScheduler>();
-    }
+        [SerializeField] private float _maxSpeed = 6f;
 
-    private void Update()
-    {
-        UpdateAnimator();
-    }
-
-    private void UpdateAnimator()
-    {
-        Vector3 velocity = _navMeshAgent.velocity;
-        Vector3 localVelocity = transform.InverseTransformDirection(velocity);
-
-        float speed = localVelocity.z;
+        private NavMeshAgent _navMeshAgent;
+        private Animator _animator;
+        private ActionScheduler _actionScheduler;
+        private Rigidbody _rigidbody;
         
-        _animator.SetFloat("speed", speed);
-    }
+        private void Awake()
+        {
+            _navMeshAgent = GetComponent<NavMeshAgent>();
+            _animator = GetComponent<Animator>();
+            _actionScheduler = GetComponent<ActionScheduler>();
+            _rigidbody = GetComponent<Rigidbody>();
+        }
 
-    public void StartMoveToAction(Vector3 destination, float speedFraction)
-    {
-        _actionScheduler.Cancel();
-        _actionScheduler.StartAction(this);
+        private void Update()
+        {
+            if (_rigidbody.velocity.y == 0 && _navMeshAgent.enabled == false)
+            {
+                _navMeshAgent.enabled = true;
+            }
+            UpdateAnimator();
+        }
+
+        private void UpdateAnimator()
+        {
+            Vector3 velocity = _navMeshAgent.velocity;
+            Vector3 localVelocity = transform.InverseTransformDirection(velocity);
+
+            float speed = localVelocity.z;
         
-        MoveTo(destination, speedFraction);
-    }
+            _animator.SetFloat("speed", speed);
+        }
+
+        public void StartMoveToAction(Vector3 destination, float speedFraction)
+        {
+            _actionScheduler.Cancel();
+            _actionScheduler.StartAction(this);
+        
+            MoveTo(destination, speedFraction);
+        }
     
-    public void MoveTo(Vector3 destination, float speedFraction)
-    {
-        _navMeshAgent.speed = _maxSpeed * Mathf.Clamp01(speedFraction);
-        _navMeshAgent.destination = destination;
-        _navMeshAgent.isStopped = false;    
-    }
+        public void MoveTo(Vector3 destination, float speedFraction)
+        {
+            if(_navMeshAgent.enabled == false) return;
+            
+            _navMeshAgent.speed = _maxSpeed * Mathf.Clamp01(speedFraction);
+            _navMeshAgent.destination = destination;
+            _navMeshAgent.isStopped = false;    
+        }
 
-    public void Cancel()
-    {
-        _navMeshAgent.isStopped = true;
-    }
-
-    public object CaptureState()
-    {
-        return new SerializableVector(transform.position);
-    }
-
-    public void RestoreState(object state)
-    {
-         SerializableVector position =(SerializableVector)state;
-
-         _navMeshAgent.enabled = false;
-         transform.position = position.ToVector();
-         _navMeshAgent.enabled = true;
+        public void Cancel()
+        {           
+            if(_navMeshAgent.enabled == false) return;
         
-         GetComponent<ActionScheduler>().Cancel();
+            _navMeshAgent.isStopped = true;
+        }
 
+        public object CaptureState()
+        {
+            return new SerializableVector(transform.position);
+        }
+
+        public void RestoreState(object state)
+        {
+            SerializableVector position =(SerializableVector)state;
+
+            _navMeshAgent.enabled = false;
+            transform.position = position.ToVector();
+            _navMeshAgent.enabled = true;
+        
+            GetComponent<ActionScheduler>().Cancel();
+
+        }
     }
 }

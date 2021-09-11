@@ -89,11 +89,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d324a7b7604a345bce0ee803102fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _itemObject: {fileID: 0}
+  _amount: 1
   _weapon: {fileID: 11400000, guid: 8f9d7d498f536df47a61a412e08d3ea0, type: 2}
-  _isRightHanded: 0
-  _item:
-    ItemType: 9
-    Amount: 0
 --- !u!1001 &2827567013019717154
 PrefabInstance:
   m_ObjectHideFlags: 0

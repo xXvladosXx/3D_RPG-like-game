@@ -19,4 +19,4 @@ MonoBehaviour:
   _speed: 8
   _isPointTarget: 1
   _radius: 2
-  _selfCasted: 1
+  _radiusSpawn: 1

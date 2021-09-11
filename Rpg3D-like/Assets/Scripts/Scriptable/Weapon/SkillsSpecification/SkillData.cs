@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Scriptable.Weapon
+namespace Scriptable.Weapon.SkillsSpecification
 {
     public class SkillData : IAction
     {
@@ -13,6 +12,13 @@ namespace Scriptable.Weapon
         private bool _cancelled = false;
         public bool IsCancelled => _cancelled;
 
+        private Transform _renderer;
+
+        public Transform GetRenderer()
+        {
+            return _renderer;
+        }
+        
         public SkillData(GameObject user)
         {
             _user = user;
@@ -36,6 +42,11 @@ namespace Scriptable.Weapon
         public void StartCoroutine(IEnumerator coroutine)
         {
             GetUser.GetComponent<MonoBehaviour>().StartCoroutine(coroutine);
+        }
+
+        public void SetRenderer(Transform renderer)
+        {
+            _renderer = renderer;
         }
 
         public void Cancel()

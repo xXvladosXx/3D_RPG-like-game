@@ -1,90 +1,114 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using Controller;
-using Scriptable.Weapon;
+using Extensions;
+using Inventory;
+using Resistance;
+using Scriptable.Arrows;
+using Scriptable.Weapon.SkillsSpecification;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
-[CreateAssetMenu(fileName = "Weapon", menuName = "ScriptableObjects/Weapon", order = 1)]
-public class WeaponScriptable : ScriptableObject
+namespace Scriptable.Weapon
 {
-    [SerializeField] private WeaponScriptable _previousWeaponUpgrade;
-    [SerializeField] private GameObject _prefabWeapon;
-    [SerializeField] private AnimatorOverrideController _weaponOverrideController;
-    [SerializeField] private ArrowScriptable _arrow;
-    [SerializeField] private Skill[] _weaponSkills;
-
-    private Skill[] GetPreviousWeaponSkills()
+    [Serializable]
+    [CreateAssetMenu(fileName = "Weapon", menuName = "ScriptableObjects/Weapon", order = 1)]
+    public class WeaponScriptable : ModifiableItem
     {
-        return _previousWeaponUpgrade!=null ? _previousWeaponUpgrade.GetCurrentWeaponSkills() : null;
-    }
+        [SerializeField] private WeaponScriptable _previousWeaponUpgrade;
+        [SerializeField] private WeaponScriptable _nextWeaponUpgrade;
+        [SerializeField] private GameObject _prefabWeapon;
+        [SerializeField] private AnimatorOverrideController _weaponOverrideController;
 
-    private Skill[] GetCurrentWeaponSkills()
-    {
-        return _weaponSkills;
-    }
-    public Skill[] GetWeaponSkills()
-    {
-        return GetPreviousWeaponSkills() == null ? GetCurrentWeaponSkills() : GetCurrentWeaponSkills().Concat(GetPreviousWeaponSkills()).ToArray();
-    }
-
-    [SerializeField] private float _damage = 1f;
-    public float GetDamage => _damage;
-  
-    [SerializeField] private float _attackRange = 1f;
-    public float GetAttackRange => _attackRange;
-
-    [SerializeField] private bool _isRightHanded = false;
-    public bool GetWeaponHand => _isRightHanded;
+        public SerializableDictionary<DamageType, float>
+            _damage = new SerializableDictionary<DamageType, float>();
+        [SerializeField] private ArrowScriptable _arrow;
+        [SerializeField] private Skill[] _weaponSkills;
     
-    [SerializeField] private float _attackSpeed = 1f;
-    public float GetAttackSpeed => _attackSpeed;
-
-    private const string _weaponName = "Weapon";
-
-    public void Spawn(Transform position, Animator animator)
-    {
-        if (_prefabWeapon != null)
+        private Skill[] GetPreviousWeaponSkills()
         {
-            GameObject weapon = Instantiate(_prefabWeapon, position);
-
-            weapon.name = _weaponName;
+            return _previousWeaponUpgrade!=null ? _previousWeaponUpgrade.GetCurrentWeaponSkills() : null;
         }
 
-        var overrideController = animator.runtimeAnimatorController as AnimatorOverrideController;
-
-        if (_weaponOverrideController != null)
+        private Skill[] GetCurrentWeaponSkills()
         {
-            animator.runtimeAnimatorController = _weaponOverrideController;
-        }else if (overrideController != null)
-        {
-            animator.runtimeAnimatorController = overrideController.runtimeAnimatorController;
+            return _weaponSkills;
         }
-    }
-
-    public void DestroyOldWeapon(Transform righthand, Transform lefthand)
-    {
-        Transform oldWeapon = righthand.Find("Weapon");
-
-        if (oldWeapon == null)
+        public Skill[] GetWeaponSkills()
         {
-            oldWeapon = lefthand.Find("Weapon");
+            return GetPreviousWeaponSkills() == null ? GetCurrentWeaponSkills() : GetCurrentWeaponSkills().Concat(GetPreviousWeaponSkills()).ToArray();
         }
         
-        if(oldWeapon == null) return;
+        [SerializeField] private float _attackRange = 1f;
+        public float GetAttackRange => _attackRange;
+
+        [SerializeField] private bool _isRightHanded = false;
+        public bool GetWeaponHand => _isRightHanded;
+    
+        [SerializeField] private float _attackSpeed = 1f;
+        public float GetAttackSpeed => _attackSpeed;
         
-        Destroy(oldWeapon.gameObject);
-    }
+        private const string _weaponName = "Weapon";
+    
+
+        public void Spawn(Transform position, Animator animator)
+        {
+            if (_prefabWeapon != null)
+            {
+                GameObject weapon = Instantiate(_prefabWeapon, position);
+
+                weapon.name = _weaponName;
+            }
+
+            var overrideController = animator.runtimeAnimatorController as AnimatorOverrideController;
+
+            if (_weaponOverrideController != null)
+            {
+                animator.runtimeAnimatorController = _weaponOverrideController;
+            }else if (overrideController != null)
+            {
+                animator.runtimeAnimatorController = overrideController.runtimeAnimatorController;
+            }
+        }
+
+        public void DestroyOldWeapon(Transform righthand, Transform lefthand)
+        {
+            Transform oldWeapon = righthand.Find("Weapon");
+
+            if (oldWeapon == null)
+            {
+                oldWeapon = lefthand.Find("Weapon");
+            }
+        
+            if(oldWeapon == null) return;
+        
+            Destroy(oldWeapon.gameObject);
+        }
    
-    public void SpawnProjectile(Transform target, Transform damager, float currentDamage)
-    {
-        _arrow.LoadProjectile(target, damager, currentDamage);
-    }
+        public void SpawnProjectile(Transform target, Transform damager, SerializableDictionary<DamageType, float> damage)
+        {
+            _arrow.LoadProjectile(target, damager, damage);
+        }
 
-    public ArrowScriptable GetProjectile()
-    {
-        return _arrow;
+        public ArrowScriptable GetProjectile()
+        {
+            return _arrow;
+        }
+
+        public override ItemObject IsUpgradable()
+        {
+            return _nextWeaponUpgrade == null ? null : _nextWeaponUpgrade;
+        }
+
+        public override void EquipItem(PlayerController playerController)
+        {
+            playerController.GetComponent<Equipment>().Equip(this, playerController.GetComponent<Equipment>().GetCurrentWeapon == this);
+        }
+
+        public override string Description => $"Name: {name} \n" + 
+                                              $"Damage: \n{_damage.Format()}" +
+                                              $"Attack Range: {_attackRange} \n" +
+                                              $"Speed Attack: {_attackSpeed}";
+        
+        
     }
 }

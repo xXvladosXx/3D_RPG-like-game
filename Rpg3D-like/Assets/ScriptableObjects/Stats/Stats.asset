@@ -17,8 +17,8 @@ MonoBehaviour:
     stats:
     - stat: 0
       levels:
-      - 111
-      - 200
+      - 10000
+      - 10000
       - 300
       - 400
       - 500
@@ -43,8 +43,8 @@ MonoBehaviour:
       - 700
     - stat: 2
       levels:
-      - 1
-      - 1
+      - 1111
+      - 1111
       - 30
       - 30
       - 30
@@ -56,8 +56,8 @@ MonoBehaviour:
       - 30
     - stat: 4
       levels:
-      - 9
-      - 29
+      - 11
+      - 11
       - 50
       - 50
       - 50
@@ -93,18 +93,44 @@ MonoBehaviour:
       - 61
       - 61
       - 61
+    - stat: 6
+      levels:
+      - 11
+      - 21
+      - 31
+      - 41
+      - 51
+      - 61
+      - 61
+      - 61
+      - 61
+      - 61
+      - 61
+    - stat: 7
+      levels:
+      - 11
+      - 21
+      - 31
+      - 41
+      - 51
+      - 61
+      - 61
+      - 61
+      - 61
+      - 61
+      - 61
   - characterClass: 1
     stats:
     - stat: 0
       levels:
-      - 12
-      - 14
-      - 16
+      - 1000
+      - 10
+      - 11111
       - 16
       - 16
     - stat: 1
       levels:
-      - 222
+      - 1
       - 333
       - 444
       - 444
@@ -118,18 +144,32 @@ MonoBehaviour:
       - 0
     - stat: 4
       levels:
-      - 12
+      - 32
       - 12
       - 12
       - 12
     - stat: 2
       levels:
-      - 1
-      - 1
-      - 13
+      - 100000
+      - 100000
+      - 10000
       - 13
       - 13
     - stat: 5
+      levels:
+      - 12
+      - 16
+      - 26
+      - 56
+      - 56
+    - stat: 6
+      levels:
+      - 12
+      - 16
+      - 26
+      - 56
+      - 56
+    - stat: 7
       levels:
       - 12
       - 16
@@ -140,9 +180,9 @@ MonoBehaviour:
     stats:
     - stat: 0
       levels:
-      - 40
-      - 70
-      - 100
+      - 10000
+      - 10000
+      - 10000
     - stat: 1
       levels:
       - 45
@@ -165,6 +205,18 @@ MonoBehaviour:
       - 1
       - 13
     - stat: 5
+      levels:
+      - 60
+      - 100
+      - 150
+      - 180
+    - stat: 6
+      levels:
+      - 60
+      - 100
+      - 150
+      - 180
+    - stat: 7
       levels:
       - 60
       - 100

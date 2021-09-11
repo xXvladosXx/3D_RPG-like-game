@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Interface;
-using Saving;
+using SavingSystem;
+using Scriptable.Stats;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -9,21 +9,19 @@ namespace Stats
 {
     public class StatsValueStore : MonoBehaviour, IModifierStat, ISaveable
     {
-        [SerializeField] private StatsBonus[] _statsBonus;
+        [SerializeField] private SerializableDictionary<StatsEnum, StatBonus> _statsBonus;
+        
         [Serializable]
-        class StatsBonus
+        public class StatBonus
         {
-            public StatsEnum StatsEnum;
-            public float modifiedBonus = 0;
+            public StatsModifier StatsModifier;
+            public float Bonus;
         }
-
         public event Action OnStatsChanged;
         
-        private Dictionary<StatsEnum, int> _assignedPoints = new Dictionary<StatsEnum, int>();
-        private Dictionary<StatsEnum, int> _confirmedPoints = new Dictionary<StatsEnum, int>();
+        private Dictionary<StatsModifier, int> _assignedPoints = new Dictionary<StatsModifier, int>();
+        private Dictionary<StatsModifier, int> _confirmedPoints = new Dictionary<StatsModifier, int>();
 
-        private Dictionary<StatsEnum, Dictionary<StatsEnum, float>> _modifierBonusCondition;
-        
         [SerializeField] private int _defaultNumberOfPoints = 2;
 
         private FindStat _findStat;
@@ -33,18 +31,6 @@ namespace Stats
 
         private void Awake()
         {
-            _modifierBonusCondition = new Dictionary<StatsEnum, Dictionary<StatsEnum, float>>();
-            
-            foreach (var statBonus in _statsBonus)
-            {
-                if (!_modifierBonusCondition.ContainsKey(statBonus.StatsEnum))
-                {
-                    _modifierBonusCondition[statBonus.StatsEnum] = new Dictionary<StatsEnum, float>();
-                }
-
-                _modifierBonusCondition[statBonus.StatsEnum][statBonus.StatsEnum] = statBonus.modifiedBonus;
-            }
-            
             _findStat = gameObject.GetComponent<FindStat>();
 
             _findStat.OnLevelUp += AddNewUnassignedPoints;
@@ -54,16 +40,16 @@ namespace Stats
         {
             SetUnassignedPoints(_defaultNumberOfPoints);
         }
-        public int GetProposedPoints(StatsEnum stat)
+        public int GetProposedPoints(StatsModifier stat)
         {
             return GetPoints(stat) + GetConfirmedPoints(stat);
         }
-        public int GetPoints(StatsEnum stat)
+        public int GetPoints(StatsModifier stat)
         {
             return _assignedPoints.ContainsKey(stat) ? _assignedPoints[stat] : 0;
         }
 
-        public int GetConfirmedPoints(StatsEnum stat)
+        public int GetConfirmedPoints(StatsModifier stat)
         {
             return _confirmedPoints.ContainsKey(stat) ? _confirmedPoints[stat] : 0;
         }
@@ -72,7 +58,7 @@ namespace Stats
         {
             _unassignedPoints += points;
         }
-        public void AssignPoints(StatsEnum stat, int points)
+        public void AssignPoints(StatsModifier stat, int points)
         {
             if(!CanAssignPoints(stat, points)) return;
             
@@ -80,7 +66,7 @@ namespace Stats
             _unassignedPoints -= points;
         }
 
-        public bool CanAssignPoints(StatsEnum stat, int points)
+        public bool CanAssignPoints(StatsModifier stat, int points)
         {
             if (GetConfirmedPoints(stat) + points < 0) return false;
             if (_unassignedPoints < points) return false;
@@ -102,14 +88,12 @@ namespace Stats
 
         public IEnumerable<float> GetStatModifier(StatsEnum stat)
         {
-            if(!_modifierBonusCondition.ContainsKey(stat)) yield break;
-
-            foreach (StatsEnum statsEnum in _modifierBonusCondition[stat].Keys)
+            if(_statsBonus.TryGetValue(stat, out var s))
             {
-                float bonus = _modifierBonusCondition[stat][statsEnum];
-                yield return bonus + GetPoints(statsEnum);
+                yield return GetPoints(s.StatsModifier) * s.Bonus;
             }
         }
+        
 
         public object CaptureState()
         {
@@ -118,7 +102,7 @@ namespace Stats
 
         public void RestoreState(object state)
         {
-            _assignedPoints = new Dictionary<StatsEnum, int>((Dictionary<StatsEnum, int>) state);
+            _assignedPoints = new Dictionary<StatsModifier, int>((Dictionary<StatsModifier, int>) state);
         }
     }
 }

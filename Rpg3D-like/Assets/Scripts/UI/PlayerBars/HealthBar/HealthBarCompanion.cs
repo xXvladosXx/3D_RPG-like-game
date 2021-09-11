@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using Controller;
+using Scriptable.Stats;
+using Stats;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI.PlayerBars.HealthBar
@@ -15,7 +18,7 @@ namespace UI.PlayerBars.HealthBar
             
             _health = _companion.GetComponent<Health>();
             _health.OnTakeDamage += HealthBarMaintenance;
-            _health.OnTakeHealing += HealthBarMaintenance;
+            _health.OnHealthChanged += HealthBarMaintenance;
             _companion.GetComponent<FindStat>().OnLevelUp += HealthBarMaintenance;
         }
 

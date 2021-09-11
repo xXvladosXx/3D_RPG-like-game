@@ -1,27 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Interface;
+using Scriptable.Stats;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace Stats
 {
     public class Mana : MonoBehaviour
-    { 
-        public event Action OnSkillCast;
+    {
+        public float ManaCurrent;
+        public float ManaMax;
+        
+        [SerializeField] private float _manaSpeedRegeneration = 1.5f;
         
         private FindStat _findStat;
-        [SerializeField] private float _manaCurrent;
-        [SerializeField] float _manaMax;
-        [SerializeField] private float _manaSpeedRegeneration = 1.5f;
         private StatsValueStore _statsValueStore;
+        public event Action OnManaChanged;
 
         private void Awake()
         {
             _findStat = GetComponent<FindStat>();
-            
+            _statsValueStore = GetComponent<StatsValueStore>();
+
             GetComponent<FindStat>().OnLevelUp += SetNewLevelMana;
+            
+            if (_statsValueStore != null)
+            {
+                _statsValueStore.OnStatsChanged += () =>
+                {
+                    ManaMax = _findStat.GetStat(StatsEnum.Mana);
+                    OnManaChanged?.Invoke();
+                };
+            } 
         }
 
         private void Start()
@@ -41,39 +52,37 @@ namespace Stats
 
         public void SetNewLevelMana()
         {
-            _manaMax = _findStat.GetStat(StatsEnum.Mana);
-            _manaCurrent = _manaMax;
+            ManaMax = _findStat.GetStat(StatsEnum.Mana);
+            ManaCurrent = ManaMax;
         }
 
         public float GetCurrentMana()
         {
-            return _manaCurrent;
+            return ManaCurrent;
         }
 
         public float GetFraction()
         {
-            return _manaCurrent / _manaMax;
+            return ManaCurrent / ManaMax;
         }
 
         public void CasteSkill(float manaPoints)
         {
-            _manaCurrent -= manaPoints;
-            OnSkillCast?.Invoke();
+            ManaCurrent -= manaPoints;
         }
 
         private void ManaRegeneration()
         {
-            if (_manaCurrent < _manaMax)
-            {
-                _manaCurrent += Time.deltaTime*_manaSpeedRegeneration;
-                if (_manaCurrent > _manaMax)
-                    _manaCurrent = _manaMax;
-            }
+            if (!(ManaCurrent < ManaMax)) return;
+            
+            ManaCurrent += Time.deltaTime*_manaSpeedRegeneration;
+            if (ManaCurrent > ManaMax)
+                ManaCurrent = ManaMax;
         }
 
         public void RegenerateMana(float regeneration)
         {
-            _manaCurrent = Mathf.Min(_manaCurrent + regeneration, _manaMax);
+            ManaCurrent = Mathf.Min(ManaCurrent + regeneration, ManaMax);
         }
     }
 }

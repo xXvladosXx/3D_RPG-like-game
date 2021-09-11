@@ -1,43 +1,37 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class MainMenuSwitcherUI : MonoBehaviour
+namespace UI.MainMenu
 {
-    [SerializeField] private GameObject _mainMenu;
+    public class MainMenuSwitcherUI : MonoBehaviour
+    {
+        [SerializeField] private GameObject _mainMenu;
 
-    private void Start()
-    {
-        if(_mainMenu != null)
-            SwitchTo(_mainMenu);
-    }
-
-    private void Update()
-    {
-        print(gameObject.transform);
-        print(gameObject.transform.parent);
-    }
-
-    public void UIDisabler()
-    {
-        gameObject.transform.parent.gameObject.SetActive(false);
-    }
-    public void OnDisable()
-    {
-        foreach (Transform child in transform)
+        private void Start()
         {
-            child.gameObject.SetActive(false);
+            if(_mainMenu != null)
+                SwitchTo(_mainMenu);
         }
-    }
 
-    public void SwitchTo(GameObject switchTo)
-    {
-        if (switchTo.transform.parent != transform) return;
-
-        foreach (Transform child in transform)
+        public void UIDisabler()
         {
-            child.gameObject.SetActive(child.gameObject == switchTo);
+            gameObject.transform.parent.gameObject.SetActive(false);
+        }
+        public void OnDisable()
+        {
+            foreach (Transform child in transform)
+            {
+                child.gameObject.SetActive(false);
+            }
+        }
+
+        public void SwitchTo(GameObject switchTo)
+        {
+            if (switchTo.transform.parent != transform) return;
+
+            foreach (Transform child in transform)
+            {
+                child.gameObject.SetActive(child.gameObject == switchTo);
+            }
         }
     }
 }

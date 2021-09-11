@@ -1,10 +1,11 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Scriptable.Weapon;
 using UnityEngine;
 
-public abstract class EffectStrategy : ScriptableObject
+namespace Scriptable.Weapon.SkillsSpecification.Strategies
 {
-    public abstract void Effect(SkillData skillData, Action finished);
+    public abstract class EffectStrategy : ScriptableObject
+    {
+        public abstract void Effect(SkillData skillData, Action finished);
+        public abstract void SetData(DataCollector dataCollector);
+    }
 }

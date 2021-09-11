@@ -1,121 +1,186 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Interface;
-using Saving;
-using Stats;
+using Controller;
+using Resistance;
+using SavingSystem;
+using Scriptable.Stats;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
-public class Health : MonoBehaviour, ISaveable
+namespace Stats
 {
-    [SerializeField] public OnTakeDamageEventArgs OnDamageTaken;
-
-    public event Action<GameObject> OnTakeDamage;
-    public event Action OnTakeHealing;
-    public event Action OnDied;
-
-    [SerializeField] private float _healthCurrent;
-    [SerializeField] private float _healthMax;
-
-    private bool _wasDead = false;
-    private FindStat _findStat;
-    private Animator _animator;
-    private StatsValueStore _statsValueStore;
-    private ActionScheduler _actionScheduler;
-
-    [Serializable]
-    public class OnTakeDamageEventArgs : UnityEvent<float>
+    public class Health : MonoBehaviour, ISaveable
     {
-    }
+        [SerializeField] public OnTakeDamageEventArgs OnDamageTaken;
 
-    private void Awake()
-    {
-        _actionScheduler = GetComponent<ActionScheduler>();
-        _findStat = GetComponent<FindStat>();
-        _animator = GetComponent<Animator>();
-        _statsValueStore = GetComponent<StatsValueStore>();
-        SetNewLevelHealth();
-        
-        if (_statsValueStore != null)
+        public event Action<GameObject> OnTakeDamage;
+        public event Action OnHealthChanged;
+        public event Action OnDied;
+
+        public float HealthCurrent;
+        public float HealthMax;
+
+        private bool _wasDead = false;
+        private FindStat _findStat;
+        private Animator _animator;
+        private StatsValueStore _statsValueStore;
+        private ActionScheduler _actionScheduler;
+        private Armour _armour;
+        private Equipment _equipment;
+        private float _healthRegeneration;
+
+
+        [Serializable]
+        public class OnTakeDamageEventArgs : UnityEvent<float>
         {
-            _statsValueStore.OnStatsChanged += SetNewLevelHealth;
         }
-        _findStat.OnLevelUp += SetNewLevelHealth;
-    }
 
-
-    public void SetNewLevelHealth()
-    {
-        _healthMax = _findStat.GetStat(StatsEnum.Health);
-        _healthCurrent = _healthMax;
-    }
-
-    public float GetFraction()
-    {
-        return _healthCurrent / _healthMax;
-    }
-
-    public void TakeDamage(float damage, GameObject damager)
-    {
-        OnDamageTaken.Invoke(damage);
-        
-        _healthCurrent = Mathf.Max(_healthCurrent - damage, 0);
-
-        if (IsDead())
+        private void Awake()
         {
-            damager.GetComponent<LevelUp>().ExperienceReward(GetComponent<FindStat>().GetStat(StatsEnum.ExperienceReward)); 
-            OnDied?.Invoke();
+            _actionScheduler = GetComponent<ActionScheduler>();
+            _findStat = GetComponent<FindStat>();
+            _animator = GetComponent<Animator>();
+            _statsValueStore = GetComponent<StatsValueStore>();
+            _armour = GetComponent<Armour>();
+            _equipment = GetComponent<Equipment>();
+        
+          
+            SetNewLevelHealth();
+        
+            if (_statsValueStore != null)
+            {
+                _statsValueStore.OnStatsChanged += () =>
+                {
+                    HealthMax = _findStat.GetStat(StatsEnum.Health);
+                    _healthRegeneration = _findStat.GetStat(StatsEnum.HealthRegeneration);
+                
+                    print(_healthRegeneration);
+                    OnHealthChanged?.Invoke();
+                };
+            } 
+        
+            _findStat.OnLevelUp += SetNewLevelHealth;
+        
+            if(_equipment != null )
+            {
+                _equipment.OnEquipmentChanged += () =>
+                {
+                    HealthMax = _findStat.GetStat(StatsEnum.Health);
+                    HealthCurrent = Mathf.Clamp(HealthCurrent, 0, HealthMax);
+                    OnHealthChanged?.Invoke();
+                };
+            }
+        }
+
+        private void SetNewLevelHealth()
+        {
+            HealthMax = _findStat.GetStat(StatsEnum.Health);
+            HealthCurrent = HealthMax;
+        }
+
+        public float GetFraction()
+        {
+            return HealthCurrent / HealthMax;
+        }
+
+        public void TakeDamage(float damage, GameObject damager, DamageType damageType)
+        {
+            var ownResistance = _armour.GetDamageResistance;
+        
+            if (ownResistance != null)
+            {
+                damage = ownResistance.CalculateResistance(damage, damageType);
+                damage += ownResistance.CalculateResistance(_findStat.GetStat(StatsEnum.Damage), DamageType.Physical);
+            }
+
+            HealthCurrent = Mathf.Clamp(HealthCurrent - damage, 0, HealthMax);
+            OnDamageTaken.Invoke(damage);
+        
+            if (IsDead())
+            {
+                damager.GetComponent<LevelUp>().ExperienceReward(GetComponent<FindStat>().GetStat(StatsEnum.ExperienceReward)); 
+                OnHealthChanged?.Invoke();
+                OnDied?.Invoke();
+                Death();
+            }
+            else
+            {
+                OnTakeDamage?.Invoke(damager);
+                OnHealthChanged?.Invoke();
+            }
+        }
+    
+        public void TakeDamage(SerializableDictionary<DamageType, float> damagePairs, GameObject damager)
+        {
+            var ownResistance = _armour.GetDamageResistance;
+            float damage = 0;
+        
+            foreach (var damagePair in damagePairs)
+            {
+                damage += ownResistance.CalculateResistance(damagePair.Value, damagePair.Key);
+            }
+
+            damage += ownResistance.CalculateResistance(damager.GetComponent<FindStat>().GetStat(StatsEnum.Damage), DamageType.Physical);
+            HealthCurrent = Mathf.Clamp(HealthCurrent - damage, 0, HealthMax);
+            OnDamageTaken.Invoke(damage);
+        
+            if (IsDead())
+            {
+                damager.GetComponent<LevelUp>().ExperienceReward(GetComponent<FindStat>().GetStat(StatsEnum.ExperienceReward)); 
+                OnHealthChanged?.Invoke();
+                OnDied?.Invoke();
+                Death();
+            }
+            else
+            {
+                OnTakeDamage?.Invoke(damager);
+                OnHealthChanged?.Invoke();
+            }
+        }
+
+        public bool IsDead()
+        {
+        
+            return HealthCurrent == 0;
+        }
+
+
+        private void Death()
+        {
+            if (!_wasDead && IsDead())
+            {
+                _actionScheduler.Cancel();
+                _animator.SetTrigger("isDead");
+            }
+        
+            if(_wasDead && !IsDead())
+            {
+                _animator.Rebind();
+            }
+
+            _wasDead = IsDead();
+        }
+
+    
+        public void RegenerateHealth(float healing)
+        {
+            HealthCurrent = Mathf.Min(HealthCurrent + healing, HealthMax);
+        
+            OnHealthChanged?.Invoke();
+        }
+
+        public object CaptureState()
+        {
+            return HealthCurrent;
+        }
+
+        public void RestoreState(object state)
+        {
+            HealthCurrent = (float)state;
+      
             Death();
         }
-        else
-        {
-            OnTakeDamage?.Invoke(damager);
-        }
-
-    }
-
-    public bool IsDead()
-    {
-        return _healthCurrent == 0;
-    }
-
-    private void Death()
-    {
-        if (!_wasDead && IsDead())
-        {
-            _actionScheduler.Cancel();
-            _animator.SetTrigger("isDead");
-        }
-        
-        if(_wasDead && !IsDead())
-        {
-            _animator.Rebind();
-        }
-
-        _wasDead = IsDead();
-    }
 
     
-    public void RegenerateHealth(float healing)
-    {
-        _healthCurrent = Mathf.Min(_healthCurrent + healing, _healthMax);
-        
-        OnTakeHealing?.Invoke();
     }
-
-    public object CaptureState()
-    {
-        return _healthCurrent;
-    }
-
-    public void RestoreState(object state)
-    {
-        _healthCurrent = (float)state;
-      
-        Death();
-    }
-
-    
 }

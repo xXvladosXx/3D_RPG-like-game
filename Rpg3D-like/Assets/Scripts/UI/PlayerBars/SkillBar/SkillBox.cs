@@ -1,46 +1,68 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using Controller;
+using Scriptable.Weapon.SkillsSpecification;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class SkillBox : MonoBehaviour
+namespace UI.PlayerBars.SkillBar
 {
-    [SerializeField] private GameObject _player;
-    [SerializeField] private GameObject _cooldown;
-    [SerializeField] private int _skillIndex;
-
-    public int GetIndex => _skillIndex;
-    
-    private PlayerSkills _playerSkills;
-    private CooldownSkillManager _cooldownSkillManager;
-    private bool _wasCasted;
-    private Image _image;
-    private int _currentSkillLevel;
-    private void Awake()
+    public class SkillBox : MonoBehaviour
     {
-        _playerSkills = _player.GetComponent<PlayerSkills>();
-        _cooldownSkillManager = _player.GetComponent<CooldownSkillManager>();
-        _image = _cooldown.GetComponent<Image>();
-    }
+        [SerializeField] private Image _skillImage;
+        [SerializeField] private Image _skillCooldownImage;
+        [SerializeField] private Skill _skill;
+        public Skill GetSkill => _skill;
+        [SerializeField] private int _skillIndex;
 
-    private void Update()
-    {
-        if (_playerSkills.GetPlayerSkills.Length <= _skillIndex)
+        private PlayerController _player;
+        private Sprite _defaultSprite;
+        private PlayerSkills _playerSkills;
+        private bool _wasCasted;
+        private float _skillCooldown;
+        
+        private void Awake()
         {
-            _image.fillAmount = 0;
-            return;
+            _defaultSprite = _skillImage.sprite;
+            _player = FindObjectOfType<PlayerController>();
+            _playerSkills = _player.GetComponent<PlayerSkills>();
+            _playerSkills.OnSkillsChanged += Start;
         }
 
-        if (_wasCasted)
+        private void Start()
         {
-            _image.fillAmount = _cooldownSkillManager.GetFractionOfCooldown(_playerSkills.GetPlayerSkills[_skillIndex]);
+            ResetBox();
+
+            if (_playerSkills.GetPlayerSkills.Length <= _skillIndex ||
+                _playerSkills.GetPlayerSkills[_skillIndex] == null) return;
+            
+            _skill = _playerSkills.GetPlayerSkills[_skillIndex];
+            _skillImage.sprite = _skill.GetSkillSprite;
+                
+            _skill.OnSkillCasted += () =>
+            {
+                _skillCooldown = _skill.GetCooldown;
+                _skillCooldownImage.fillAmount = 1;
+                _wasCasted = true;
+            };
         }
-    }
-    
-    public void SetCasted(bool wasCasted)
-    {
-        _wasCasted = wasCasted;
+
+        private void ResetBox()
+        {
+            _skillImage.sprite = _defaultSprite;
+            _skill = null;
+        }
+
+        private void Update()
+        {
+            if (!_wasCasted) return;
+            
+            _skillCooldown -= Time.deltaTime;
+            _skillCooldownImage.fillAmount = _skillCooldown / _skill.GetCooldown; 
+                
+            if (_skillCooldown <= 0)
+            {
+                _wasCasted = false;
+            }
+        }
     }
 }

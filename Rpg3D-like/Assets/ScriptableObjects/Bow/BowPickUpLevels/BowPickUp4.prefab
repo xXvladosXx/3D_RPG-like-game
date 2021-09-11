@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 4450941199624973011}
   - component: {fileID: 1498676121}
   - component: {fileID: 1498676120}
+  - component: {fileID: 2522201716728484663}
   m_Layer: 0
   m_Name: BowPickUp4
   m_TagString: Untagged
@@ -91,9 +92,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weapon: {fileID: 11400000, guid: 8feee649c87c57140aed72efda85ed22, type: 2}
   _isRightHanded: 0
-  _item:
-    ItemType: 10
-    Amount: 0
+--- !u!114 &2522201716728484663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4450941199624973008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3289cb4c7a4247ea9ee94aa65901c30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemObject: {fileID: 11400000, guid: 8feee649c87c57140aed72efda85ed22, type: 2}
 --- !u!1001 &2827567013019717154
 PrefabInstance:
   m_ObjectHideFlags: 0

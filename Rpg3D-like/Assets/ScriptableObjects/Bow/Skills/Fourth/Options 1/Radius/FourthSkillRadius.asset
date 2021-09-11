@@ -18,6 +18,4 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 8
-  _skillRendererRadius: {fileID: 8332175310303223670, guid: 30bf03973d1297340a083d6f24a24c41, type: 3}
-  _skillCastDistance: {fileID: 8332175310303223670, guid: ef49dae2807a1144a963ea1ebdfb8aa7, type: 3}
-  _distanceToCastSkill: 12
+  _distanceToCastSkill: 20

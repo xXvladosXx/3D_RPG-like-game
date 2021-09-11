@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 284e5252b2c84b90be29743a6d843eef, type: 3}
   m_Name: FifthSkillForBowLast
   m_EditorClassIdentifier: 
+  _damage: 0
+  _radius: 0
+  _delay: 0
+  _amount: 0
   _cooldown: 10
   _manaCost: 50
   _image: {fileID: 21300000, guid: 1568eebc9005b5a468fbd3ffcf21bcac, type: 3}
   _nextLevelSkill: {fileID: 11400000, guid: bef325f233b554a40b44ac901527f8aa, type: 2}
   _previousSkills: []
   _filterStrategies:
-  - {fileID: 11400000, guid: f2a2c7f5e1005974ca592462c946060d, type: 2}
+  - {fileID: 11400000, guid: cfb3b07d1d419c343b8572857f47b794, type: 2}
   _effectStrategies:
   - {fileID: 11400000, guid: b5ad7fe118a51814eaf69ba5b8446535, type: 2}
   - {fileID: 11400000, guid: 800b3f7713dec5741989a0988b94a320, type: 2}

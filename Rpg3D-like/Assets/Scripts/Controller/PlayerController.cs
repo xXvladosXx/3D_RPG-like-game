@@ -1,162 +1,167 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using CodeMonkey.Utils;
-using Controller;
-using Enums;
-using Saving;
-using TMPro;
+using Controller.States;
+using DialogueSystem.Interaction;
+using Stats;
 using UI.Cursor;
-using UI.Inventory;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.EventSystems;
 
-public class PlayerController : MonoBehaviour
+namespace Controller
 {
-    [SerializeField] private ParticleSystem _clickedEffect;
-    [SerializeField] private LayerMask _layerMask;
-    [SerializeField] private ObjectPooler _objectPooler;
-    public event Action<Transform> OnEnemyAttacked;
-
-    private Health _health;
-
-    public enum CursorType
+    public class PlayerController : MonoBehaviour
     {
-        None,
-        Attack,
-        Move,
-        UI,
-        PickUp,
-        Shop,
-        Quest,
-        Upgrade
-    }
+        [SerializeField] private ParticleSystem _clickedEffect;
+        [SerializeField] private LayerMask _layerMask;
+        [SerializeField] private ObjectPooler.ObjectPooler _objectPooler;
+        [SerializeField] private ActionScheduler _actionScheduler;
+        public event Action<Transform> OnEnemyAttacked;
 
-    [Serializable]
-    struct CursorIterating
-    {
-        public CursorType Type;
-        public Vector2 Hotspot;
-        public Texture2D Texture;
-    }
+        private Health _health;
 
-    [SerializeField] private CursorIterating[] _cursorIteratings;
-
-    private void Awake()
-    {
-        _health = GetComponent<Health>();
-    }
-
-    void Update()
-    {
-        if(_health == null) return;
-        if(PointerOverUI()) return;
-        
-        if (_health.IsDead())
+        public enum CursorType
         {
-            SetCursor(CursorType.None);
-            return;
+            None,
+            Attack,
+            Move,
+            UI,
+            PickUp,
+            Shop,
+            Quest,
+            Upgrade
         }
 
-        if(InteractWithComponent()) return;
-        if (Movement()) return;
-
-        SetCursor(CursorType.None);
-    }
-
-    private bool PointerOverUI()
-    {
-        if (!EventSystem.current.IsPointerOverGameObject()) return false;
-        
-        SetCursor(CursorType.UI);
-        return true;
-    }
-
-    private bool InteractWithComponent()
-    {
-        RaycastHit[] hits = Physics.RaycastAll(GetRay());
-
-        foreach (var hit in hits)
+        [Serializable]
+        struct CursorIterating
         {
-            IRaycastable[] raycastables = hit.transform.GetComponents<IRaycastable>();
-            foreach (var raycastable in raycastables)
+            public CursorType Type;
+            public Vector2 Hotspot;
+            public Texture2D Texture;
+        }
+
+        [SerializeField] private CursorIterating[] _cursorIteratings;
+
+        private void Awake()
+        {
+            _health = GetComponent<Health>();
+            _actionScheduler = GetComponent<ActionScheduler>();
+        }
+
+        void Update()
+        {
+            if(_health == null) return;
+            if(PointerOverUI()) return;
+
+            if (_actionScheduler.GetCurrentAction is IUnchangeableState)
             {
-                if (raycastable.HandleRaycast(this))
+                return;
+            }
+            
+            if (_health.IsDead())
+            {
+                SetCursor(CursorType.None);
+                return;
+            }
+
+            if(InteractWithComponent()) return;
+            if (Movement()) return;
+
+            SetCursor(CursorType.None);
+        }
+
+        private bool PointerOverUI()
+        {
+            if (!EventSystem.current.IsPointerOverGameObject()) return false;
+        
+            SetCursor(CursorType.UI);
+            return true;
+        }
+
+        private bool InteractWithComponent()
+        {
+            RaycastHit[] hits = Physics.RaycastAll(GetRay());
+
+            foreach (var hit in hits)
+            {
+                IRaycastable[] raycastables = hit.transform.GetComponents<IRaycastable>();
+                foreach (var raycastable in raycastables)
                 {
-                    OnEnemyAttacked?.Invoke(FindObjectOfType<CombatTarget>().transform);
+                    if (!raycastable.HandleRaycast(this)) continue;
+                
+                    if(FindObjectOfType<CombatTarget>() != null)
+                        OnEnemyAttacked?.Invoke(FindObjectOfType<CombatTarget>().transform);
+                    
                     SetCursor(raycastable.GetCursorType());
                     return true;
                 }
             }
-        }
         
-        return false;
-    }
-
-    private void SetCursor(CursorType type)
-    {
-        CursorIterating iterating = GetCursorIterating(type);
-        Cursor.SetCursor(iterating.Texture, iterating.Hotspot, CursorMode.Auto);
-    }
-
-    private CursorIterating GetCursorIterating(CursorType type)
-    {
-        foreach (var cursorIterating in _cursorIteratings)
-        {
-            if (cursorIterating.Type == type)
-                return cursorIterating;
+            return false;
         }
 
-        return _cursorIteratings[0];
-    }
-
-    private bool Movement()
-    {
-        RaycastHit raycastHit;
-        bool hasHit = Physics.Raycast(GetRay(), out raycastHit);
-
-        if (hasHit)
+        private void SetCursor(CursorType type)
         {
-            if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject())
+            CursorIterating iterating = GetCursorIterating(type);
+            Cursor.SetCursor(iterating.Texture, iterating.Hotspot, CursorMode.Auto);
+        }
+
+        private CursorIterating GetCursorIterating(CursorType type)
+        {
+            foreach (var cursorIterating in _cursorIteratings)
             {
-                GetComponent<Movement>().StartMoveToAction(raycastHit.point, 1f);
-                
-                if (Physics.Raycast(GetRay(), out raycastHit, 1000, _layerMask))
-                {
-
-                    if (_objectPooler.GetPooledObject() == null)
-                    {
-                        SetCursor(CursorType.Move);
-                        return true;
-                    }
-                    
-                    ParticleSystem clickedEffect = _objectPooler.GetPooledObject().GetComponent<ParticleSystem>();
-
-                    clickedEffect.transform.position = new Vector3(raycastHit.point.x, raycastHit.point.y, raycastHit.point.z);
-                    clickedEffect.transform.rotation = Quaternion.identity;
-
-                    clickedEffect.gameObject.SetActive(true);
-                    StartCoroutine(WaitToDisableClickedEffect(clickedEffect));
-                }
+                if (cursorIterating.Type == type)
+                    return cursorIterating;
             }
 
-            SetCursor(CursorType.Move);
-            return true;
+            return _cursorIteratings[0];
         }
 
-        return false;
-    }
+        private bool Movement()
+        {
+            RaycastHit raycastHit;
+            bool hasHit = Physics.Raycast(GetRay(), out raycastHit);
 
-    private IEnumerator WaitToDisableClickedEffect(ParticleSystem clickedEffect)
-    {
-        yield return new WaitForSeconds(0.5f);
-        clickedEffect.gameObject.SetActive(false);
-    }
+            if (hasHit)
+            {
+                if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject())
+                {
+                    GetComponent<Movement>().StartMoveToAction(raycastHit.point, 1f);
+                
+                    if (Physics.Raycast(GetRay(), out raycastHit, 1000, _layerMask))
+                    {
 
-    public static Ray GetRay()
-    {
-        return Camera.main.ScreenPointToRay(Input.mousePosition);
+                        if (_objectPooler.GetPooledObject() == null)
+                        {
+                            SetCursor(CursorType.Move);
+                            return true;
+                        }
+                    
+                        ParticleSystem clickedEffect = _objectPooler.GetPooledObject().GetComponent<ParticleSystem>();
+
+                        clickedEffect.transform.position = new Vector3(raycastHit.point.x, raycastHit.point.y, raycastHit.point.z);
+                        clickedEffect.transform.rotation = Quaternion.identity;
+
+                        clickedEffect.gameObject.SetActive(true);
+                        StartCoroutine(WaitToDisableClickedEffect(clickedEffect));
+                    }
+                }
+
+                SetCursor(CursorType.Move);
+                return true;
+            }
+
+            return false;
+        }
+
+        private IEnumerator WaitToDisableClickedEffect(ParticleSystem clickedEffect)
+        {
+            yield return new WaitForSeconds(0.5f);
+            clickedEffect.gameObject.SetActive(false);
+        }
+
+        public static Ray GetRay()
+        {
+            return Camera.main.ScreenPointToRay(Input.mousePosition);
+        }
     }
 }

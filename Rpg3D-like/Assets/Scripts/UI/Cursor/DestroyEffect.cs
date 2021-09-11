@@ -1,11 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyEffect : MonoBehaviour
+namespace UI.Cursor
 {
-    void Start()
+    public class DestroyEffect : MonoBehaviour
     {
-        Destroy(gameObject, 0.3f);
+        void Start()
+        {
+            Destroy(gameObject, 0.3f);
+        }
     }
 }

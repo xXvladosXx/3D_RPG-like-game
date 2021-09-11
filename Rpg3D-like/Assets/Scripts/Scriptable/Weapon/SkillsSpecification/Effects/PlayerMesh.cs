@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Scriptable.Weapon
+namespace Scriptable.Weapon.SkillsSpecification.Effects
 {
     public class PlayerMesh : MonoBehaviour
     {

@@ -1,56 +1,54 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Scriptable.Stats;
+using Stats;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
-using UnityEngine.VFX;
 using Image = UnityEngine.UI.Image;
 
-public class HealthBarPlayer : MonoBehaviour
+namespace UI.PlayerBars.HealthBar
 {
-    [SerializeField] private GameObject _healthBackground;
-    [SerializeField] private Image _imageHealth;
-
-    private Health _health;
-    private GameObject _healthBar;
-    
-    private static PointerEventData _eventDataCurrentPosition;
-    private static List<RaycastResult> _results;
-    private FindStat _findStat;
-
-    private void Awake()
+    public class HealthBarPlayer : MonoBehaviour
     {
-        foreach (Transform health in transform)
+        [SerializeField] private Image _imageHealth;
+
+        private Health _health;
+        private FindStat _findStat;
+
+        private void Awake()
         {
-            if(health.CompareTag("UI"))
-                _healthBar = health.gameObject;
+            _findStat = GetComponentInParent<FindStat>();
+            _health = GetComponentInParent<Health>();
+            
+            AddEvent(EventTriggerType.PointerEnter, delegate { OnEnter(); });
+            AddEvent(EventTriggerType.PointerExit, delegate { OnExit(); });
+            
+            SetHealthBar();
+
+            _health.OnHealthChanged += SetHealthBar;
+            _findStat.OnLevelUp += SetHealthBar;
+        }
+    
+        private void SetHealthBar()
+        {
+            _imageHealth.fillAmount = _health.GetFraction();
+        }
+        
+        private void AddEvent(EventTriggerType type, UnityAction<BaseEventData> action)
+        {
+            EventTrigger trigger = gameObject.GetComponent<EventTrigger>();
+            var eventTrigger = new EventTrigger.Entry {eventID = type};
+            eventTrigger.callback.AddListener(action);
+            trigger.triggers.Add(eventTrigger);
+        }
+        
+        private void OnEnter()
+        {
+            Tooltip.EnableTooltip(_health.HealthCurrent + "\n" + _health.HealthMax);
         }
 
-        _findStat = GetComponent<FindStat>();
-        _health = GetComponent<Health>();
-        
-        SetHealthBar();
-
-        _health.OnTakeDamage += SetHealthBar;
-        _health.OnTakeHealing += SetHealthBar;
-        _findStat.OnLevelUp += SetHealthBar;
-    }
-
-    private void Start()
-    {
-    }
-
-    private void Update()
-    {
-    }
-
-    private void SetHealthBar(GameObject damager)
-    {
-        SetHealthBar();
-    }
-    private void SetHealthBar()
-    {
-        _imageHealth.fillAmount = _health.GetFraction();
+        private void OnExit()
+        {
+            Tooltip.DisableTooltip();
+        }
     }
 }
